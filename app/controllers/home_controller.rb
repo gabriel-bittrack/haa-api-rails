@@ -6,8 +6,8 @@ class HomeController < ApplicationController
       client = Restforce.new :oauth_token => current_user.oauth_token,
         :refresh_token => current_user.refresh_token,
         :instance_url => current_user.instance_url,
-        :client_id => Rails.application.config.salesforce_app_id,
-        :client_secret => Rails.application.config.salesforce_app_secret
+        :client_id => ENV['SALESFORCE_APP_ID'],
+        :client_secret => ENV['SALESFORCE_APP_SECRET']
 
       accounts = client.query("select Id, Name, Contact.FirstName, Email, Image_URl__c, Main_Profile_Picture__c from Contact")
       @account = accounts.first
