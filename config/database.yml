@@ -7,12 +7,12 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: localhost
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
   database: haa_api_development
+  host: localhost
   username: postgres
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
 
