@@ -1,3 +1,43 @@
 class MemberSerializer < ActiveModel::Serializer
   attributes :full_name, :first_name, :last_name
+  attribute :address do
+    id = object.id
+    {
+      city: object.city,
+      state: object.state,
+      province: object.province,
+      country: object.country
+    }
+  end
+
+  attribute :demographic do
+    id = object.id
+    {
+      ethnicity: object.ethnicity,
+      gender: object.gender,
+      relationship: object.relationship
+    }
+  end
+
+  attribute :organization do
+    id = object.id
+    {
+      industry: object.industry,
+      organization: object.current_org,
+      title: object.title
+    }
+  end
+
+  attribute :information do
+    id = object.id
+    {
+      photo: object.profile_photo_url,
+      bio: object.short_bio,
+      military_branch: object.military_branch,
+      video: object.web_url,
+      class_year: object.class_year,
+      undergraduate_institution: object.undergraduate_institution,
+      graduate_institution: object.graduate_institution
+    }
+  end
 end

@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20180121005150) do
     t.string "undergraduate_institution"
     t.string "graduate_institution"
     t.string "profile_photo_url"
+    t.string "title"
   end
 
   create_table "users", force: :cascade do |t|

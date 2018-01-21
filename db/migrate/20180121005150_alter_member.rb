@@ -16,5 +16,6 @@ class AlterMember < ActiveRecord::Migration[5.1]
     add_column :members, :undergraduate_institution, :string
     add_column :members, :graduate_institution, :string
     add_column :members, :profile_photo_url, :string
+    add_column :members, :title, :string
   end
 end
