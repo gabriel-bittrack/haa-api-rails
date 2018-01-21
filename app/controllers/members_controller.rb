@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   def index
-    data = { test: 'Mike' }
-    render json: data
+    @members = Member.all
+    render json: @members, each_serializer: MemberSerializer
   end
 end

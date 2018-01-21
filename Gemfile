@@ -13,6 +13,8 @@ gem 'slim-rails'
 gem 'omniauth'
 gem 'omniauth-salesforce'
 gem 'restforce'
+gem 'active_model_serializers', '~> 0.10.0'
+
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -45,7 +47,6 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'dotenv-rails'
-
 end
 
 group :development do
