@@ -16,7 +16,8 @@ gem 'restforce'
 gem 'active_model_serializers', '~> 0.10.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+# gem 'pg'
+gem 'pg', '~> 0.20'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -52,10 +53,6 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-end
-
-group :production do
-  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
