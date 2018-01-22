@@ -1,6 +1,6 @@
 class ScholarsController < ApplicationController
   def index
-    data = { scholar: 'Mike' }
-    render json: data
+    @scholars = Scholar.all
+    render json: @scholars, each_serializer: ScholarSerializer
   end
 end

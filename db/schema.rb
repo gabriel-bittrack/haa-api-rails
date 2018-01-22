@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121005150) do
+ActiveRecord::Schema.define(version: 20180122023452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,28 @@ ActiveRecord::Schema.define(version: 20180121005150) do
     t.string "graduate_institution"
     t.string "profile_photo_url"
     t.string "title"
+  end
+
+  create_table "scholars", force: :cascade do |t|
+    t.string "full_name"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "high_school"
+    t.string "state"
+    t.string "city"
+    t.string "country"
+    t.boolean "scholar"
+    t.boolean "alumni"
+    t.boolean "specialized_scholar"
+    t.boolean "military_scholar"
+    t.string "scholar_standing"
+    t.string "military_branch"
+    t.string "undergraduate_institution"
+    t.string "undergraduate_degree"
+    t.string "undergraduate_major"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "total_disbursement_allotment", precision: 11, scale: 2
   end
 
   create_table "users", force: :cascade do |t|
