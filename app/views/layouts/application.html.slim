@@ -20,11 +20,17 @@ body
     - if @account
       =@account.FirstName
       br
+      =@account.LastName
+      br
       =@account.Name
       br
       br
+      p Image:
       =@account.Image_URI__c
+      ==@account.Main_Profile_Picture__c
       br
+      p Video:
+      ==@account.Member_Web_Video_Url__c
       br
       =@account.inspect
 
