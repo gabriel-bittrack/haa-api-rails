@@ -1,2 +1,3 @@
 class Scholar < ApplicationRecord
+
 end
