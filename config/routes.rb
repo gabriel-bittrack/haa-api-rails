@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     resources :friends, only: :index
   end
 
-  root 'home#landing'
+  # root 'home#landing'
+  root 'welcome#index'
+  namespace :admin do
+    resources :dashboard
+  end
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
