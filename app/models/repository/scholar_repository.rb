@@ -5,7 +5,7 @@ module Repository
     end
 
     def self.total_scholarships_given
-      85
+      86
     end
   end
 end
