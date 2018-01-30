@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  max-width: 1280px;
+  margin: 25px auto 0px;
+}
+body * {
+  margin: 0px;
+}
+h2 {
+  font-family: Montserrat;
+  font-size: 20px;
+}
+.home {
+  .col1 {
+    max-width: 524px;
+    width: 40.9375%;
+    float: left;
+    background: green;
+  }
+  .col2 {
+    max-width: 748px;
+    width: 58.4375%;
+    float: right;
+    background: red;
+  }
+}
