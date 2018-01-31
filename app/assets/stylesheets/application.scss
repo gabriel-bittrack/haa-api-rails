@@ -32,6 +32,9 @@ a {
   text-decoration: none;
   display: inline-block;
 }
+a:hover {
+  cursor: pointer;
+}
 h1, h2, .section_title, .link_btn {
   font-weight: 600;
   letter-spacing: 2px;
@@ -68,4 +71,7 @@ a.link_btn:hover {
   border: 2px solid #fff;
   color: #fff;
   background-color: #abc4d6;
+}
+.modal {
+  display: none;
 }

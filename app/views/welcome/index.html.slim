@@ -11,7 +11,7 @@
         .au_content
           h2.section_title.au_title ABOUT US
           p.au_description The Horatio Alger Association is dedicated to the simple but powerful belief that hard work, honesty and determination can conquer all obstacles. The Association honors the Achievements of outstanding leaders who have accomplished remarkable successes in spite of adversity...
-          = link_to "MORE", "/about-us", class: "au_link link_btn"
+          a{class='au_link link_btn'} MORE
 
       .upcoming_events
         .ue_header
@@ -52,3 +52,6 @@
           .em_buttons
             = link_to "USA", "explore-map/usa", class: "em_link_usa link_btn"
             = link_to "CANADA", "explore-map/canada", class: "em_link_canada link_btn"
+
+  #aboutus_modal.modal
+    = render partial: "aboutus_modal"
