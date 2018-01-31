@@ -18,7 +18,7 @@ $white-font: #f2f2f2;
   }
   .about_us {
     text-align: center;
-    background: url(aboutus_bg.jpg) no-repeat;
+    background: url(asset_path('aboutus_bg.jpg')) no-repeat;
     background-size: cover;
     padding: 25px 44px 30px;
     height: 400px;
@@ -72,7 +72,7 @@ $white-font: #f2f2f2;
     padding-bottom: 6px;
   }
   .footer_sponsor {
-    background: url(sponsor_bg.jpg) no-repeat;
+    background: url(asset_path('sponsor_bg.jpg')) no-repeat;
     background-size: cover;
     text-align: center;
     padding: 24px 0px 24px;
@@ -93,7 +93,7 @@ $white-font: #f2f2f2;
     font-weight: 400;
   }
   .scholar_stories {
-    background: url(scholar_stories.jpg) no-repeat;
+    background: url(asset_path('scholar_stories.jpg')) no-repeat;
     background-size: cover;
     padding: 45px 40px;
     margin-bottom: 8px;
@@ -177,7 +177,7 @@ $white-font: #f2f2f2;
     text-transform: uppercase;
   }
   .explore_map {
-    background: url(explore_map.jpg) no-repeat;
+    background: url(asset_path('explore_map.jpg')) no-repeat;
     background-size: cover;
     text-align: center;
     padding: 84px 50px;
