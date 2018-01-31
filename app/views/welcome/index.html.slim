@@ -5,12 +5,13 @@
       .about_us
         .au_header
           .logo
+            = image_tag("HAA_logo.png", :class => "haa_logo")
           .medallion
-
+            = image_tag("medallion.png", :class => "haa_medallion")
         .au_content
           h2.section_title.au_title ABOUT US
           p.au_description The Horatio Alger Association is dedicated to the simple but powerful belief that hard work, honesty and determination can conquer all obstacles. The Association honors the Achievements of outstanding leaders who have accomplished remarkable successes in spite of adversity...
-          = link_to "MORE", "about-us", class: "au_link link_btn"
+          = link_to "MORE", "/about-us", class: "au_link link_btn"
 
       .upcoming_events
         .ue_header
@@ -18,28 +19,29 @@
 
         .ue_content
           .event_row
-            .event_title Membership and Board of Directors Meeting | Chicago, IL
+            a{href="/events/1" class='event_title'} Membership and Board of Directors Meeting | Chicago, IL
             .event_date September 13–15, 2017
           .event_row
-            .event_title Membership and Board of Directors Meeting | Montreal, CA
+            a{href="/events/2" class='event_title'} Membership and Board of Directors Meeting | Montreal, CA
             .event_date October 2–4, 2019
           .event_row
-            .event_title Membership and Board of Directors Meeting in conjuction with Alumni Summit | Washington...
+            a{href="/events/3" class='event_title'} Membership and Board of Directors Meeting in conjuction with Alumni Summit | Washington...
             .event_date October 4–6, 2019
 
-      .footer
+      .footer_sponsor
         h4.sponsored_by Sponsored by
         h1.sponsor Paul Anthony Novelly
 
     .col2
       .scholar_stories
         h2.section_title.ss_title SCHOLAR STORIES
-        h4.ss_subtitle SCHOLAR NAME | San JOSE, CA
-        p.ss_description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas erat nisl, pulvinar convallis lectus dictum vitae. Integer convallis purus ac luctus pharetra. Nam aliquet congue leo vel rhoncus. Quisque et mattis enim. In et nisl at justo volutpat egestas.
+        .ss_content
+          h4.ss_subtitle SCHOLAR NAME | San JOSE, CA
+          p.ss_description Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas erat nisl, pulvinar convallis lectus dictum vitae. Integer convallis purus ac luctus pharetra. Nam aliquet congue leo vel rhoncus. Quisque et mattis enim. In et nisl at justo volutpat egestas.
 
       .testimonials
         .testimonials_wrap
-          .tm_mark
+          .tm_mark “
           .tm_content
             h3.tm_description You only have to believe you can succeed, that you can be whatever your heart desires, be willing to work for it, and you can have it.”
             h4.tm_by OPRAH WINFREY
@@ -48,5 +50,5 @@
         .explore_map_wrap
           h2.section_title.em_title EXPLORE MAP
           .em_buttons
-            = link_to "USA", "explore-map/usa", class: "em_link link_btn"
-            = link_to "CANADA", "explore-map/canada", class: "em_link link_btn"
+            = link_to "USA", "explore-map/usa", class: "em_link_usa link_btn"
+            = link_to "CANADA", "explore-map/canada", class: "em_link_canada link_btn"
