@@ -13,7 +13,7 @@ development:
   <<: *default
   database: haa_api_development
   host: localhost
-  username: postgres
+  username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
 
 # Warning: The database defined as "test" will be erased and
@@ -23,9 +23,9 @@ test:
   <<: *default
   database: haa_api_test
   host: localhost
-  username: postgres
+  username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
-  
+
 production:
   <<: *default
   database: haa_api_production
