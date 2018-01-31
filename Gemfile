@@ -14,7 +14,6 @@ gem 'omniauth'
 gem 'omniauth-salesforce'
 gem 'restforce'
 gem 'active_model_serializers', '~> 0.10.0'
-gem 'webpacker'
 
 # Use sqlite3 as the database for Active Record
 # gem 'pg'
@@ -54,6 +53,10 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
+end
+
+group :production do
+  gem 'webpacker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
