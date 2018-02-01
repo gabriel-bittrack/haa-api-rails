@@ -1,11 +1,8 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$white-font: #f2f2f2;
-.home {
-  div {
-    box-sizing: border-box;
-  }
+$white-font: #ffffff;
+.home {  
   .col1 {
     max-width: 525px;
     width: 41.015625%;
@@ -165,14 +162,16 @@ $white-font: #f2f2f2;
     font-family: Lora;
     font-style: italic;
     font-size: 20px;
+    font-weight: 300;
     color: $white-font;
     line-height: 1.68em;
     padding-bottom: 7px;
+    letter-spacing: 0px;
   }
   .tm_by {
     font-family: Montserrat;
     font-size: 11px;
-    font-weight: 300;
+    font-weight: 500;
     color: #f4f4f4;
     text-transform: uppercase;
   }
@@ -188,5 +187,17 @@ $white-font: #f2f2f2;
   }
   .em_link_usa {
     margin-right: 20px;
+  }
+}
+
+.aboutus_modal {
+  .col1 {
+
+  }
+  .col2 {
+
+  }
+  .col3 {
+
   }
 }
