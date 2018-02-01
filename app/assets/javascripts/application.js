@@ -17,8 +17,14 @@
 //= require_tree .
 
 jQuery(document).ready(function($) {
+
+  $('.modal').plainModal({overlay: {fillColor: '#000', opacity: 0.68}});
   $(".au_link").click(function(e) {
     $('#aboutus_modal').plainModal('open');
+  });
+
+  $(".modal .close").click(function(e) {
+    $(this).parents('.modal').plainModal('close');
   });
 
 });

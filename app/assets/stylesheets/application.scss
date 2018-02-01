@@ -46,6 +46,9 @@ h3, h4 {
 h2 {
   font-size: 20px;
 }
+div {
+  box-sizing: border-box;
+}
 .section_title {
   color: $white-font;
   text-align: center;
@@ -199,13 +202,22 @@ a.link_btn:hover {
 
 /* modal styles */
 .plainmodal-overlay {
-  background-color: #000 !important;
-  opacity: 0.78 !important;
+  
 }
 .modal {
   background: #f5f2e7;
   max-width: 1202px;
-  padding: 30px 40px;
+  padding: 40px 40px;
   border-radius: 6px;
+
+  .close {
+    background: url(asset_path('close.png')) no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
 }
 /* end of modal styles */

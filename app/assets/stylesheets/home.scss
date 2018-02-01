@@ -2,10 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $white-font: #ffffff;
-.home {
-  div {
-    box-sizing: border-box;
-  }
+.home {  
   .col1 {
     max-width: 525px;
     width: 41.015625%;
@@ -201,6 +198,6 @@ $white-font: #ffffff;
 
   }
   .col3 {
-    
+
   }
 }
