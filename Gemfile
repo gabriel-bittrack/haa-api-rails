@@ -14,6 +14,7 @@ gem 'omniauth'
 gem 'omniauth-salesforce'
 gem 'restforce'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'devise'
 gem 'webpacker'
 
 # Use sqlite3 as the database for Active Record
