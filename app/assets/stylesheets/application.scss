@@ -1,0 +1,71 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+$white-font: #f2f2f2;
+$primary-color: #0e2f53;
+body {
+  max-width: 1280px;
+  margin: 25px auto 0px;
+  font-family: Montserrat;
+  font-weight: 400;
+  background: #fff;
+}
+body * {
+  margin: 0px;
+}
+h2, a {
+  font-family: Montserrat;
+}
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+h1, h2, .section_title, .link_btn {
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+h3, h4 {
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+h2 {
+  font-size: 20px;
+}
+.section_title {
+  color: $white-font;
+  text-align: center;
+  text-transform: uppercase;
+}
+a.link_btn {
+  font-size: 15px;
+  color: #abc4d6;
+  border: 2px solid #abc4d6;
+  border-radius: 8px;
+  text-transform: uppercase;
+  text-decoration: none;
+  min-width: 145px;
+  display: inline-block;
+  padding: 11px 0px;
+  text-align: center;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+}
+a.link_btn:hover {
+  border: 2px solid #fff;
+  color: #fff;
+  background-color: #abc4d6;
+}

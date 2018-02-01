@@ -24,3 +24,10 @@
 .env
 .idea/workspace.xml
 .idea
+.DS_Store
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+yarn-error.log*
+.yarn-integrity
