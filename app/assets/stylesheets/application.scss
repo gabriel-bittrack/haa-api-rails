@@ -198,7 +198,14 @@ a.link_btn:hover {
 .scrollbar-inner > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size { top: -12px; }
 
 /* modal styles */
+.plainmodal-overlay {
+  background-color: #000 !important;
+  opacity: 0.78 !important;
+}
 .modal {
   background: #f5f2e7;
+  max-width: 1202px;
+  padding: 30px 40px;
+  border-radius: 6px;
 }
 /* end of modal styles */
