@@ -12,6 +12,7 @@
 //
 //= require ./libs/jquery-3.3.1.min
 //= require ./libs/jquery.plainmodal.min
+//= require ./libs/jquery.scrollbar
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
@@ -26,5 +27,7 @@ jQuery(document).ready(function($) {
   $(".modal .close").click(function(e) {
     $(this).parents('.modal').plainModal('close');
   });
+
+  //$('.scrollbar-inner').scrollbar();
 
 });

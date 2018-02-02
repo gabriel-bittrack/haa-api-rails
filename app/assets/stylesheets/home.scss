@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $white-font: #ffffff;
-.home {  
+.home {
   .col1 {
     max-width: 525px;
     width: 41.015625%;
@@ -190,14 +190,73 @@ $white-font: #ffffff;
   }
 }
 
-.aboutus_modal {
+#aboutus_modal {
+  .modal_header {
+    margin-top: 20px;
+  }
+  .logo, .medallion {
+    display: inline-block;
+  }
+  .logo {
+    margin-right: 40px;
+  }
+  .scrollbar-inner {
+    max-height: 436px;
+    overflow: hidden;
+  }
   .col1 {
-
+    width: 34%;
+    float: left;
   }
   .col2 {
-
+    width: 33%;
+    float: left;
   }
   .col3 {
+    width: 33%;
+    float: left;
+  }
+  .stats {
+    border-radius: 5px;
+    background: #efebdc;
+    padding: 20px 20px;
+    margin: 0px 30px;
+    margin-top: 50px;
+    .s_row {
+      padding: 30px 0px;
+    }
+    .icon_wrap {
+      float: left;
+      width: 90px;
+      text-align: center;
+      padding-left: 20px;
+    }
+    .numbers_wrap {
+      overflow: hidden;
+      text-align: center;
+    }
+    .number {
+      padding-bottom: 8px;
+      font-family: Lora;
+      font-size: 30px;
+    }
+    .text {
+      font-size: 11px;
+      color: #000;
+      font-weight: 500;
+    }
+    .members_row, .scholars_row {
+      border-bottom: 1px solid #00325b;
+    }
+    .members_row .number {
+      color: #02a1ce;
+    }
+    .scholars_row .number {
+      color: #cf0435;
+    }
+    .scholarships_row .number {
+      color: #23b03a;
+    }
 
   }
 }

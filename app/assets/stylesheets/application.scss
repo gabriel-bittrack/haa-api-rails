@@ -202,14 +202,34 @@ a.link_btn:hover {
 
 /* modal styles */
 .plainmodal-overlay {
-  
+
 }
 .modal {
   background: #f5f2e7;
   max-width: 1202px;
-  padding: 40px 40px;
+  max-height: 692px;
+  padding: 30px 54px;
   border-radius: 6px;
-
+  .modal_header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .modal_title {
+    color: #1a1a1a;
+    margin-bottom: 24px;
+  }
+  .modal_body {
+    max-height: 550px;
+    float: left;
+    overflow: hidden;
+  }
+  .modal_text {
+    font-family: Lora;
+    font-size: 15px;
+    color: #1a1a1a;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
   .close {
     background: url(asset_path('close.png')) no-repeat;
     background-position: center;
