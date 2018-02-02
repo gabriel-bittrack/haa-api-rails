@@ -28,6 +28,6 @@ jQuery(document).ready(function($) {
     $(this).parents('.modal').plainModal('close');
   });
 
-  //$('.scrollbar-inner').scrollbar();
+  $('.scrollbar-outer').scrollbar();
 
 });

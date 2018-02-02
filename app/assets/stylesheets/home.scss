@@ -200,7 +200,7 @@ $white-font: #ffffff;
   .logo {
     margin-right: 40px;
   }
-  .scrollbar-inner {
+  .scrollbar-outer {
     max-height: 436px;
     overflow: hidden;
   }
@@ -209,21 +209,21 @@ $white-font: #ffffff;
     float: left;
   }
   .col2 {
-    width: 33%;
+    width: 34%;
     float: left;
   }
   .col3 {
-    width: 33%;
+    width: 32%;
     float: left;
   }
   .stats {
     border-radius: 5px;
     background: #efebdc;
-    padding: 20px 20px;
-    margin: 0px 30px;
+    padding: 20px 0px;
+    margin: 0px 25px;
     margin-top: 50px;
     .s_row {
-      padding: 34px 0px;
+      padding: 34px 20px;
     }
     .icon_wrap {
       float: left;
@@ -234,6 +234,7 @@ $white-font: #ffffff;
     .numbers_wrap {
       overflow: hidden;
       text-align: center;
+      padding-left: 42px;
     }
     .number {
       padding-bottom: 8px;
@@ -245,8 +246,11 @@ $white-font: #ffffff;
       color: #000;
       font-weight: 500;
     }
-    .members_row, .scholars_row {
-      border-bottom: 1px solid #00325b;
+    .line {
+      height: 1px;
+      width: 85%;
+      margin: 0 auto;
+      background: #00325b;
     }
     .members_row .number {
       color: #02a1ce;
