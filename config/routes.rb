@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   devise_for :admins
-  use_doorkeeper
+
+  use_doorkeeper do
+  # it accepts :authorizations, :tokens, :applications and :authorized_applications
+  # controllers :applications => 'custom_applications'
+  # controllers applications: :custom_applications
+end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope '/api/v1' do
     resources :members, only: :index
