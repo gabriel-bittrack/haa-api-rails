@@ -1,0 +1,10 @@
+h1 Admins
+
+table.table.table-striped
+  thead
+    tr
+      th email
+  tbody
+    - @admins.each do |admin|
+      tr id="admin#{admin.id}"
+        td= admin.email

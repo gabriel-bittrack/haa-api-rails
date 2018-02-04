@@ -18,6 +18,7 @@ end
   root 'welcome#index'
   namespace :admin do
     resources :dashboard
+    resources :admin
   end
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
