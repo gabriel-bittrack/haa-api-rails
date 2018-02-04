@@ -18,6 +18,7 @@ end
   root 'welcome#index'
   namespace :admin do
     resources :dashboard
+    resource :salesforce_connect
     resources :admin
   end
 
