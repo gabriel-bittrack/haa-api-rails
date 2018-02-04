@@ -1,0 +1,8 @@
+en:
+  admin:
+    applications:
+      index: 'Administrative Users'
+    layouts:
+      admin:
+        nav:
+          admins: Administrative Users

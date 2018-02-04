@@ -1,0 +1,8 @@
+en:
+  admin_dashboard:
+    applications:
+      index: 'Admin Dashboard'
+    layouts:
+      admin_dashboard:
+        nav:
+          admins: Admin Dashboard
