@@ -9,9 +9,16 @@ class Admin::DashboardController < ApplicationController
 
   def create
     if current_user
-      SalesforceImporterService.new(current_user: current_user).perform(type: 'members')
+      puts ">>>>> what are the protected_params : #{protected_params.inspect}"
+      SalesforceImporterService.new(current_user: current_user).perform(type: protected_params)
     end
 
     redirect_to :admin_dashboard_index
+  end
+
+  private
+
+  def protected_params
+    params.require(:sync_type)
   end
 end
