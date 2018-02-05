@@ -75,10 +75,12 @@ a.link_btn:hover {
   color: #fff;
   background-color: #abc4d6;
 }
+.col {
+  float: left;
+}
 .modal {
   display: none;
 }
-
 /* modal styles */
 .plainmodal-overlay {
 
