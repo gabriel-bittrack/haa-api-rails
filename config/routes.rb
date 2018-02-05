@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  use_doorkeeper
+  devise_for :admins
+
+  use_doorkeeper do
+  # it accepts :authorizations, :tokens, :applications and :authorized_applications
+  # controllers :applications => 'custom_applications'
+  # controllers applications: :custom_applications
+end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope '/api/v1' do
     resources :members, only: :index
@@ -11,6 +18,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
   namespace :admin do
     resources :dashboard
+    resource :salesforce_connect
+    resources :admin
   end
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]

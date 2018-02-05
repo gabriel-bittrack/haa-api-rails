@@ -1,2 +1,35 @@
 h1 Dashboard
 p The dashboard will go here!
+
+p Current signed in user:
+= current_admin.email
+
+div#user-widget
+  p Salesforce connection OAuth2 test!
+  - if current_user
+      p Welcome
+      strong
+        =current_user.name
+        = link_to "Import Members", "/admin/dashboard", method: :post, id: "import_members"
+  - else
+    = link_to "Sign in with Salesforce", "/auth/salesforce", id: "sign_in"
+
+
+  / This is your first account
+  br
+  - if @account
+    =@account.FirstName
+    br
+    =@account.LastName
+    br
+    =@account.Name
+    br
+    br
+    p Image:
+    =@account.Image_URI__c
+    ==@account.Main_Profile_Picture__c
+    br
+    p Video:
+    ==@account.Member_Web_Video_Url__c
+    br
+    =@account.inspect
