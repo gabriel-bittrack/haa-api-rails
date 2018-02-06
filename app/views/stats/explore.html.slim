@@ -1,0 +1,78 @@
+.explore
+  .header
+    .left
+      .logo
+        = image_tag("HAA_logo.png", :class => "haa_logo")
+      .wrapper_dropdown.search_dropdown
+        h3.dd_placeholder Find a Member
+        ul.dd_options
+          li.dd_option Members
+          li.dd_option Scholars
+    .right
+      a{class='em_link link_btn'} EXPLORE MORE
+
+  .navigation
+    a{class='goback'}
+    ul.breadcrumbs
+      li.breadcrumb.root.odd
+        h3 Select Map:
+        .wrapper_dropdown.countries_dropdown
+          h3.dd_placeholder USA
+          ul.dd_options
+            li.dd_option USA
+            li.dd_option CANADA
+      li.breadcrumb.even
+        .wrapper_dropdown.states_dropdown
+          h3.dd_placeholder SELECT A STATE
+          ul.dd_options
+            li.dd_option Florida
+            li.dd_option Georgia
+            li.dd_option Idaho
+            li.dd_option Illinois
+            li.dd_option Iowa
+            li.dd_option Kansas
+      li.breadcrumb.odd
+        .wrapper_dropdown.cities_dropdown
+          h3.dd_placeholder SELECT A CITY
+          ul.dd_options
+            li.dd_option Chicago
+            li.dd_option Chickasaw
+            li.dd_option Chili
+            li.dd_option Chipps
+            li.dd_option Choat
+            li.dd_option Chittenden
+
+  .content
+    .col1
+      .stats_info
+        .members_info
+          h1.number 486 .text MEMBERS
+          .three_stars
+        .scholars_info
+          h1.number 1,179 .text SCHOLARS
+          .three_stars
+        .sholarships_info
+          h1.number $85m .text SCHOLARSHIPS GIVEN
+          .three_stars
+        .sponsor_info
+          a{class='sponsor_link'}
+            h4.sponsored_by Sponsored by
+            h1.sponsor Paul Anthony Novelly
+    .col2
+      .visual_info
+        .map_view
+          .map
+          .color
+            .members MEMBERS
+            .scholars SCHOLARS
+            .alumni ALUMNI
+            .friends FRIENDS of DISTINCTION
+            .donations DONAtIONS
+            .partners COLLEGIATE PARTNERS
+        .line_graph
+          .members
+            .title MEMBERS
+          .scholars
+            .title SCHOLARS
+          .scholarships
+            .title SCHOLARSHIPS GIVEN
