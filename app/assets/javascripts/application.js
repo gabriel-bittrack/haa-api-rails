@@ -24,6 +24,10 @@ jQuery(document).ready(function($) {
     $('#aboutus_modal').plainModal('open');
   });
 
+  $(".sponsor_link").click(function(e) {
+    $('#sponsor_modal').plainModal('open');
+  });
+
   $(".modal .close").click(function(e) {
     $(this).parents('.modal').plainModal('close');
   });
