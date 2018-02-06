@@ -1,4 +1,6 @@
 class SalesforceImporterService
+  require 'nokogiri'
+
   def initialize(current_user:)
     @current_user = current_user
   end
@@ -22,8 +24,19 @@ class SalesforceImporterService
     puts "Not implemented"
   end
 
+  def extract_profile_image(tag_fragment)
+    document = Nokogiri::XML::DocumentFragment.parse(tag_fragment)
+    node = document.at_css('img')
+    node['src']
+  end
+
   def process_members(members)
     members.each do |account|
+      image_url = extract_profile_image(account.Main_Profile_Picture__c) if account.Main_Profile_Picture__c
+      # if (account.Main_Profile_Picture__c)
+      #
+      # end
+
       Member.create(
         full_name: account.Name,
         first_name: account.FirstName,
@@ -42,6 +55,7 @@ class SalesforceImporterService
         web_url: account.Member_Web_Video_Url__c,
         undergraduate_institution: account.Undergraduate_Studies_Institution__c,
         graduate_institution: account.PostGraduate_Studies_Institution__c,
+        profile_photo_url: image_url
       )
     end
   end
@@ -81,5 +95,7 @@ class SalesforceImporterService
       Member_Web_Video_Url__c
       Undergraduate_Studies_Institution__c
       PostGraduate_Studies_Institution__c
+      Main_Profile_Picture__c
+      Profile_Picture__c
     ).freeze
 end
