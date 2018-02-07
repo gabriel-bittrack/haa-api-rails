@@ -1,0 +1,97 @@
+.logo {
+  display: inline-block;
+  margin: 17px 0px 14px 40px;
+}
+.wrapper_dropdown {
+  position: relative;
+  display: inline-block;
+}
+.search_dropdown {
+  width: 262px;
+  height: 46px;
+  vertical-align: top;
+  margin: 28px 0px 20px 46px;
+}
+.dropdown {
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  cursor: pointer;
+  background: #152532;
+  border: 1px solid rgb(105, 130, 149);
+  outline: none;
+  padding: 0px;
+  box-shadow: inset 0px 0px 6px 1px rgba(105, 130, 149, 0.5);
+  font-family: Montserrat;
+  .dd_placeholder {
+    line-height: 44px;
+    letter-spacing: 0px;
+    font-weight: 300;
+    font-size: 15px;
+    color: #abc4d6;
+    padding-left: 40px;
+  }
+  .dd_placeholder:before {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 14px;
+    top: 15px;
+    left: 12px;
+    background: url(asset_path('search_icon.png')) no-repeat;
+  }
+  .dd_placeholder:after {
+    content: "";
+    position: absolute;
+    width: 11px;
+    height: 6px;
+    right: 12px;
+    top: 22px;
+    margin-top: -3px;
+    background: url(asset_path('down_arrow.png')) no-repeat;
+  }
+  .dd_options {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    top: 100%;
+    left: 0px;
+    right: 0px;
+    color: #fff;
+    padding: 0px;
+    list-style: none;
+    display: none;
+    pointer-events: none;
+    li {
+      padding: 17px 20px 16px 40px;
+    }
+    li:hover {
+      color: #111f2a;
+      font-weight: 600;
+      background: #d7edff;
+      background: -moz-linear-gradient(top, #d7edff 0%, #afc8db 100%);
+      background: -webkit-linear-gradient(top, #d7edff 0%,#afc8db 100%);
+      background: linear-gradient(to bottom, #d7edff 0%,#afc8db 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d7edff', endColorstr='#afc8db',GradientType=0 );
+    }
+  }
+
+}
+.dropdown.active .dd_options {
+  display: block;
+  pointer-events: auto;
+}
+
+.stats {
+  .header {
+    background: #111f2a;
+
+  }
+  .content {
+    background: #243e53;
+    background: -moz-radial-gradient(center, ellipse cover, #243e53 0%, #101a23 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, #243e53 0%,#101a23 100%);
+    background: radial-gradient(ellipse at center, #243e53 0%,#101a23 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#243e53', endColorstr='#101a23',GradientType=1 );
+  }
+}

@@ -34,4 +34,29 @@ jQuery(document).ready(function($) {
 
   $('.scrollbar-outer').scrollbar();
 
+
+  function DropDown(el) {
+    this.dd = el;
+    this.initEvents();
+  }
+  DropDown.prototype = {
+    initEvents : function() {
+    var obj = this;
+
+    obj.dd.on('click', function(event){
+      $(this).toggleClass('active');
+      event.stopPropagation();
+    });
+    }
+  }
+
+  $(function() {
+    var dd = new DropDown( $('.dropdown') );
+    $(document).click(function() {
+      // all dropdowns
+      $('.dropdown').removeClass('active');
+    });
+
+  });
+
 });
