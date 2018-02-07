@@ -16,6 +16,8 @@ gem 'restforce'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'devise'
 gem 'webpacker'
+gem 'httparty'
+gem 'sidekiq'
 
 # Use sqlite3 as the database for Active Record
 # gem 'pg'

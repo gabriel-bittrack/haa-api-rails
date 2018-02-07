@@ -1,3 +1,6 @@
+require "open-uri"
+require "net/http"
+
 class SalesforceImporterService
   require 'nokogiri'
 
@@ -33,11 +36,10 @@ class SalesforceImporterService
   def process_members(members)
     members.each do |account|
       image_url = extract_profile_image(account.Main_Profile_Picture__c) if account.Main_Profile_Picture__c
-      # if (account.Main_Profile_Picture__c)
-      #
-      # end
+      # puts "client token : #{client.inspect}"
+      # puts "Current user : #{@current_user.inspect}"
 
-      Member.create(
+      member = Member.create(
         full_name: account.Name,
         first_name: account.FirstName,
         last_name: account.last_name,
@@ -57,6 +59,18 @@ class SalesforceImporterService
         graduate_institution: account.PostGraduate_Studies_Institution__c,
         profile_photo_url: image_url
       )
+
+      if (image_url)
+        # response = HTTParty.get(image_url)
+        # full_name = account.Name
+        # full_name = full_name.parameterize.underscore
+        # filename = full_name + '.png'
+        # puts "Creating file : #{filename}"
+        # File.open(filename, 'wb') do |fo|
+        #   fo.write open(image_url).read
+        # end
+        MemberProfileImageWorker.perform_async(image_url, member.id)
+      end
     end
   end
 
