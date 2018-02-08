@@ -148,8 +148,22 @@
   display: inline-block;
   margin: 17px 0px 14px 40px;
 }
-
+.stats:before {
+  content: "";
+  position: absolute;
+  width: 1280px;
+  height: 1280px;
+  top: -240px;
+  background: #234053;
+  background: -moz-radial-gradient(center, ellipse cover, #234053 0%, #0e1922 54%, #0d1720 100%);
+  background: -webkit-radial-gradient(center, ellipse cover, #234053 0%,#0e1922 54%,#0d1720 100%);
+  background: radial-gradient(ellipse at center, #234053 0%,#0e1922 54%,#0d1720 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#234053', endColorstr='#0d1720',GradientType=1 );
+  z-index: -1;
+}
 .stats {
+  position: relative;
+  overflow: hidden;
   .header {
     background: #111f2a;
   }
@@ -233,20 +247,17 @@
     }
   }
   .content {
-    background: #243e53;
-    background: -moz-radial-gradient(center, ellipse cover, #243e53 0%, #101a23 100%);
-    background: -webkit-radial-gradient(center, ellipse cover, #243e53 0%,#101a23 100%);
-    background: radial-gradient(ellipse at center, #243e53 0%,#101a23 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#243e53', endColorstr='#101a23',GradientType=1 );
-    padding: 14px 0px;
+    padding: 14px 12px;
+
     .col1 {
+      width: 202px;
       height: 621px;
+      padding-right: 6px;
       .stats_info {
         width: 196px;
-        background: #17222c;
+        background: rgba(157, 182, 202, 0.07);
         border-radius: 6px;
         text-align: center;
-        margin: 0px 6px 0px 12px;
         .info {
           padding: 20px 0px;
         }
@@ -287,19 +298,115 @@
       }
     }
     .col2 {
+      width: 1054px;
+      padding-left: 6px;
       vertical-align: bottom;
       .map_view {
-
+        position: relative;
       }
       .color_bars {
         width: 221px;
+        padding: 10px 10px;
+        border-radius: 5px;
+        background: rgba(28, 53, 73, 0.27);
+        position: absolute;
+        right: 12px;
+        bottom: 25px;
+        .bar {
+          border-radius: 5px;
+          margin-bottom: 10px;
+          padding: 7px 10px 6px;
+          text-align: center;
+          .outer, .inner {
+            display: inline-block;
+            border-radius: 50%;
+          }
+          .inner {
+            width: 8px;
+            height: 8px;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+          }
+          .outer {
+            width: 16px;
+            height: 16px;
+            background: #fff;
+            border: 1px solid #fff;
+            position: relative;
+            float: left;
+          }
+        }
+        .title {
+          color: #fff;
+          font-size: 11px;
+          font-weight: 500;
+          display: inline-block;
+          vertical-align: top;
+          line-height: 16px;
+        }
+        .members {
+          background: #02a1ce;
+          .outer {
+            border-color: #005784;
+          }
+          .inner {
+            background: #005784;
+          }
+        }
+        .scholars {
+          background: #cf0435;
+          .outer {
+            border-color: #960202;
+          }
+          .inner {
+            background: #960202;
+          }
+        }
+        .alumni {
+          background: #dd9f32;
+          .outer {
+            border-color: #be7000;
+          }
+          .inner {
+            background: #be7000;
+          }
+        }
+        .friends {
+          background: #a101af;
+          .outer {
+            border-color: #7e0489;
+          }
+          .inner {
+            background: #7e0489;
+          }
+        }
+        .donations {
+          background: #23b03a;
+          .outer {
+            border-color: #008616;
+          }
+          .inner {
+            background: #008616;
+          }
+        }
+        .partners {
+          background: #7e909f;
+          margin-bottom: 0px;
+          .outer {
+            border-color: #7e909f;
+          }
+          .inner {
+            background: #7e909f;
+          }
+        }
       }
       .line_graph {
         .graph {
           display: inline-block;
-          width: 343px;
+          width: 32.666666666%;
+          margin-right: 1%;
           height: 123px;
-          margin: 0px 5px;
           background: rgba(157, 182, 202, 0.07);
           border-radius: 6px;
           .title {
@@ -315,6 +422,9 @@
         }
         .scholars .title {
           color: #ff4040;
+        }
+        .scholarships {
+          margin-right: 0px;
         }
         .scholarships .title {
           color: #23b03a;
