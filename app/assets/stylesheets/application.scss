@@ -35,7 +35,7 @@ a {
 a:hover {
   cursor: pointer;
 }
-h1, h2, .section_title, .link_btn {
+h1, h2, .section_title {
   font-weight: 600;
   letter-spacing: 2px;
 }
@@ -55,7 +55,7 @@ div {
 .right {
   float: right;
 }
-.clearfix::after {
+.clearfix::after, #container::after {
     content: "";
     clear: both;
     display: table;
@@ -66,7 +66,9 @@ div {
   text-transform: uppercase;
 }
 a.link_btn {
-  font-size: 15px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
   color: #abc4d6;
   border: 2px solid #abc4d6;
   border-radius: 6px;
@@ -75,7 +77,7 @@ a.link_btn {
   min-width: 145px;
   box-sizing: border-box;
   display: inline-block;
-  padding: 11px 10px;
+  padding: 11px 20px;
   text-align: center;
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
@@ -83,7 +85,7 @@ a.link_btn {
   transition: all 0.2s;
 }
 a.link_btn:hover {
-  border: 2px solid #fff;
+  border: 2px solid #abc4d6;
   color: #111f2a;
   background-color: #abc4d6;
 }
@@ -92,6 +94,13 @@ a.link_btn:hover {
 }
 .modal {
   display: none;
+}
+.table {
+  display: table;
+  width: 100%;
+}
+.cell {
+  display: table-cell;
 }
 /* modal styles */
 .plainmodal-overlay {

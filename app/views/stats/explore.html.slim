@@ -3,77 +3,111 @@
     .left
       .logo
         = image_tag("HAA_logo.png", :class => "haa_logo")
-      .wrapper_dropdown.search_dropdown
-        .dropdown
-          h3.dd_placeholder Find a Member
-          ul.dd_options
-            li MEMBERS
-            li SCHOLARS
+      .search_dropdown_wrap.dropdown.dd_style1
+        <select class="chosen-select search_dropdown">
+          <option value="" selected="selected" disabled>Find a Member</option>
+          <option value="members">MEMBERS</option>
+          <option value="scholars">SCHOLARS</option>
+        </select>
     .right
       a{class='em_link link_btn'} EXPLORE MORE
     .clearfix
   .navigation
     a{class='goback'}
+      = image_tag("goback.png")
     ul.breadcrumbs
-      li.breadcrumb.root.odd
+      li.breadcrumb.root
         h3 Select Map:
-        .wrapper_dropdown.countries_dropdown
-          h3.dd_placeholder USA
-          ul.dd_options
-            li USA
-            li CANADA
-      li.breadcrumb.even
-        .wrapper_dropdown_1.states_dropdown
-          h3.dd_placeholder SELECT A STATE
-          ul.dd_options
-            li Florida
-            li Georgia
-            li Idaho
-            li Illinois
-            li Iowa
-            li Kansas
-      li.breadcrumb.odd
-        .wrapper_dropdown.cities_dropdown
-          h3.dd_placeholder SELECT A CITY
-          ul.dd_options
-            li Chicago
-            li Chickasaw
-            li Chili
-            li Chipps
-            li Choat
-            li Chittenden
+        .countries_dropdown_wrap.dropdown.dd_style2
+          <select class="chosen-select countries_dropdown">
+            <option value="usa">USA</option>
+            <option value="canada">CANADA</option>
+          </select>
 
-  .content
-    .col1
+      li.breadcrumb.active
+        .states_dropdown_wrap.dropdown.dd_style3
+          <select class="chosen-select states_dropdown" data-placeholder="SELECT A STATE">
+            <option value="" selected="selected" disabled>SELECT A STATE</option>
+            <option value="Florida">Florida</option>
+            <option value="Florida">Florida</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Idaho">Idaho</option>
+            <option value="Illinois">Illinois</option>
+            <option value="Iowa">Iowa</option>
+            <option value="Kansas">Kansas</option>
+          </select>
+
+      li.breadcrumb
+        .cities_dropdown_wrap.dropdown.dd_style3
+          <select class="chosen-select cities_dropdown" data-placeholder="SELECT A CITY">
+            <option value="" selected="selected" disabled>SELECT A CITY</option>
+            <option value="Florida">Chicago</option>
+            <option value="Florida">Chickasaw</option>
+            <option value="Georgia">Chili</option>
+            <option value="Idaho">Chipps</option>
+            <option value="Illinois">Choat</option>
+            <option value="Iowa">Chittenden</option>
+            <option value="Kansas">Chicago</option>
+          </select>
+
+  .content.table
+    .col1.cell
       .stats_info
-        .members_info
-          h1.number 486 .text MEMBERS
+        .members_info.info
+          h1.number 486
+          .text MEMBERS
           .three_stars
-        .scholars_info
-          h1.number 1,179 .text SCHOLARS
+        .scholars_info.info
+          h1.number 1,179
+          .text SCHOLARS
           .three_stars
-        .sholarships_info
-          h1.number $85m .text SCHOLARSHIPS GIVEN
+        .sholarships_info.info
+          h1.number $85m
+          .text SCHOLARSHIPS GIVEN
           .three_stars
         .sponsor_info
           a{class='sponsor_link'}
             h4.sponsored_by Sponsored by
             h1.sponsor Paul Anthony Novelly
-    .col2
+    .col2.cell
       .visual_info
         .map_view
           .map
-          .colors
-            .members MEMBERS
-            .scholars SCHOLARS
-            .alumni ALUMNI
-            .friends FRIENDS of DISTINCTION
-            .donations DONAtIONS
-            .partners COLLEGIATE PARTNERS
+          .color_bars
+            .members
+              .border
+                .outer
+                  .inner
+              .title MEMBERS
+            .scholars
+              .border
+                .outer
+                  .inner
+              .title SCHOLARS
+            .alumni
+              .border
+                .outer
+                  .inner
+              .title ALUMNI
+            .friends
+              .border
+                .outer
+                  .inner
+              .title FRIENDS of DISTINCTION
+            .donations
+              .border
+                .outer
+                  .inner
+              .title DONAtIONS
+            .partners
+              .border
+                .outer
+                  .inner
+              .title COLLEGIATE PARTNERS
         .line_graph
-          .members
+          .members.graph
             .title MEMBERS
-          .scholars
+          .scholars.graph
             .title SCHOLARS
-          .scholarships
+          .scholarships.graph
             .title SCHOLARSHIPS GIVEN

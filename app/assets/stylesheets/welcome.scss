@@ -2,6 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $white-font: #ffffff;
+.sponsored_by {
+  font-family: Lora;
+  font-style: italic;
+  font-size: 16px;
+  font-weight: 400;
+  color: #90cdff;
+  padding-bottom: 8px;
+}
+.sponsor {
+  font-family: Lora;
+  font-size: 18px;
+  color: $white-font;
+  font-weight: 400;
+}
 .welcome-page {
   .col1 {
     max-width: 525px;
@@ -74,20 +88,6 @@ $white-font: #ffffff;
     text-align: center;
     padding: 24px 0px 24px;
     height: 100px;
-  }
-  .sponsored_by {
-    font-family: Lora;
-    font-style: italic;
-    font-size: 16px;
-    font-weight: 400;
-    color: #90cdff;
-    padding-bottom: 8px;
-  }
-  .sponsor {
-    font-family: Lora;
-    font-size: 18px;
-    color: $white-font;
-    font-weight: 400;
   }
   .scholar_stories {
     background: url(asset_path('scholar_stories.jpg')) no-repeat;
@@ -189,8 +189,11 @@ $white-font: #ffffff;
     margin-right: 20px;
   }
   a.link_btn {
+    font-size: 15px;
+    letter-spacing: 2px;
     border-radius: 8px;
     max-width: 145px;
+    font-weight: 600;
   }
 }
 
