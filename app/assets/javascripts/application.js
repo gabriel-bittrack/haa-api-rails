@@ -13,6 +13,7 @@
 //= require ./libs/jquery-3.3.1.min
 //= require ./libs/jquery.plainmodal.min
 //= require ./libs/jquery.scrollbar
+//= require ./libs/chosen.jquery.min
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
@@ -33,5 +34,31 @@ jQuery(document).ready(function($) {
   });
 
   $('.scrollbar-outer').scrollbar();
+  $(".chosen-select").chosen({disable_search_threshold: 4});
+
+  /*function DropDown(el) {
+    this.dd = el;
+    this.initEvents();
+  }
+  DropDown.prototype = {
+    initEvents : function() {
+    var obj = this;
+
+    obj.dd.on('click', function(event){
+      $(this).toggleClass('active');
+      event.stopPropagation();
+    });
+    }
+  }
+
+  $(function() {
+    var dd = new DropDown( $('.dropdown') );
+    $(document).click(function() {
+      // all dropdowns
+      $('.dropdown').removeClass('active');
+    });
+  });*/
+
+
 
 });
