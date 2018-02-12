@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180130030703) do
+ActiveRecord::Schema.define(version: 20180211021944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,10 @@ ActiveRecord::Schema.define(version: 20180130030703) do
     t.string "graduate_institution"
     t.string "profile_photo_url"
     t.string "title"
+    t.string "profile_image_file_name"
+    t.string "profile_image_content_type"
+    t.integer "profile_image_file_size"
+    t.datetime "profile_image_updated_at"
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
