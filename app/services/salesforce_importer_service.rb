@@ -36,8 +36,6 @@ class SalesforceImporterService
   def process_members(members)
     members.each do |account|
       image_url = extract_profile_image(account.Main_Profile_Picture__c) if account.Main_Profile_Picture__c
-      # puts "client token : #{client.inspect}"
-      # puts "Current user : #{@current_user.inspect}"
 
       member = Member.create(
         full_name: account.Name,
@@ -61,14 +59,6 @@ class SalesforceImporterService
       )
 
       if (image_url)
-        # response = HTTParty.get(image_url)
-        # full_name = account.Name
-        # full_name = full_name.parameterize.underscore
-        # filename = full_name + '.png'
-        # puts "Creating file : #{filename}"
-        # File.open(filename, 'wb') do |fo|
-        #   fo.write open(image_url).read
-        # end
         MemberProfileImageWorker.perform_async(image_url, member.id)
       end
     end
@@ -87,7 +77,7 @@ class SalesforceImporterService
   end
 
   def member_sql_statement
-    @sql_statement ||= "select " + MEMBER_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Member')"
+    @sql_statement ||= "select " + MEMBER_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Member') AND Association_Member__c = true"
   end
 
   MEMBER_FIELDS =
