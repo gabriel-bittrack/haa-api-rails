@@ -2,53 +2,57 @@
   .header
     .content
       form name="search_form"
-        .search_dropdown_wrap.dropdown.dd_style4
-          <select class="chosen-select search_dropdown">
+        .search2_dropdown_wrap.dropdown.dd_style4
+          <select class="chosen-select search2_dropdown">
             <option value="" selected="selected" disabled>Find a Member</option>
             <option value="members">MEMBERS</option>
             <option value="scholars">SCHOLARS</option>
           </select>
 
-        .name_dropdown_wrap.dropdown.dd_style5
-          <select class="chosen-select name_dropdown">
-            <option value="" selected="selected" disabled>NAME</option>
-          </select>
+        .dropdowns
+          .name_dropdown_wrap.dropdown.dd_style5
+            <select class="chosen-select name_dropdown">
+              <option value="" selected="selected" disabled>NAME</option>
+            </select>
 
-        .year_dropdown_wrap.dropdown.dd_style5
-          <select class="chosen-select year_dropdown">
-            <option value="" selected="selected" disabled>AWARD YEAR</option>
-            - for year in (2000..2018)
-              option value="#{year}" #{year}
-          </select>
+          .year_dropdown_wrap.dropdown.dd_style5
+            <select class="chosen-select year_dropdown">
+              <option value="" selected="selected" disabled>AWARD YEAR</option>
+              - for year in (2000..2018)
+                option value="#{year}" #{year}
+            </select>
 
-        .states_dropdown_wrap.dropdown.dd_style5
-          <select class="chosen-select states_dropdown" data-placeholder="STATE/PROVINCE">
-            <option value="" selected="selected" disabled>STATE/PROVINCE</option>
-            <option value="Florida">Florida</option>
-            <option value="Florida">Florida</option>
-            <option value="Georgia">Georgia</option>
-            <option value="Idaho">Idaho</option>
-            <option value="Illinois">Illinois</option>
-            <option value="Iowa">Iowa</option>
-            <option value="Kansas">Kansas</option>
-          </select>
+          .state_dropdown_wrap.dropdown.dd_style5
+            <select class="chosen-select state_dropdown" data-placeholder="STATE/PROVINCE">
+              <option value="" selected="selected" disabled>STATE/PROVINCE</option>
+              <option value="Florida">Florida</option>
+              <option value="Florida">Florida</option>
+              <option value="Georgia">Georgia</option>
+              <option value="Idaho">Idaho</option>
+              <option value="Illinois">Illinois</option>
+              <option value="Iowa">Iowa</option>
+              <option value="Kansas">Kansas</option>
+            </select>
 
-        .industry_dropdown_wrap.dropdown.dd_style5
-          <select class="chosen-select industry_dropdown">
-            <option value="" selected="selected" disabled>INDUSTRY</option>
-            <option value="technology">Technology</option>
-            <option value="finance">Finance</option>
-            <option value="manufacturing">Manufacturing</option>
-            <option value="contruction">Contruction</option>
-          </select>
+          .industry_dropdown_wrap.dropdown.dd_style5
+            <select class="chosen-select industry_dropdown">
+              <option value="" selected="selected" disabled>INDUSTRY</option>
+              <option value="technology">Technology</option>
+              <option value="finance">Finance</option>
+              <option value="manufacturing">Manufacturing</option>
+              <option value="contruction">Contruction</option>
+            </select>
 
-        input type="submit" value="Search" class="btn search"
+        input type="submit" value="SEARCH" class="btn search_btn"
+        .clearfix
+
   .main-content
     .content
       h4.heading1 ALL MEMBERS
       .nav_numbers
-        - for i in ('A'..'Z')
-          a{href='/members/?s=#{i}', class='number'} #{i}
+        a{href='/members/?s=A' class='number active'} A
+        - for i in ('B'..'Z')
+          a{href='/members/?s=#{i}' class='number'} #{i}
 
       .members_wrap
         - for i in (1..9)
@@ -61,11 +65,13 @@
               .year 1978
               .position Senior Vice Presicent
               .company Atlanta Braves
+        .clearfix
 
       .footer
         .heading2 &#42;Deceased
         ul.pagination
           li.page_item.back
+            i.icon.icon-angle-left
             a{href='/members/?p=1' class='page_link'} BACK
           li.page_item.active
             a{href='/members/?p=1' class='page_link'} 1
@@ -78,3 +84,4 @@
             a{href='/members/?p=12' class='page_link'} 12
           li.page_item.next
             a{href='/members/?p=13' class='page_link'} NEXT
+            i.icon.icon-angle-right
