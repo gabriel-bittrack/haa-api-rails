@@ -49,10 +49,10 @@
   .main-content
     .content
       h4.heading1 ALL MEMBERS
-      .nav_numbers
-        a{href='/members/?s=A' class='number active'} A
+      .nav_alphabets
+        a{href='/members/?s=A' class='alphabet active'} A
         - for i in ('B'..'Z')
-          a{href='/members/?s=#{i}' class='number'} #{i}
+          a{href='/members/?s=#{i}' class='alphabet'} #{i}
 
       .members_wrap
         - for i in (1..9)
@@ -63,25 +63,23 @@
               .name
                 a{href='/members/?id=176'} Henry L. Aaron
               .year 1978
-              .position Senior Vice Presicent
+              .position Senior Vice President
               .company Atlanta Braves
         .clearfix
 
       .footer
         .heading2 &#42;Deceased
         ul.pagination
-          li.page_item.back
-            i.icon.icon-angle-left
-            a{href='/members/?p=1' class='page_link'} BACK
-          li.page_item.active
+          li.back.disabled
+            <a href='/members/?p=1' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
+          li.number.active
             a{href='/members/?p=1' class='page_link'} 1
-          li.page_item
+          li.number
             a{href='/members/?p=2' class='page_link'} 2
-          li.page_item
+          li.number
             a{href='/members/?p=3' class='page_link'} 3
-          li.page_item.dumb ...
-          li.page_item
+          li.dumb . . .
+          li.number
             a{href='/members/?p=12' class='page_link'} 12
-          li.page_item.next
-            a{href='/members/?p=13' class='page_link'} NEXT
-            i.icon.icon-angle-right
+          li.next
+            <a href='/members/?p=13' class='page_link'>NEXT<i class="icon icon-angle-right"></i></a>
