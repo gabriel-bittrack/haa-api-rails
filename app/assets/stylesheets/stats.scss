@@ -65,11 +65,6 @@
     border: 1px solid transparent;
   }
 }
-
-.logo {
-  display: inline-block;
-  margin: 17px 0px 14px 40px;
-}
 .stats:before {
   content: "";
   position: absolute;
@@ -86,6 +81,10 @@
 .stats {
   position: relative;
   overflow: hidden;
+  .logo {
+    display: inline-block;
+    margin: 17px 0px 14px 40px;
+  }
   .search_dropdown_wrap {
     height: 46px;
     vertical-align: top;
