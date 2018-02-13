@@ -15,7 +15,7 @@ class SalesforceImporterService
       delete_all_members
       process_members(client.query(member_sql_statement))
     when "scholars"
-      process_scholars
+      process_scholars(client.query(scholar_sql_statement))
     else
       "Nothing to process"
     end
@@ -23,8 +23,10 @@ class SalesforceImporterService
 
   private
 
-  def process_scholars
-    puts "Not implemented"
+  def process_scholars(scholars)
+    scholars.each do |scholar|
+      puts ">>>> Found scholar : #{scholar.inspect}"
+    end
   end
 
   def extract_profile_image(tag_fragment)
@@ -79,6 +81,30 @@ class SalesforceImporterService
   def member_sql_statement
     @sql_statement ||= "select " + MEMBER_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Member') AND Association_Member__c = true"
   end
+
+  def scholar_sql_statement
+    @scholar_sql_statement ||= "select " + SCHOLAR_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Scholar') LIMIT 20"
+  end
+
+  SCHOLAR_FIELDS =
+    %w(
+      Name
+      FirstName
+      LastName
+      High_School__c
+      PPA_State__c
+      PPA_City__c
+      PPA_Country__c
+      Association_Scholar__c
+      Association_Alumni__c
+      Association_Specialized_Scholar__c
+      Association_Military_Scholar__c
+      Scholar_Standing__c
+      Military_Service_Military_Branch__c
+      Undergraduate_Studies_Institution__c
+      Undergraduate_Studies_Major__c
+      Total_Disbursement_Allotment__c
+    )
 
   MEMBER_FIELDS =
     %w(
