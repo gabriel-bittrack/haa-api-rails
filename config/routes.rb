@@ -9,7 +9,7 @@ end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope '/api/v1' do
-    #resources :members, only: :index
+    resources :members, only: :index
     resources :scholars, only: :index
     resources :friends, only: :index
     
@@ -28,5 +28,5 @@ end
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
   get 'explore(/:map_name)' => 'stats#explore'
-  get 'members' => 'home#members'
+  get 'member_search' => 'home#members'
 end
