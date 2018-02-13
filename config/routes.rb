@@ -12,6 +12,7 @@ end
     #resources :members, only: :index
     resources :scholars, only: :index
     resources :friends, only: :index
+    
   end
 
   # root 'home#landing'
