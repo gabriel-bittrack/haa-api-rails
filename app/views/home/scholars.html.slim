@@ -1,11 +1,11 @@
 .scholars
   .header
     .content
-      form name="search_form" method="get" action="/scholars"
+      form name="search_form" method="get" action="/scholar_search"
         .search2_dropdown_wrap.dropdown.dd_style4
           <select class="chosen-select search2_dropdown" onchange="location = this.value;">
-            <option value="/members">Find a Member</option>
-            <option value="/scholars" selected>Find a Scholar</option>
+            <option value="/member_search">Find a Member</option>
+            <option value="/scholar_search" selected>Find a Scholar</option>
           </select>
 
         .dropdowns
@@ -49,9 +49,9 @@
     .content
       h4.heading1 ALL SCHOLARS
       .nav_alphabets
-        a{href='/scholars/?s=A' class='alphabet active'} A
+        a{href='/scholar_search/?s=A' class='alphabet active'} A
         - for i in ('B'..'Z')
-          a{href='/scholars/?s=#{i}' class='alphabet'} #{i}
+          a{href='/scholar_search/?s=#{i}' class='alphabet'} #{i}
 
       .members_wrap
         - for i in (1..9)
@@ -60,7 +60,7 @@
               = image_tag("user_default.jpg")
             .info
               .name
-                a{href='/scholars/?id=176'} Henry L. Aaron
+                a{href='/scholar_search/?id=176'} Henry L. Aaron
               .year 1978
               .position Senior Vice President
               .company Atlanta Braves
@@ -70,15 +70,15 @@
         .heading2 &#42;Deceased
         ul.pagination
           li.back.disabled
-            <a href='/scholars/?p=1' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
+            <a href='/scholar_search/?p=1' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
           li.number.active
-            a{href='/scholars/?p=1' class='page_link'} 1
+            a{href='/scholar_search/?p=1' class='page_link'} 1
           li.number
-            a{href='/scholars/?p=2' class='page_link'} 2
+            a{href='/scholar_search/?p=2' class='page_link'} 2
           li.number
-            a{href='/scholars/?p=3' class='page_link'} 3
+            a{href='/scholar_search/?p=3' class='page_link'} 3
           li.dumb . . .
           li.number
-            a{href='/scholars/?p=12' class='page_link'} 12
+            a{href='/scholar_search/?p=12' class='page_link'} 12
           li.next
-            <a href='/scholars/?p=13' class='page_link'>NEXT<i class="icon icon-angle-right"></i></a>
+            <a href='/scholar_search/?p=13' class='page_link'>NEXT<i class="icon icon-angle-right"></i></a>

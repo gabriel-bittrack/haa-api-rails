@@ -27,6 +27,6 @@ end
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
   get 'explore(/:map_name)' => 'stats#explore'
-  get 'members' => 'home#members'
-  get 'scholars' => 'home#scholars'
+  get 'member_search' => 'home#members'
+  get 'scholar_search' => 'home#scholars'
 end
