@@ -6,6 +6,7 @@
   .header {
     background: #003057;
     padding: 30px 40px;
+    min-height: 114px;
     .dropdowns {
       padding-top: 7px;
       float: left;
@@ -209,6 +210,10 @@
       }
     }
   }
+  .dropdown .chosen-container-single .chosen-drop {
+    background: #9b2743;
+    border: 1px solid #5e7689;
+  }
 }
 .dropdown.dd_style4 {
   font-family: Lora;
@@ -224,6 +229,9 @@
     width: 28px;
     font-size: 24px;
     right: 8px;
+  }
+  .chosen-container .chosen-results li.active-result {
+    padding: 17px 20px 16px 40px;
   }
 }
 .dropdown.dd_style5 {

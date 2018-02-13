@@ -3,10 +3,9 @@
     .content
       form name="search_form"
         .search2_dropdown_wrap.dropdown.dd_style4
-          <select class="chosen-select search2_dropdown">
-            <option value="" selected="selected" disabled>Find a Member</option>
-            <option value="members">MEMBERS</option>
-            <option value="scholars">SCHOLARS</option>
+          <select class="chosen-select search2_dropdown" onchange="location = this.value;">
+            <option value="/members" selected>Find a Member</option>
+            <option value="/scholars">Find a Scholar</option>
           </select>
 
         .dropdowns
