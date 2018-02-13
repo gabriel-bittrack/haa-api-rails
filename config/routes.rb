@@ -28,4 +28,5 @@ end
 
   get 'explore(/:map_name)' => 'stats#explore'
   get 'members' => 'home#members'
+  get 'scholars' => 'home#scholars'
 end

@@ -22,4 +22,8 @@ class HomeController < ApplicationController
   def members
 
   end
+
+  def scholars
+
+  end
 end

@@ -26,15 +26,25 @@
 }
 $white-font: #ffffff;
 $primary-color: #0e2f53;
+html {
+  height: 100%;
+}
 body {
   max-width: 1280px;
-  margin: 25px auto 0px;
+  margin: 0 auto;
   font-family: Montserrat;
   font-weight: 400;
   background: #fff;
+  position: relative;
+  height: 100%;
 }
 body * {
   margin: 0px;
+}
+.container {
+  position: absolute;
+  top: 50%;
+  margin-top: -400px;
 }
 h2, a {
   font-family: Montserrat;
