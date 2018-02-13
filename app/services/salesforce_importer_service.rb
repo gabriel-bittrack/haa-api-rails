@@ -1,3 +1,6 @@
+require "open-uri"
+require "net/http"
+
 class SalesforceImporterService
   require 'nokogiri'
 
@@ -33,11 +36,8 @@ class SalesforceImporterService
   def process_members(members)
     members.each do |account|
       image_url = extract_profile_image(account.Main_Profile_Picture__c) if account.Main_Profile_Picture__c
-      # if (account.Main_Profile_Picture__c)
-      #
-      # end
 
-      Member.create(
+      member = Member.create(
         full_name: account.Name,
         first_name: account.FirstName,
         last_name: account.last_name,
@@ -57,6 +57,10 @@ class SalesforceImporterService
         graduate_institution: account.PostGraduate_Studies_Institution__c,
         profile_photo_url: image_url
       )
+
+      if (image_url)
+        MemberProfileImageWorker.perform_async(image_url, member.id)
+      end
     end
   end
 
@@ -73,7 +77,7 @@ class SalesforceImporterService
   end
 
   def member_sql_statement
-    @sql_statement ||= "select " + MEMBER_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Member')"
+    @sql_statement ||= "select " + MEMBER_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Member') AND Association_Member__c = true"
   end
 
   MEMBER_FIELDS =

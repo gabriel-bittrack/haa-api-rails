@@ -30,8 +30,16 @@ class MemberSerializer < ActiveModel::Serializer
 
   attribute :information do
     id = object.id
+    base = ENV.fetch("S3_BASE")
+    bucket = ENV.fetch("S3_BUCKET_NAME")
+    
+    url = ''
+    if object.profile_image.path
+      url = base + bucket + object.profile_image.path
+    end
+
     {
-      photo: object.profile_photo_url,
+      photo: url,
       bio: object.short_bio,
       military_branch: object.military_branch,
       video: object.web_url,

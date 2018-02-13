@@ -1,2 +1,2 @@
-web: bundle exec bin/rails server -p $PORT -e $RAILS_ENV
-console: bundle exec bin/rails console
+web: bundle exec rails server -p $PORT -e $RAILS_ENV
+worker: bundle exec sidekiq -t 25 -c 10
