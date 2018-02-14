@@ -15,6 +15,7 @@ class SalesforceImporterService
       delete_all_members
       process_members(client.query(member_sql_statement))
     when "scholars"
+      delete_all_scholars
       process_scholars(client.query(scholar_sql_statement))
     else
       "Nothing to process"
@@ -24,9 +25,27 @@ class SalesforceImporterService
   private
 
   def process_scholars(scholars)
+    scholars_array = []
+
     scholars.each do |scholar|
-      puts ">>>> Found scholar : #{scholar.inspect}"
+      scholars_array << {  
+        full_name: scholar.Name,
+        first_name: scholar.FirstName,
+        last_name: scholar.LastName,
+        high_school: scholar.High_School__c,
+        state: scholar.PPA_State__c,
+        city: scholar.PPA_City__c,
+        country: scholar.PPA_Country__c,
+        scholar: scholar.Association_Scholar__c,
+        alumni: scholar.Association_Alumni__c,
+        specialized_scholar: scholar.Association_Military_Scholar__c,
+        undergraduate_institution: scholar.Undergraduate_Studies_Institution__c,
+        undergraduate_degree: scholar.Undergraduate_Studies_Major__c,
+        total_disbursement_allotment: scholar.Total_Disbursement_Allotment__c
+    }
     end
+    ScholarImporterWorker.perform_async(scholars_array)
+
   end
 
   def extract_profile_image(tag_fragment)
@@ -42,7 +61,7 @@ class SalesforceImporterService
       member = Member.create(
         full_name: account.Name,
         first_name: account.FirstName,
-        last_name: account.last_name,
+        last_name: account.LastName,
         profile_photo_url: account.Image_url__c,
         city: account.PPA_City__c,
         state: account.PPA_State__c,
@@ -68,8 +87,12 @@ class SalesforceImporterService
 
   def delete_all_members
     Member.delete_all
-
   end
+
+  def delete_all_scholars
+    Scholar.delete_all
+  end
+
   def client
     @client ||= Restforce.new :oauth_token => @current_user.oauth_token,
       :refresh_token => @current_user.refresh_token,
@@ -83,7 +106,7 @@ class SalesforceImporterService
   end
 
   def scholar_sql_statement
-    @scholar_sql_statement ||= "select " + SCHOLAR_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Scholar') LIMIT 20"
+    @scholar_sql_statement ||= "select " + SCHOLAR_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Scholar')"
   end
 
   SCHOLAR_FIELDS =
