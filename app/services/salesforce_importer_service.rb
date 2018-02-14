@@ -106,7 +106,7 @@ class SalesforceImporterService
   end
 
   def scholar_sql_statement
-    @scholar_sql_statement ||= "select " + SCHOLAR_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Scholar')"
+    @scholar_sql_statement ||= "select " + SCHOLAR_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Scholar') LIMIT 500"
   end
 
   SCHOLAR_FIELDS =
