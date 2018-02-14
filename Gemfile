@@ -19,11 +19,10 @@ gem 'webpacker'
 gem 'httparty'
 gem 'sidekiq'
 gem 'paperclip'
-# gem 'ruby-filemagic'
+gem 'bulk_insert'
 gem 'aws-sdk', '~> 2.10.47'
 
 # Use sqlite3 as the database for Active Record
-# gem 'pg'
 gem 'pg', '~> 0.20'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
