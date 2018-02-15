@@ -3,17 +3,24 @@ class Search::MembersController < ApplicationController
   def index
     @limit = 9
     @links = 2
-    @total = Member.count()
+
     @page = params[:page].to_i
+
+    if not params[:s].nil?
+      @where = "full_name like '#{params[:s]}%'"
+    end
+
+    @total = Member.where(@where).count()
     @last = (@total / @limit).ceil
     @start = ((@page - @links) > 0) ? @page - @links : 1
     @end = ((@page + @links) < @last) ? @page + @links : @last
 
+
     if params[:page].nil? || params[:page].to_i < 1
-      @members = Member.limit(@limit)
+      @members = Member.where(@where).limit(@limit)
       @page = 1
     else
-      @members = Member.offset((@page - 1) * @limit).limit(@limit)
+      @members = Member.where(@where).offset((@page - 1) * @limit).limit(@limit)
     end
   end
 

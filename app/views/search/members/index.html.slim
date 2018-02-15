@@ -92,7 +92,7 @@
             - if @end < @last - 1
               li.dumb . . .
             li.number
-              a{href='/search/members/?page=@last' class='page_link'} #{@last}
+              a{href='/search/members/?page=#{@last}' class='page_link'} #{@last}
 
           li{class=(@page == @last ? "next disabled" : "next")}
             <a href='/search/members?page=#{@page+1}' class='page_link'>NEXT<i class="icon icon-angle-right"></i></a>
