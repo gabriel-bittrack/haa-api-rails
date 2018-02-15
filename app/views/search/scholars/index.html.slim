@@ -1,7 +1,7 @@
 .scholars
   .header
     .content
-      form name="search_form" method="get" action="/scholar_search"
+      form name="search_form" method="get" action="/search/scholars"
         .search2_dropdown_wrap.dropdown.dd_style4
           <select class="chosen-select search2_dropdown" onchange="location = this.value;">
             <option value="/search/members">Find a Member</option>
@@ -49,9 +49,9 @@
     .content
       h4.heading1 ALL SCHOLARS
       .nav_alphabets
-        a{href='/scholar_search/?s=A' class='alphabet active'} A
+        a{href='/search/scholars/?s=A' class='alphabet active'} A
         - for i in ('B'..'Z')
-          a{href='/scholar_search/?s=#{i}' class='alphabet'} #{i}
+          a{href='/search/scholars/?s=#{i}' class='alphabet'} #{i}
 
       .members_wrap
         - for i in (1..9)
@@ -60,25 +60,49 @@
               = image_tag("user_default.jpg")
             .info
               .name
-                a{href='/scholar_search/?id=176'} Henry L. Aaron
+                a{href='/search/scholars/?id=176'} Henry L. Aaron
               .year 1978
               .position Senior Vice President
               .company Atlanta Braves
+
+        /*- @scholars.each do |scholar|
+          .member{class="member_#{scholar.id}"}
+            .photo
+              = image_tag("user_default.jpg")
+            .info
+              .name
+                a{href='/search/scholars?id=#{scholar.id}'} #{scholar.full_name}
+              .year #{scholar.class_year}
+              .position #{scholar.title}
+              .company #{scholar.current_org}*/
         .clearfix
 
       .footer
         .heading2 &#42;Deceased
         ul.pagination
-          li.back.disabled
-            <a href='/scholar_search/?p=1' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
-          li.number.active
-            a{href='/scholar_search/?p=1' class='page_link'} 1
-          li.number
-            a{href='/scholar_search/?p=2' class='page_link'} 2
-          li.number
-            a{href='/scholar_search/?p=3' class='page_link'} 3
-          li.dumb . . .
-          li.number
-            a{href='/scholar_search/?p=12' class='page_link'} 12
-          li.next
-            <a href='/scholar_search/?p=13' class='page_link'>NEXT<i class="icon icon-angle-right"></i></a>
+
+          - if @page == 1
+            li.back.disabled
+             <a href='/search/scholars?page=1' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
+          - else
+            li.back
+              <a href='/search/scholars?page=#{@page-1}' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
+
+          - if @start > 1
+            li.number
+              a{href='/search/scholars?page=1' class='page_link'} 1
+            - if @start > 2
+              li.dumb . . .
+
+          - for i in (@start..@end)
+            li{class=(@page == i ? "number active" : "number")}
+              a{href='/search/scholars?page=#{i}' class='page_link'} #{i}
+
+          - if @end < @last
+            - if @end < @last - 1
+              li.dumb . . .
+            li.number
+              a{href='/search/scholars/?page=#{@last}' class='page_link'} #{@last}
+
+          li{class=(@page == @last ? "next disabled" : "next")}
+            <a href='/search/scholars?page=#{@page+1}' class='page_link'>NEXT<i class="icon icon-angle-right"></i></a>
