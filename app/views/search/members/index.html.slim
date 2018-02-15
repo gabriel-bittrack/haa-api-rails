@@ -71,28 +71,28 @@
         .heading2 &#42;Deceased
         ul.pagination
 
-          - if @page == 1
+          - if @page == 1 || @page == 0
             li.back.disabled
-             <a href='/search/members?page=1' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
+             <a href='/search/members?page=1#{@query}' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
           - else
             li.back
-              <a href='/search/members?page=#{@page-1}' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
+              <a href='/search/members?page=#{@page-1}#{@query}' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
 
           - if @start > 1
             li.number
-              a{href='/search/members?page=1' class='page_link'} 1
+              a{href='/search/members?page=1#{@query}' class='page_link'} 1
             - if @start > 2
               li.dumb . . .
 
           - for i in (@start..@end)
             li{class=(@page == i ? "number active" : "number")}
-              a{href='/search/members?page=#{i}' class='page_link'} #{i}
+              a{href='/search/members?page=#{i}#{@query}' class='page_link'} #{i}
 
           - if @end < @last
             - if @end < @last - 1
               li.dumb . . .
             li.number
-              a{href='/search/members/?page=#{@last}' class='page_link'} #{@last}
+              a{href='/search/members/?page=#{@last}#{@query}' class='page_link'} #{@last}
 
-          li{class=(@page == @last ? "next disabled" : "next")}
-            <a href='/search/members?page=#{@page+1}' class='page_link'>NEXT<i class="icon icon-angle-right"></i></a>
+          li{class=(@page == @last || @last == 0 ? "next disabled" : "next")}
+            <a href='/search/members?page=#{@page+1}#{@query}' class='page_link'>NEXT<i class="icon icon-angle-right"></i></a>
