@@ -18,12 +18,4 @@ class HomeController < ApplicationController
       @account = accounts.first
     end
   end
-
-  def members
-
-  end
-
-  def scholars
-
-  end
 end

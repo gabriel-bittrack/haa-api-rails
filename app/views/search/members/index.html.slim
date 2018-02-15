@@ -4,8 +4,8 @@
       form name="search_form"
         .search2_dropdown_wrap.dropdown.dd_style4
           <select class="chosen-select search2_dropdown" onchange="location = this.value;">
-            <option value="/member_search" selected>Find a Member</option>
-            <option value="/scholar_search">Find a Scholar</option>
+            <option value="/search/members" selected>Find a Member</option>
+            <option value="/search/scholars">Find a Scholar</option>
           </select>
 
         .dropdowns
@@ -49,36 +49,50 @@
     .content
       h4.heading1 ALL MEMBERS
       .nav_alphabets
-        a{href='/member_search/?s=A' class='alphabet active'} A
+        a{href='/search/members?s=A' class='alphabet active'} A
         - for i in ('B'..'Z')
-          a{href='/member_search/?s=#{i}' class='alphabet'} #{i}
+          a{href='/search/members?s=#{i}' class='alphabet'} #{i}
 
       .members_wrap
-        - for i in (1..9)
-          .member{class="member_#{i}"}
+        - @members.each do |member|
+          .member{class="member_#{member.id}"}
             .photo
-              = image_tag("user_default.jpg")
+              img{src='#{member.profile_photo_url}'}
             .info
               .name
-                a{href='/member_search/?id=176'} Henry L. Aaron
-              .year 1978
-              .position Senior Vice President
-              .company Atlanta Braves
+                a{href='/search/members?id=#{member.id}'} #{member.id}. #{member.full_name}
+              .year #{member.class_year}
+              .position #{member.title}
+              .company #{member.current_org}
+
         .clearfix
 
       .footer
         .heading2 &#42;Deceased
         ul.pagination
-          li.back.disabled
-            <a href='/member_search/?p=1' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
-          li.number.active
-            a{href='/member_search/?p=1' class='page_link'} 1
-          li.number
-            a{href='/member_search/?p=2' class='page_link'} 2
-          li.number
-            a{href='/member_search/?p=3' class='page_link'} 3
-          li.dumb . . .
-          li.number
-            a{href='/member_search/?p=12' class='page_link'} 12
-          li.next
-            <a href='/member_search/?p=13' class='page_link'>NEXT<i class="icon icon-angle-right"></i></a>
+
+          - if @page == 1
+            li.back.disabled
+             <a href='/search/members?page=1' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
+          - else
+            li.back
+              <a href='/search/members?page=#{@page-1}' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
+
+          - if @start > 1
+            li.number
+              a{href='/search/members?page=1' class='page_link'} 1
+            - if @start > 2
+              li.dumb . . .
+
+          - for i in (@start..@end)
+            li{class=(@page == i ? "number active" : "number")}
+              a{href='/search/members?page=#{i}' class='page_link'} #{i}
+
+          - if @end < @last
+            - if @end < @last - 1
+              li.dumb . . .
+            li.number
+              a{href='/search/members/?page=@last' class='page_link'} #{@last}
+
+          li{class=(@page == @last ? "next disabled" : "next")}
+            <a href='/search/members?page=#{@page+1}' class='page_link'>NEXT<i class="icon icon-angle-right"></i></a>
