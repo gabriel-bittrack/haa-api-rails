@@ -1,0 +1,58 @@
+.members
+  .header
+    .content
+      = render partial: "search_form"
+  .main-content
+    .content
+      h4.heading1 ALL MEMBERS
+      .nav_alphabets
+        a{href='/search/members?s=A' class='alphabet active'} A
+        - for i in ('B'..'Z')
+          a{href='/search/members?s=#{i}' class='alphabet'} #{i}
+
+      .members_wrap
+        - @members.each do |member|
+          .member{class="member_#{member.id}"}
+            .photo
+              a{data-id='#{member.id}' class='member_name'}
+                img{src='#{member.profile_photo_url}'}
+            .info
+              .name
+                a{data-id='#{member.id}' class='member_name'} #{member.id}. #{member.full_name}
+              .year #{member.class_year}
+              .position #{member.title}
+              .company #{member.current_org}
+
+        .clearfix
+
+      .footer
+        .heading2 &#42;Deceased
+        ul.pagination
+
+          - if @page == 1 || @page == 0
+            li.back.disabled
+             <a href='/search/members?page=1#{@query}' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
+          - else
+            li.back
+              <a href='/search/members?page=#{@page-1}#{@query}' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
+
+          - if @start > 1
+            li.number
+              a{href='/search/members?page=1#{@query}' class='page_link'} 1
+            - if @start > 2
+              li.dumb . . .
+
+          - for i in (@start..@end)
+            li{class=(@page == i ? "number active" : "number")}
+              a{href='/search/members?page=#{i}#{@query}' class='page_link'} #{i}
+
+          - if @end < @last
+            - if @end < @last - 1
+              li.dumb . . .
+            li.number
+              a{href='/search/members/?page=#{@last}#{@query}' class='page_link'} #{@last}
+
+          li{class=(@page == @last || @last == 0 ? "next disabled" : "next")}
+            <a href='/search/members?page=#{@page+1}#{@query}' class='page_link'>NEXT<i class="icon icon-angle-right"></i></a>
+
+  = render partial: "member_modal"

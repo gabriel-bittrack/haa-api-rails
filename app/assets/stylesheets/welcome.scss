@@ -55,12 +55,12 @@ $white-font: #ffffff;
   }
   .upcoming_events {
     background-color: #f5f1e6;
-    padding: 34px 50px 10px 54px;
+    padding: 34px 48px 10px 50px;
     height: 300px;
   }
   .ue_title {
     color: #00325b;
-    padding-bottom: 26px;
+    padding-bottom: 22px;
   }
   .event_row {
     margin-bottom: 8px;
@@ -271,66 +271,5 @@ $white-font: #ffffff;
     .scholarships_row .number {
       color: #23b03a;
     }
-  }
-}
-#sponsor_modal {
-  padding: 100px 40px 40px;
-  .sponsor_name {
-    font-family: Lora;
-    font-size: 33px;
-    color: #094c83;
-    font-weight: 400;
-    white-space: nowrap;
-    letter-spacing: 0;
-    margin-bottom: 10px;
-  }
-  .info_title {
-    font-size: 13px;
-    color: #1a1a1a;
-    font-weight: 600;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-  }
-  .sponsor_wording {
-    font-family: Lora;
-    font-size: 22px;
-    color: #ac1a2f;
-    font-style: italic;
-    margin: 20px 0px 28px;
-  }
-  .info_text {
-    font-family: Lora;
-    color: #094c83;
-    font-size: 17px;
-    margin-bottom: 14px;
-    letter-spacing: 0px;
-  }
-  .bio_wrap {
-    max-width: 384px;
-    .scrollbar-outer {
-      max-height: 483px;
-    }
-  }
-  .bio_text {
-    font-family: Lora;
-    font-size: 13px;
-    color: #1a1a1a;
-    margin-bottom: 20px;
-    line-height: 1.68em;
-  }
-  .col1, .sponsor_photo > img {
-    max-width: 272px;
-  }
-  .col2 {
-    max-width: 420px;
-  }
-  .col3 {
-    max-width: 430px;
-  }
-  .sponsor_photo {
-    margin-bottom: 18px;
-  }
-  .info_wrap {
-    padding: 0px 40px;
   }
 }

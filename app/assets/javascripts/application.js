@@ -20,13 +20,18 @@
 
 jQuery(document).ready(function($) {
 
-  $('.modal').plainModal({overlay: {fillColor: '#000', opacity: 0.68}});
+  var modal_options = {duration: 100, overlay: {fillColor: '#000', opacity: 0.68}};
   $(".au_link").click(function(e) {
-    $('#aboutus_modal').plainModal('open');
+    $('#aboutus_modal').plainModal('open', modal_options);
   });
 
   $(".sponsor_link").click(function(e) {
-    $('#sponsor_modal').plainModal('open');
+    $('#sponsor_modal').plainModal('open', modal_options);
+  });
+
+  $(".member_name").click(function(e) {
+    $('.bio_modal').plainModal('open', modal_options);
+    e.preventDefault();
   });
 
   $(".modal .close").click(function(e) {
@@ -35,29 +40,6 @@ jQuery(document).ready(function($) {
 
   $('.scrollbar-outer').scrollbar();
   $(".chosen-select").chosen({disable_search_threshold: 4});
-
-  /*function DropDown(el) {
-    this.dd = el;
-    this.initEvents();
-  }
-  DropDown.prototype = {
-    initEvents : function() {
-    var obj = this;
-
-    obj.dd.on('click', function(event){
-      $(this).toggleClass('active');
-      event.stopPropagation();
-    });
-    }
-  }
-
-  $(function() {
-    var dd = new DropDown( $('.dropdown') );
-    $(document).click(function() {
-      // all dropdowns
-      $('.dropdown').removeClass('active');
-    });
-  });*/
 
 
 

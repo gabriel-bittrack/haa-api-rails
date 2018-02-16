@@ -1,4 +1,4 @@
-.dd_style1 {
+.dropdown.dd_style1 {
   font-family: Montserrat;
   letter-spacing: 0px;
   font-weight: 300;
@@ -27,14 +27,8 @@
     left: 12px;
     background: url(asset_path('search_icon.png')) no-repeat;
   }
-  .chosen-container-single .chosen-single div b {
-    background-position-y: 19px;
-  }
-  .chosen-container-active.chosen-with-drop .chosen-single div b {
-    background-position-y: 19px;
-  }
   .chosen-container-single .chosen-single div {
-    width: 26px;
+    right: 6px;
   }
   .chosen-container .chosen-results li.active-result {
     padding: 17px 20px 16px 40px;
@@ -48,7 +42,7 @@
   }
 }
 
-.dd_style2, .dd_style3 {
+.dropdown.dd_style2, .dropdown.dd_style3 {
   font-family: Montserrat;
   font-size: 13px;
   letter-spacing: 1px;
@@ -57,7 +51,7 @@
     text-align: center;
   }
 }
-.dd_style3 {
+.dropdown.dd_style3 {
   text-align: left;
   .chosen-container-single .chosen-single {
     text-align: left;

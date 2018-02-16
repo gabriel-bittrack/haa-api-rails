@@ -2,17 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.members {
+.members, .scholars {
   .header {
     background: #003057;
     padding: 30px 40px;
+    min-height: 114px;
     .dropdowns {
       padding-top: 7px;
       float: left;
     }
-  }
-  .content {
-
   }
   form .dropdown {
     display: inline-block;
@@ -193,7 +191,30 @@
 
   }
 }
-
+.scholars {
+  .header {
+    background: #9b2743;
+  }
+  .main-content {
+    .nav_alphabets {
+      .alphabet {
+        color: #cf0435;
+      }
+    }
+    .members_wrap .member .info .name > a {
+        color: #cf0435;
+    }
+    .footer {
+      .heading2 {
+        color: #cf0435;
+      }
+    }
+  }
+  .dropdown .chosen-container-single .chosen-drop {
+    background: #9b2743;
+    border: 1px solid #5e7689;
+  }
+}
 .dropdown.dd_style4 {
   font-family: Lora;
   font-size: 24px;
@@ -204,14 +225,13 @@
     border-color: transparent;
     padding: 10px 8px;
   }
-  .chosen-container-single .chosen-single div b{
-    background: url(down_arrow_big.png) no-repeat 0 20px;
-  }
-  .chosen-container-active.chosen-with-drop .chosen-single div b {
-    background: url(up_arrow_big.png) no-repeat 0 20px;
-  }
   .chosen-container-single .chosen-single div {
     width: 28px;
+    font-size: 24px;
+    right: 8px;
+  }
+  .chosen-container .chosen-results li.active-result {
+    padding: 17px 20px 16px 40px;
   }
 }
 .dropdown.dd_style5 {
