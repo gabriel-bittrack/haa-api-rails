@@ -12,7 +12,7 @@ end
     resources :members, only: :index
     resources :scholars, only: :index
     resources :friends, only: :index
-    
+
   end
 
   # root 'home#landing'
@@ -28,5 +28,7 @@ end
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
   get 'explore(/:map_name)' => 'stats#explore'
-  get 'member_search' => 'home#members'
+  get 'search/members' => 'search/members#index'
+  get 'search/scholars' => 'search/scholars#index'
+
 end

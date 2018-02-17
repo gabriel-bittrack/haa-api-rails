@@ -1,0 +1,43 @@
+form name="search_form"
+  .search2_dropdown_wrap.dropdown.dd_style4
+    <select class="chosen-select search2_dropdown" onchange="location = this.value;">
+      <option value="/search/members" selected>Find a Member</option>
+      <option value="/search/scholars">Find a Scholar</option>
+    </select>
+
+  .dropdowns
+    .name_dropdown_wrap.dropdown.dd_style5
+      <select class="chosen-select name_dropdown">
+        <option value="" selected="selected" disabled>NAME</option>
+      </select>
+
+    .year_dropdown_wrap.dropdown.dd_style5
+      <select class="chosen-select year_dropdown">
+        <option value="" selected="selected" disabled>AWARD YEAR</option>
+        - for year in (2000..2018)
+          option value="#{year}" #{year}
+      </select>
+
+    .state_dropdown_wrap.dropdown.dd_style5
+      <select class="chosen-select state_dropdown" data-placeholder="STATE/PROVINCE">
+        <option value="" selected="selected" disabled>STATE/PROVINCE</option>
+        <option value="Florida">Florida</option>
+        <option value="Florida">Florida</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Idaho">Idaho</option>
+        <option value="Illinois">Illinois</option>
+        <option value="Iowa">Iowa</option>
+        <option value="Kansas">Kansas</option>
+      </select>
+
+    .industry_dropdown_wrap.dropdown.dd_style5
+      <select class="chosen-select industry_dropdown">
+        <option value="" selected="selected" disabled>INDUSTRY</option>
+        <option value="technology">Technology</option>
+        <option value="finance">Finance</option>
+        <option value="manufacturing">Manufacturing</option>
+        <option value="contruction">Contruction</option>
+      </select>
+
+  input type="submit" value="SEARCH" class="btn search_btn"
+  .clearfix
