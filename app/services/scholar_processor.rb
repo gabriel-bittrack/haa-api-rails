@@ -16,7 +16,7 @@ class ScholarProcessor < SyncProcessor
 
   private
   def scholar_sql_statement
-    @scholar_sql_statement ||= "select " + SCHOLAR_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Scholar') LIMIT 10"
+    @scholar_sql_statement ||= "select " + SCHOLAR_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Scholar') LIMIT 500"
   end
 
   def delete
@@ -41,7 +41,10 @@ class ScholarProcessor < SyncProcessor
         specialized_scholar: scholar.Association_Military_Scholar__c,
         undergraduate_institution: scholar.Undergraduate_Studies_Institution__c,
         undergraduate_degree: scholar.Undergraduate_Studies_Major__c,
-        total_disbursement_allotment: scholar.Total_Disbursement_Allotment__c
+        total_disbursement_allotment: scholar.Total_Disbursement_Allotment__c,
+        class_year: scholar.Scholar_Class_Year__c,
+        ethnicity: scholar.haa_Race__c,
+        gender: scholar.Gender__c
       }
     end
     ScholarImporterWorker.perform_async(@current_user, scholars_array)
@@ -66,5 +69,8 @@ class ScholarProcessor < SyncProcessor
       Undergraduate_Studies_Institution__c
       Undergraduate_Studies_Major__c
       Total_Disbursement_Allotment__c
+      Scholar_Class_Year__c
+      toLabel(haa_Race__c)
+      toLabel(Gender__c)
     )
 end
