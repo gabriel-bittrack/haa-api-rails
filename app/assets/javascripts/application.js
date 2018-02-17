@@ -30,7 +30,8 @@ jQuery(document).ready(function($) {
   });
 
   $(".member_name").click(function(e) {
-    $('.bio_modal').plainModal('open', modal_options);
+    var id = $(this).attr("data-id");
+    $('#bio_modal_' + id).plainModal('open', modal_options);
     e.preventDefault();
   });
 

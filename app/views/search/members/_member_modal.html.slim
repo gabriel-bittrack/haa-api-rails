@@ -1,4 +1,4 @@
-.modal.bio_modal
+.modal.bio_modal{id='bio_modal_#{member.id}'}
   a{class='close'}
   .modal_content
 
@@ -11,7 +11,7 @@
       .col.col2
         .info_wrap
             .sponsor_info
-              h1.sponsor_name Paul Anthony Novelly
+              h1.sponsor_name #{member.id} Paul Anthony Novelly
               h3.info_title MEMBER
               p.sponsor_wording “It takes as much energy to think big as it does to think small.”
             .sponsor_info
