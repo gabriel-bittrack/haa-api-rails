@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180217013554) do
+ActiveRecord::Schema.define(version: 20180217034940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20180217013554) do
     t.text "bio"
     t.integer "award_date"
     t.string "quote"
+    t.date "date_of_death"
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
