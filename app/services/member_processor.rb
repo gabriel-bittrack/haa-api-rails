@@ -54,9 +54,9 @@ class MemberProcessor < SyncProcessor
         date_of_death: account.haa_Date_of_Death__c
       )
 
-      # if (image_url)
-      #   MemberProfileImageWorker.perform_async(image_url, member.id)
-      # end
+      if (image_url)
+        MemberProfileImageWorker.perform_async(image_url, member.id)
+      end
     end
   end
 
