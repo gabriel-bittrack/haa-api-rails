@@ -25,16 +25,29 @@ class MemberProcessor < SyncProcessor
     Member.delete_all
   end
 
+  def member_city(member)
+    city = ''
+    if member.PPA_City__c
+      city = member.PPA_City__c
+    elsif member.Home_Address_City__c
+      city = member.Home_Address_City__c
+    elsif member.Business_City__c
+      city = member.Business_City__c
+    end
+    puts "What is city: #{city}"
+    city
+  end
+
   def process_members(members)
     members.each do |account|
       image_url = extract_profile_image(account.Main_Profile_Picture__c) if account.Main_Profile_Picture__c
-
+      city = 
       member = Member.create(
         full_name: account.Name,
         first_name: account.FirstName,
         last_name: account.LastName,
         profile_photo_url: account.Image_url__c,
-        city: account.PPA_City__c,
+        city: member_city(account),
         state: account.PPA_State__c,
         province: account.PPA_Country__c,
         country: account.PPA_Country__c,
@@ -55,9 +68,9 @@ class MemberProcessor < SyncProcessor
         ethnicity: account.haa_Race__c
       )
 
-      if (image_url)
-        MemberProfileImageWorker.perform_async(image_url, member.id)
-      end
+      # if (image_url)
+      #   MemberProfileImageWorker.perform_async(image_url, member.id)
+      # end
     end
   end
 
@@ -68,6 +81,8 @@ class MemberProcessor < SyncProcessor
     FirstName
     LastName
     PPA_City__c
+    Home_Address_City__c
+    Business_City__c
     PPA_State__c
     PPA_Country__c
     toLabel(haa_Race__c)

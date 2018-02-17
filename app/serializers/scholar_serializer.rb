@@ -13,8 +13,8 @@ class ScholarSerializer < ActiveModel::Serializer
   attribute :demographic do
     id = object.id
     {
-      # ethnicity: object.ethnicity,
-      # gender: object.gender
+      ethnicity: object.ethnicity,
+      gender: object.gender
     }
   end
 
@@ -26,7 +26,8 @@ class ScholarSerializer < ActiveModel::Serializer
       military_scholar: object.military_scholar,
       scholar_standing: object.scholar_standing,
       total_disbursement_allotment: object.total_disbursement_allotment,
-      military_branch: object.military_branch
+      military_branch: object.military_branch,
+      scholar_class_year: object.class_year
     }
   end
 
