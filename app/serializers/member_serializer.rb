@@ -12,10 +12,13 @@ class MemberSerializer < ActiveModel::Serializer
 
   attribute :demographic do
     id = object.id
+    deceased = object.date_of_death.present?
+
     {
       ethnicity: object.ethnicity,
       gender: object.gender,
-      relationship: object.relationship
+      relationship: object.relationship,
+      deceased: deceased
     }
   end
 
@@ -40,10 +43,13 @@ class MemberSerializer < ActiveModel::Serializer
 
     {
       photo: url,
-      bio: object.short_bio,
+      short_bio: object.short_bio,
+      quote: object.quote,
+      bio: object.bio,
       military_branch: object.military_branch,
       video: object.web_url,
       class_year: object.class_year,
+      award_date: object.award_date,
       undergraduate_institution: object.undergraduate_institution,
       graduate_institution: object.graduate_institution
     }
