@@ -28,7 +28,7 @@ class MemberProcessor < SyncProcessor
   def process_members(members)
     members.each do |account|
       image_url = extract_profile_image(account.Main_Profile_Picture__c) if account.Main_Profile_Picture__c
-      puts ">>>>>> deceased: #{account.haa_Date_of_Death__c}"
+
       member = Member.create(
         full_name: account.Name,
         first_name: account.FirstName,
@@ -51,7 +51,8 @@ class MemberProcessor < SyncProcessor
         graduate_institution: account.PostGraduate_Studies_Institution__c,
         profile_photo_url: image_url,
         quote: account.Member_Web_Quote__c,
-        date_of_death: account.haa_Date_of_Death__c
+        date_of_death: account.haa_Date_of_Death__c,
+        ethnicity: account.haa_Race__c
       )
 
       if (image_url)
@@ -69,7 +70,7 @@ class MemberProcessor < SyncProcessor
     PPA_City__c
     PPA_State__c
     PPA_Country__c
-    haa_Race__c
+    toLabel(haa_Race__c)
     Gender__c
     Non_Member_Type__c
     Industry__c
