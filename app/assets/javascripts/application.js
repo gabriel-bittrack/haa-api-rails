@@ -15,7 +15,7 @@
 //= require ./libs/jquery.scrollbar
 //= require ./libs/chosen.jquery.min
 //= require rails-ujs
-//= require turbolinks
+// require turbolinks
 //= require_tree .
 
 jQuery(document).ready(function($) {

@@ -6,10 +6,11 @@
     .content
       h4.heading1 ALL MEMBERS
       .nav_alphabets
-        a{href='/search/members?s=A' class='alphabet active'} A
-        - for i in ('B'..'Z')
-          a{href='/search/members?s=#{i}' class='alphabet'} #{i}
-
+        - for i in ('A'..'Z')
+          - if params[:s] == i
+            a{href='/search/members?s=#{i}' class='alphabet active'} #{i}
+          - else
+            a{href='/search/members?s=#{i}' class='alphabet'} #{i}
       .members_wrap
         - @members.each do |member|
           .member{class="member_#{member.id}"}
@@ -18,7 +19,7 @@
                 img{src='#{member.profile_photo_url}'}
             .info
               .name
-                a{data-id='#{member.id}' class='member_name'} #{member.id}. #{member.full_name}
+                a{data-id='#{member.id}' class='member_name'} #{member.full_name}
               .year #{member.class_year}
               .position #{member.title}
               .company #{member.current_org}

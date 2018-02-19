@@ -3,7 +3,6 @@ class Search::MembersController < ApplicationController
   def index
     @limit = 9
     @links = 2
-
     @page = params[:page].to_i
 
     if not params[:s].nil?
