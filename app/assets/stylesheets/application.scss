@@ -322,6 +322,10 @@ a.link_btn:hover {
   }
   .sponsor_photo {
     margin-bottom: 18px;
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
   .info_wrap {
     padding: 0px 40px;
