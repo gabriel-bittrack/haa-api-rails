@@ -15,23 +15,24 @@
 //= require ./libs/jquery.scrollbar
 //= require ./libs/chosen.jquery.min
 //= require rails-ujs
-// require turbolinks
+//= require turbolinks
 //= require_tree .
 
-jQuery(document).ready(function($) {
+jQuery(document).on('turbolinks:load',function(){
 
   var modal_options = {duration: 100, overlay: {fillColor: '#000', opacity: 0.68}};
+  $('.modal').plainModal(modal_options);
   $(".au_link").click(function(e) {
-    $('#aboutus_modal').plainModal('open', modal_options);
+    $('#aboutus_modal').plainModal('open');
   });
 
   $(".sponsor_link").click(function(e) {
-    $('#sponsor_modal').plainModal('open', modal_options);
+    $('#sponsor_modal').plainModal('open');
   });
 
   $(".member_name").click(function(e) {
     var id = $(this).attr("data-id");
-    $('#bio_modal_' + id).plainModal('open', modal_options);
+    $('#bio_modal_' + id).plainModal('open');
     e.preventDefault();
   });
 
@@ -41,7 +42,5 @@ jQuery(document).ready(function($) {
 
   $('.scrollbar-outer').scrollbar();
   $(".chosen-select").chosen({disable_search_threshold: 4});
-
-
 
 });
