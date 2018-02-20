@@ -1,0 +1,36 @@
+.modal.bio_modal{id='bio_modal_#{member.id}'}
+  a{class='close'}
+  .modal_content
+
+    .table.modal_body
+      .cell.col1
+        .sponsor_photo
+          = image_tag("user_default.jpg", :class => "sponsor_photo2")
+        .sponsor_photo
+          = image_tag("sponsor2.jpg", :class => "sponsor_photo2")
+      .cell.col2
+        .info_wrap
+            .sponsor_info
+              h1.sponsor_name #{member.full_name}
+              h3.info_title MEMBER
+              p.sponsor_wording “”
+            .sponsor_info
+              h3.info_title MEMBER SINCE
+              h3.info_text #{member.class_year}
+            .sponsor_info
+              h3.info_title LOCATION
+              h3.info_text #{member.city}, #{member.state}
+            .sponsor_info
+              h3.info_title EDUCATION
+              h3.info_text
+            .sponsor_info
+              h3.info_title OCCUPATION
+              h3.info_text
+            .sponsor_info
+              h3.info_title INDUSTRY
+              h3.info_text
+      .cell.col3
+        .bio_wrap
+          h3.info_title BIOGRAPHY
+          .scrollbar-outer
+            p.bio_text

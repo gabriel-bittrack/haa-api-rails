@@ -76,7 +76,7 @@ div {
 .right {
   float: right;
 }
-.clearfix::after, #container::after {
+.clearfix::after, #container::after, .col:after {
     content: "";
     clear: both;
     display: table;
@@ -266,8 +266,8 @@ a.link_btn:hover {
   }
 }
 
-#sponsor_modal, .bio_modal {
-  padding: 100px 40px 40px;
+.bio_modal {
+  padding: 60px 40px 40px;
   .sponsor_name {
     font-family: Lora;
     font-size: 33px;
@@ -312,13 +312,15 @@ a.link_btn:hover {
     line-height: 1.68em;
   }
   .col1, .sponsor_photo > img {
-    max-width: 272px;
+    width: 272px;
   }
   .col2 {
-    max-width: 420px;
+    width: 420px;
+    vertical-align: top;
   }
   .col3 {
-    max-width: 430px;
+    width: 430px;
+    vertical-align: top;
   }
   .sponsor_photo {
     margin-bottom: 18px;
@@ -330,4 +332,7 @@ a.link_btn:hover {
   .info_wrap {
     padding: 0px 40px;
   }
+}
+#sponsor_modal {
+  padding: 100px 40px 40px;
 }

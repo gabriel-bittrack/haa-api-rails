@@ -1,8 +1,14 @@
 form name="search_form"
   .search2_dropdown_wrap.dropdown.dd_style4
     <select class="chosen-select search2_dropdown" onchange="location = this.value;">
-      <option value="/search/members" selected>Find a Member</option>
-      <option value="/search/scholars">Find a Scholar</option>
+      - if type == "members"
+        <option value="/search/members" selected>Find a Member</option>
+      - else
+        <option value="/search/members">Find a Member</option>
+      - if type == "scholars"
+        <option value="/search/scholars" selected>Find a Scholar</option>
+      - else
+        <option value="/search/scholars">Find a Scholar</option>
     </select>
 
   .dropdowns
