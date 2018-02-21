@@ -1,9 +1,4 @@
-require "open-uri"
-require "net/http"
-
 class SalesforceImporterService
-  require 'nokogiri'
-
   def initialize(current_user:)
     @current_user = current_user
   end
