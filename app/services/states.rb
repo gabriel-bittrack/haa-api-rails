@@ -3,7 +3,7 @@ require 'singleton'
 class States
   include Singleton
 
-  # attr_accessor :states
+  attr_accessor :states
 
   def initialize
     @states = [
