@@ -7,16 +7,11 @@ class ScholarProcessor < SyncProcessor
   def process
     delete
     process_scholars(client.query(scholar_sql_statement))
-
-    Scholar.find_each do |scholar|
-      attachments = client.query(scholar_image_attachment(scholar.sf_id))
-      puts ">>>> attachments: #{attachments}"
-    end
   end
 
   private
   def scholar_sql_statement
-    @scholar_sql_statement ||= "select " + SCHOLAR_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Scholar') LIMIT 500"
+    @scholar_sql_statement ||= "select " + SCHOLAR_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Scholar') LIMIT 20"
   end
 
   def delete
@@ -47,6 +42,7 @@ class ScholarProcessor < SyncProcessor
         gender: scholar.Gender__c
       }
     end
+
     ScholarImporterWorker.perform_async(@current_user, scholars_array)
   end
 
