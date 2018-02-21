@@ -7,7 +7,7 @@ class States
 
   def initialize
     @states =
-      { usa: [
+      { "usa" => [
           { name: "Alabama", code: "AL"},
           { name: "Alaska", code: "AK" },
           { name: "Arizona", code: "AZ" },
@@ -60,7 +60,7 @@ class States
           { name: "Wisconsin", code: "WI" },
           { name: "Wyoming", code: "WY" }
         ],
-      canada: [
+      "canada" => [
         { name: "Alberta", code: "AB" },
         { name: "British Columbia", code: "BC" },
         { name: "Manitoba", code: "MB" },

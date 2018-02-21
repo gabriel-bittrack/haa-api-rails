@@ -6,11 +6,7 @@ class StatsController < ApplicationController
 
   def explore
     @country = params[:country]
-    if @country == "usa"
-      @states = States.instance.states[:usa]
-    else
-      @states = States.instance.states[:canada]
-    end
+    @states = States.instance.states[@country]
 
   end
 end
