@@ -2,18 +2,18 @@
   a{class='close'}
   .modal_content
 
-    .modal_body
-      .col.col1
+    .table.modal_body
+      .cell.col1
         .sponsor_photo
-          img{src='#{member.profile_photo_url}' class='sponsor_photo1'}
+          = image_tag("user_default.jpg", :class => "sponsor_photo2")
         .sponsor_photo
           = image_tag("sponsor2.jpg", :class => "sponsor_photo2")
-      .col.col2
+      .cell.col2
         .info_wrap
             .sponsor_info
               h1.sponsor_name #{member.full_name}
               h3.info_title MEMBER
-              p.sponsor_wording “#{member.short_bio}”
+              p.sponsor_wording “”
             .sponsor_info
               h3.info_title MEMBER SINCE
               h3.info_text #{member.class_year}
@@ -22,15 +22,15 @@
               h3.info_text #{member.city}, #{member.state}
             .sponsor_info
               h3.info_title EDUCATION
-              h3.info_text #{member.graduate_institution}
+              h3.info_text
             .sponsor_info
               h3.info_title OCCUPATION
-              h3.info_text #{member.current_org}
+              h3.info_text
             .sponsor_info
               h3.info_title INDUSTRY
-              h3.info_text #{member.industry}
-      .col.col3
+              h3.info_text
+      .cell.col3
         .bio_wrap
           h3.info_title BIOGRAPHY
           .scrollbar-outer
-            p.bio_text #{member.short_bio}
+            p.bio_text

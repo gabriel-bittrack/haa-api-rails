@@ -1,10 +1,12 @@
 class StatsController < ApplicationController
-  SEARCH_TYPES = ["Members", "Scholars"]
+
   def index
 
   end
 
   def explore
+    @country = params[:country]
+    @states = States.instance.states[@country]
 
   end
 end

@@ -19,22 +19,24 @@
       li.breadcrumb.root
         h3 Select Map:
         .countries_dropdown_wrap.dropdown.dd_style2
-          <select class="chosen-select countries_dropdown">
-            <option value="usa">USA</option>
-            <option value="canada">CANADA</option>
+          <select class="chosen-select countries_dropdown" onchange="location = this.value;">
+            - if @country == 'usa'
+              <option value="/explore/usa" selected>USA</option>
+              <option value="/explore/canada">CANADA</option>
+            - else
+              <option value="/explore/usa">USA</option>
+              <option value="/explore/canada" selected>CANADA</option>
           </select>
+
+
 
       li.breadcrumb.active
         .states_dropdown_wrap.dropdown.dd_style3
           <select class="chosen-select states_dropdown" data-placeholder="SELECT A STATE">
             <option value="" selected="selected" disabled>SELECT A STATE</option>
-            <option value="Florida">Florida</option>
-            <option value="Florida">Florida</option>
-            <option value="Georgia">Georgia</option>
-            <option value="Idaho">Idaho</option>
-            <option value="Illinois">Illinois</option>
-            <option value="Iowa">Iowa</option>
-            <option value="Kansas">Kansas</option>
+            - @states.each do |state|
+              <option value="#{state[:code]}">#{state[:name]}</option>
+
           </select>
 
       li.breadcrumb

@@ -1,108 +1,31 @@
 .scholars
   .header
     .content
-      form name="search_form" method="get" action="/search/scholars"
-        .search2_dropdown_wrap.dropdown.dd_style4
-          <select class="chosen-select search2_dropdown" onchange="location = this.value;">
-            <option value="/search/members">Find a Member</option>
-            <option value="/search/scholars" selected>Find a Scholar</option>
-          </select>
-
-        .dropdowns
-          .name_dropdown_wrap.dropdown.dd_style5
-            <select class="chosen-select name_dropdown">
-              <option value="" selected="selected" disabled>NAME</option>
-            </select>
-
-          .year_dropdown_wrap.dropdown.dd_style5
-            <select class="chosen-select year_dropdown">
-              <option value="" selected="selected" disabled>AWARD YEAR</option>
-              - for year in (2000..2018)
-                option value="#{year}" #{year}
-            </select>
-
-          .state_dropdown_wrap.dropdown.dd_style5
-            <select class="chosen-select state_dropdown" data-placeholder="STATE/PROVINCE">
-              <option value="" selected="selected" disabled>STATE/PROVINCE</option>
-              <option value="Florida">Florida</option>
-              <option value="Florida">Florida</option>
-              <option value="Georgia">Georgia</option>
-              <option value="Idaho">Idaho</option>
-              <option value="Illinois">Illinois</option>
-              <option value="Iowa">Iowa</option>
-              <option value="Kansas">Kansas</option>
-            </select>
-
-          .field_of_study_dropdown_wrap.dropdown.dd_style5
-            <select class="chosen-select industry_dropdown">
-              <option value="" selected="selected" disabled>INDUSTRY</option>
-              <option value="technology">Technology</option>
-              <option value="finance">Finance</option>
-              <option value="manufacturing">Manufacturing</option>
-              <option value="contruction">Contruction</option>
-            </select>
-
-        input type="submit" value="SEARCH" class="btn search_btn"
-        .clearfix
+      = render partial: "search/search_form", locals: {type: 'scholars'}
 
   .main-content
     .content
       h4.heading1 ALL SCHOLARS
       .nav_alphabets
-        a{href='/search/scholars/?s=A' class='alphabet active'} A
-        - for i in ('B'..'Z')
-          a{href='/search/scholars/?s=#{i}' class='alphabet'} #{i}
+        - for i in ('A'..'Z')
+          - if params[:s] == i
+            a{href='/search/scholars?s=#{i}' class='alphabet active'} #{i}
+          - else
+            a{href='/search/scholars?s=#{i}' class='alphabet'} #{i}
 
       .members_wrap
-        - for i in (1..9)
-          .member{class="member_#{i}"}
-            .photo
-              = image_tag("user_default.jpg")
-            .info
-              .name
-                a{href='/search/scholars/?id=176'} Henry L. Aaron
-              .year 1978
-              .position Senior Vice President
-              .company Atlanta Braves
-
-        /*- @scholars.each do |scholar|
+        - @scholars.each do |scholar|
           .member{class="member_#{scholar.id}"}
             .photo
-              = image_tag("user_default.jpg")
+              a{data-id='#{scholar.id}' class='member_name'}
+                = image_tag("user_default.jpg")
             .info
               .name
-                a{href='/search/scholars?id=#{scholar.id}'} #{scholar.full_name}
-              .year #{scholar.class_year}
-              .position #{scholar.title}
-              .company #{scholar.current_org}*/
+                a{data-id='#{scholar.id}' class='member_name'} #{scholar.id}. #{scholar.full_name}
+              .year 2000
+              .position Senior Vice President
+
+            = render partial: "scholar_modal", locals: {member: scholar}
         .clearfix
 
-      .footer
-        .heading2 &#42;Deceased
-        ul.pagination
-
-          - if @page == 1
-            li.back.disabled
-             <a href='/search/scholars?page=1' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
-          - else
-            li.back
-              <a href='/search/scholars?page=#{@page-1}' class='page_link'><i class="icon icon-angle-left"></i>BACK</a>
-
-          - if @start > 1
-            li.number
-              a{href='/search/scholars?page=1' class='page_link'} 1
-            - if @start > 2
-              li.dumb . . .
-
-          - for i in (@start..@end)
-            li{class=(@page == i ? "number active" : "number")}
-              a{href='/search/scholars?page=#{i}' class='page_link'} #{i}
-
-          - if @end < @last
-            - if @end < @last - 1
-              li.dumb . . .
-            li.number
-              a{href='/search/scholars/?page=#{@last}' class='page_link'} #{@last}
-
-          li{class=(@page == @last ? "next disabled" : "next")}
-            <a href='/search/scholars?page=#{@page+1}' class='page_link'>NEXT<i class="icon icon-angle-right"></i></a>
+      = render partial: "search/footer", locals: {type: 'scholars'}

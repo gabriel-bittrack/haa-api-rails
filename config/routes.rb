@@ -27,7 +27,7 @@ end
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
-  get 'explore(/:map_name)' => 'stats#explore'
+  get 'explore(/:country)' => 'stats#explore'
   get 'search/members' => 'search/members#index'
   get 'search/scholars' => 'search/scholars#index'
 
