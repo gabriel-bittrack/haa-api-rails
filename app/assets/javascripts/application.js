@@ -40,6 +40,11 @@ jQuery(document).on('turbolinks:load',function(){
     $(this).parents('.modal').plainModal('close');
   });
 
+  $(".goback").click(function(e) {
+    window.history.back();
+    return false;
+  });
+
   $('.scrollbar-outer').scrollbar();
   $(".chosen-select").chosen({disable_search_threshold: 4});
 
