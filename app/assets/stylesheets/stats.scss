@@ -90,11 +90,30 @@
   }
   .states_dropdown_wrap, .cities_dropdown_wrap  {
     margin-left: 10px;
-    margin-right: 6px;
+    margin-right: 0px;
+    text-transform: uppercase;
+    .chosen-container {
+      width: auto !important;
+    }
+    .chosen-container .chosen-results li {
+      /*white-space: nowrap;*/
+    }
   }
+  .states_dropdown_wrap {
+    .chosen-drop {
+      width: 190px;
+    }
+  }
+  .cities_dropdown_wrap {
+    .chosen-drop {
+      width: 200px;
+    }
+  }
+
   .states_dropdown, .cities_dropdown {
     width: auto;
-    min-width: 164px;
+    /*width: auto;
+    min-width: 164px;*/
   }
   .header {
     background: #111f2a;
@@ -124,7 +143,7 @@
           font-size: 15px;
           color: #abc4d6;
           display: inline-block;
-          margin-right: 15px;
+          margin-right: 18px;
           line-height: 34px;
         }
         .countries_dropdown_wrap {
@@ -161,8 +180,8 @@
         content: none;
       }
       .breadcrumb.root {
-        padding-left: 130px;
-        padding-right: 16px;
+        padding-left: 100px;
+        padding-right: 8px;
       }
       .breadcrumb.active {
         background: #3b5d79;

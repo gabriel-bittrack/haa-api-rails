@@ -78,6 +78,9 @@ div {
 .right {
   float: right;
 }
+.hidden {
+  display: none;
+}
 .clearfix::after, #container::after, .col:after {
     content: "";
     clear: both;
@@ -210,6 +213,7 @@ a.link_btn:hover {
     color: #fff;
     padding: 0px;
     margin: 0px;
+    max-height: 305px;
   }
   .chosen-container-single .chosen-drop {
     background: #28455c;
@@ -221,23 +225,32 @@ a.link_btn:hover {
   .chosen-container .chosen-results li.active-result {
     border-bottom: 1px solid #5e7689;
   }
+  .chosen-container .chosen-results.scroll-wrapper li.active-result {
+    border-right: 1px solid #5e7689;
+  }
   .chosen-container .chosen-results li.active-result:last-child {
     border-bottom: none;
   }
   .chosen-container .chosen-results li.highlighted {
     color: #111f2a;
-    font-weight: 600;
+    font-weight: 400;
     background: #d7edff;
     background: -moz-linear-gradient(top, #d7edff 0%, #afc8db 100%);
     background: -webkit-linear-gradient(top, #d7edff 0%,#afc8db 100%);
     background: linear-gradient(to bottom, #d7edff 0%,#afc8db 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d7edff', endColorstr='#afc8db',GradientType=0 );
   }
+  .chosen-container .chosen-results.scroll-wrapper li.highlighted  {
+    border-right: 1px solid #d7edff;
+  }
   .chosen-container .chosen-results li {
-    padding: 9px 6px 9px;
+    padding: 10px 6px 10px 12px;
   }
   .chosen-container-single .chosen-single div {
     width: 26px;
+  }
+  .chosen-container-single .chosen-single span {
+    padding-right: 4px;
   }
   .chosen-container-single .chosen-single div b {
     background: none;
@@ -257,7 +270,7 @@ a.link_btn:hover {
     -moz-osx-font-smoothing: grayscale;
     top: 50%;
     position: absolute;
-    margin-top: -10px;
+    margin-top: -9px;
     right: 0px;
   }
   .chosen-container-single .chosen-single div b:before {
@@ -265,6 +278,10 @@ a.link_btn:hover {
   }
   .chosen-container-active.chosen-with-drop .chosen-single div b:before {
     content: '\E801';
+  }
+  .chosen-search input[type=text] {
+    border: 1px solid #486377;
+    caret-color: #eee;
   }
 }
 

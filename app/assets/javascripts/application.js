@@ -45,7 +45,31 @@ jQuery(document).on('turbolinks:load',function(){
     return false;
   });
 
+  $(".states_dropdown").change(function(e) {
+    data = {state: $("#states_dropdown").val(), country: $("#countries_dropdown option:selected").attr("country")};
+
+    $.get("/get_cities", data, function(response) {
+      $('#cities_dropdown').empty();
+      $('#cities_dropdown').append('<option value="" selected="selected" disabled>SELECT A CITY</option>');
+      $.each(response, function(key, value) {
+        $('#cities_dropdown')
+          .append($("<option></option>")
+            .attr("value", value["name"])
+            .text(value["name"]));
+      });
+      $('#cities_dropdown').trigger("chosen:updated");
+      $(".breadcrumb").removeClass("active");
+      $("#states_dropdown").parents(".breadcrumb").addClass("active");
+      $("#cities_dropdown").parents(".breadcrumb").fadeIn();
+    })
+  });
+
   $('.scrollbar-outer').scrollbar();
-  $(".chosen-select").chosen({disable_search_threshold: 4});
+  $(".dd_style3 .chosen-select").on("chosen:ready", function(evt, params) {
+    $(".dd_style3 .chosen-results").scrollbar();
+  });
+
+  $(".chosen-select").chosen({disable_search_threshold: 10});
+  $("#cities_dropdown").parents(".breadcrumb").hide();
 
 });
