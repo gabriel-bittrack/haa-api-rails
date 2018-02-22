@@ -9,9 +9,9 @@ class Admin::DashboardController < ApplicationController
 
   def create
     if current_user
-      puts ">>>>> what are the protected_params : #{protected_params.inspect}"
       begin
         SalesforceImporterService.new(current_user: current_user).perform(type: protected_params)
+        # AttachmentProcessor.new(current_user: current_user).process
       rescue Restforce::UnauthorizedError => error
         puts ">>>>> Error importing : #{error}"
       end

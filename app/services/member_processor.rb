@@ -41,7 +41,7 @@ class MemberProcessor < SyncProcessor
   def process_members(members)
     members.each do |account|
       image_url = extract_profile_image(account.Main_Profile_Picture__c) if account.Main_Profile_Picture__c
-      city = 
+      # city =
       member = Member.create(
         full_name: account.Name,
         first_name: account.FirstName,
