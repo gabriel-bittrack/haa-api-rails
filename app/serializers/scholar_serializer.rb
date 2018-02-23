@@ -20,7 +20,17 @@ class ScholarSerializer < ActiveModel::Serializer
 
   attribute :alumni_information do
     id = object.id
+
+    base = ENV.fetch("S3_BASE")
+    bucket = ENV.fetch("S3_BUCKET_NAME")
+
+    url = ''
+    if object.profile_image.path
+      url = base + bucket + object.profile_image.path
+    end
+    
     {
+      photo: url,
       alumni: object.alumni,
       specialized_scholar: object.specialized_scholar,
       military_scholar: object.military_scholar,

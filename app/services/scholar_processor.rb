@@ -11,7 +11,7 @@ class ScholarProcessor < SyncProcessor
 
   private
   def scholar_sql_statement
-    @scholar_sql_statement ||= "select " + SCHOLAR_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Scholar') LIMIT 30"
+    @scholar_sql_statement ||= "select " + SCHOLAR_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Scholar') LIMIT 1000"
   end
 
   def delete
@@ -40,6 +40,7 @@ class ScholarProcessor < SyncProcessor
         ethnicity: scholar.haa_Race__c,
         gender: scholar.Gender__c
       }
+
     end
     current_user_hash = { oauth_token: @current_user.oauth_token, refresh_token: @current_user.refresh_token, instance_url: @current_user.instance_url }
     ScholarImporterWorker.perform_async(current_user_hash, scholars_array)
