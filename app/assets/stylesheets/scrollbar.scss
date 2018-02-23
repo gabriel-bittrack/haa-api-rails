@@ -817,13 +817,14 @@
 
   > .scroll-element.scroll-y {
       right: 0;
-      top: 4px;
-      bottom: 4px;
+      top: 0px;
+      bottom: 0px;
       width: 28px;
+      border-left: 1px solid #5e7689;
   }
 
   > .scroll-element.scroll-x .scroll-element_outer { height: 8px; top: 2px; }
-  > .scroll-element.scroll-y .scroll-element_outer { left: 6px; width: 16px; }
+  > .scroll-element.scroll-y .scroll-element_outer { left: 6px; width: 16px; height: auto; top: 4px; bottom: 8px; }
 
   > .scroll-element .scroll-element_outer { overflow: hidden; }
   > .scroll-element .scroll-element_track { background: transparent; }

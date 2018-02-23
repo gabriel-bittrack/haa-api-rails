@@ -50,6 +50,13 @@
   .chosen-container-single .chosen-single {
     text-align: center;
   }
+  .chosen-search input[type=text].chosen-search-input {
+    background: url(asset_path("search_icon.png")) no-repeat !important;
+    background-position: right 5px top 5px !important;
+    color: #fff;
+    font-family: Montserrat;
+    font-weight: 400;
+  }
 }
 .dropdown.dd_style3 {
   text-align: left;

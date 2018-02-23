@@ -5,7 +5,12 @@ class StatsController < ApplicationController
   end
 
   def explore
-    @country = params[:country]
+
+    if (["us", "ca"].include? params[:country])
+      @country = params[:country]
+    else
+      @country = "us"
+    end
     @states = States.instance.states[@country]
 
   end
