@@ -16,7 +16,7 @@
     a{class='goback'}
       = image_tag("goback.png")
     ul.breadcrumbs
-      li.breadcrumb.root.active
+      li.breadcrumb.root.active.country
         h3 Select Map:
         .countries_dropdown_wrap.dropdown.dd_style2
           <select class="chosen-select countries_dropdown" id="countries_dropdown" onchange="location = this.value;">
@@ -28,7 +28,7 @@
               <option value="/explore/ca" selected country="CA">CANADA</option>
           </select>
 
-      li.breadcrumb
+      li.breadcrumb.state.last
         .states_dropdown_wrap.dropdown.dd_style3
           <select class="chosen-select states_dropdown" id="states_dropdown" data-placeholder="SELECT A STATE">
             <option value="" selected="selected" disabled>SELECT A STATE</option>
@@ -36,7 +36,7 @@
               <option value="#{state[:code]}">#{state[:name]}</option>
           </select>
 
-      li.breadcrumb
+      li.breadcrumb.city.last
         .cities_dropdown_wrap.dropdown.dd_style3
           <select class="chosen-select cities_dropdown" id="cities_dropdown" data-placeholder="SELECT A CITY">
             <option value="" selected="selected" disabled>SELECT A CITY</option>

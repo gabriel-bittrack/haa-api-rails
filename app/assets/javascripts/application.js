@@ -45,7 +45,7 @@ jQuery(document).on('turbolinks:load',function(){
     return false;
   });
 
-  $(".states_dropdown").change(function(e) {
+  $("#states_dropdown").change(function(e) {
     data = {state: $("#states_dropdown").val(), country: $("#countries_dropdown option:selected").attr("country")};
 
     $.get("/get_cities", data, function(response) {
@@ -58,10 +58,19 @@ jQuery(document).on('turbolinks:load',function(){
             .text(value["name"]));
       });
       $('#cities_dropdown').trigger("chosen:updated");
+
+      $(".breadcrumb.state").removeClass("last");
       $(".breadcrumb").removeClass("active");
-      $("#states_dropdown").parents(".breadcrumb").addClass("active");
-      $("#cities_dropdown").parents(".breadcrumb").fadeIn();
+      $(".breadcrumb.state").addClass("active");
+      $(".breadcrumb.city").addClass("last");
+      $(".breadcrumb.city").fadeIn();
     })
+  });
+
+  $("#cities_dropdown").change(function(e) {
+    $(".breadcrumb").removeClass("active");
+    $(".breadcrumb.city").removeClass("last");
+    $(".breadcrumb.city").addClass("active");
   });
 
   $('.scrollbar-outer').scrollbar();
@@ -70,6 +79,6 @@ jQuery(document).on('turbolinks:load',function(){
   });
 
   $(".chosen-select").chosen({disable_search_threshold: 10});
-  $("#cities_dropdown").parents(".breadcrumb").hide();
+  $(".breadcrumb.city").hide();
 
 });

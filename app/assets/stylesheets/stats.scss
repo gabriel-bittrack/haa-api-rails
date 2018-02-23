@@ -55,7 +55,7 @@
     background-position: right 5px top 5px !important;
     color: #fff;
     font-family: Montserrat;
-    font-weight: 400;
+    font-weight: 300;
   }
 }
 .dropdown.dd_style3 {
@@ -183,7 +183,7 @@
         z-index: 2;
         top: 1px;
       }
-      >:not(.root):not(.active):before, :not(.root):not(.active):after {
+      >.last:before, .last:after {
         content: none;
       }
       .breadcrumb.root {
