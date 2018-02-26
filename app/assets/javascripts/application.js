@@ -81,4 +81,11 @@ jQuery(document).on('turbolinks:load',function(){
   $(".chosen-select").chosen({disable_search_threshold: 10});
   $(".breadcrumb.city").hide();
 
+  $('.sliders').slick({
+    dots: true,
+    centerMode: true,
+    centerPadding: '146px',
+    slidesToShow: 1,
+  });
+
 });

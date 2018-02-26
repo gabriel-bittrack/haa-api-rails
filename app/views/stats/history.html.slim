@@ -2,18 +2,21 @@
   .header
     .top_nav
       a{href="/history" class='link active'} Historical Timeline
-      a{href="/demographics" class='link active'} Scholar Demographics
+      a{href="/demographics" class='link'} Scholar Demographics
 
   .content
     .sliders
       - for i in (1..8)
         .slider.slider_#{i}
-          .featured_img
-            img{src='featured1'}
-          .right_notes
-            .year_mark 1950
-            .notes
-              h3.title First Scholarship Awarded
-              p.text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas erat nisl, pulvinar convallis lectus dictum vitae. Integer convallis purus ac luctus pharetra. Nam aliquet congue leo vel rhoncus. Quisque et mattis enim. In et nisl at justo volutpat egestas. Curabitur mi dui, lobortis nec libero at, finibus lacinia ipsum. Pellentesque suscipit magna at mollis eleifend. Duis semper mauris odio, vitae dapibus lectus suscipit in. Aenean varius ultrices diam nec fermentum.
-              p.text Quisque et mattis enim. In et nisl at justo volutpat egestas. Curabitur mi dui, lobortis nec libero at, finibus lacinia ipsum. Pellentesque suscipit magna at mollis eleifend. Duis semper mauris odio, vitae dapibus lectus suscipit in. Aenean varius ultrices diam nec fermentum.
+          .content
+            .col1
+              .featured
+                = image_tag("featured1.jpg", :class => "featured_img")
+            .col2
+              .right_section
+                .year_mark 1950
+                .notes
+                  h3.title First Scholarship Awarded
+                  p.text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas erat nisl, pulvinar convallis lectus dictum vitae. Integer convallis purus ac luctus pharetra. Nam aliquet congue leo vel rhoncus. Quisque et mattis enim. In et nisl at justo volutpat egestas. Curabitur mi dui, lobortis nec libero at, finibus lacinia ipsum. Pellentesque suscipit magna at mollis eleifend. Duis semper mauris odio, vitae dapibus lectus suscipit in. Aenean varius ultrices diam nec fermentum.
+                  p.text Quisque et mattis enim. In et nisl at justo volutpat egestas. Curabitur mi dui, lobortis nec libero at, finibus lacinia ipsum. Pellentesque suscipit magna at mollis eleifend. Duis semper mauris odio, vitae dapibus lectus suscipit in. Aenean varius ultrices diam nec fermentum.
     .timeline
