@@ -9,8 +9,10 @@ class SalesforceImporterService
       MemberProcessor.new(current_user: @current_user).process
     when "scholars"
       ScholarProcessor.new(current_user: @current_user).process
-      end
+    when "attachments"
+      AttachmentProcessor.new(current_user: @current_user).process
     else
       "Nothing to process"
     end
   end
+end

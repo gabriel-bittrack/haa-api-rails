@@ -11,7 +11,6 @@ class Admin::DashboardController < ApplicationController
     if current_user
       begin
         SalesforceImporterService.new(current_user: current_user).perform(type: protected_params)
-        # AttachmentProcessor.new(current_user: current_user).process
       rescue Restforce::UnauthorizedError => error
         puts ">>>>> Error importing : #{error}"
       end

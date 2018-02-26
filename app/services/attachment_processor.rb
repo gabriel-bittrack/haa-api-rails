@@ -1,19 +1,12 @@
 class AttachmentProcessor < SyncProcessor
+
   def initialize(current_user:)
     @current_user = current_user
   end
 
   def process
-    puts ">>>>>>> process attachments <<<<<<<<<<<<<<"
-    Scholar.find_each do |scholar|
-      puts ">>>> trying to find scholars!"
-      attachments = client.query(scholar_image_attachment(scholar.sf_id))
-      puts ">>>> attachments: #{attachments.inspec}"
-    end
-  end
-
-  private
-  def scholar_image_attachment(id)
-    "select id from attachment where parentId='#{id}'"
+    puts ">>>>>> Going to process attachments now!"
+    current_user_hash = { oauth_token: @current_user.oauth_token, refresh_token: @current_user.refresh_token, instance_url: @current_user.instance_url }
+    ScholarAttachmentWorker.perform_async(current_user_hash)
   end
 end
