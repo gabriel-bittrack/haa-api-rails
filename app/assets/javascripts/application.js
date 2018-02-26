@@ -84,7 +84,7 @@ jQuery(document).on('turbolinks:load',function(){
   $('.sliders').slick({
     dots: true,
     centerMode: true,
-    centerPadding: '146px',
+    centerPadding: '145px',
     slidesToShow: 1,
   });
 

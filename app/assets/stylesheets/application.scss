@@ -360,19 +360,49 @@ a.link_btn:hover {
     margin: 0px 3px;
   }
   .slick-arrow {
+    z-index: 2;
     font-size: 0;
     line-height: 0;
     position: absolute;
-    top: 50%;
+    top: 0px;
     display: block;
-    width: 20px;
-    height: 20px;
-    margin-top: -10px;
+    width: 145px;
+    height: 100%;
+    margin-top: 0px;
     padding: 0;
     cursor: pointer;
     color: transparent;
     border: none;
     outline: none;
-    background: transparent;
+    background: rgba(15, 23, 33, 0.65);  
+  }
+  .slick-prev {
+    left: 0px;
+  }
+  .slick-next {
+    right: 0px;
+  }
+  .slick-dots {
+    bottom: -45px;
+    display: block;
+    width: 100%;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    li {
+      position: relative;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin: 0 5px;
+      padding: 0;
+      cursor: pointer;
+    }
+    li > button {
+      cursor: pointer;
+    }
+    li.slick-active > button {
+      background: #ccc;
+    }
   }
 }
