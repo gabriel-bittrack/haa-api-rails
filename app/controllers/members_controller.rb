@@ -7,10 +7,41 @@ class MembersController < BaseApiController
     # with this particular device
 
     @members = Member.all
-    render json: @members, each_serializer: MemberSerializer
+    # render json: @members, each_serializer: MemberSerializer
+    respond_to do |format|
+      format.json { render json: @members, each_serializer: MemberSerializer }
+      format.csv { send_data @members.to_csv(CSV_COLUMNS) }
+    end
   end
 
   private
+  CSV_COLUMNS = %w(
+    id
+    full_name
+    first_name
+    last_name
+    gender
+    relationship
+    city
+    state
+    province
+    country
+    class_year
+    industry
+    current_org
+    ethnicity
+    military_branch
+    short_bio
+    bio
+    web_url
+    undergraduate_institution
+    graduate_institution
+    title
+    profile_photo_url
+    award_date
+    quote
+    date_of_death
+  )
 
   def token
     token_param = request.headers[:Authorization].split(' ')
