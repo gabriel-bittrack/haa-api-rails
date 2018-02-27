@@ -374,7 +374,7 @@ a.link_btn:hover {
     color: transparent;
     border: none;
     outline: none;
-    background: rgba(15, 23, 33, 0.65);  
+    background: rgba(15, 23, 33, 0.65);
   }
   .slick-prev {
     left: 0px;
@@ -382,27 +382,27 @@ a.link_btn:hover {
   .slick-next {
     right: 0px;
   }
-  .slick-dots {
-    bottom: -45px;
-    display: block;
-    width: 100%;
+}
+.slick-dots {
+  bottom: -45px;
+  display: block;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  li {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
     padding: 0;
-    list-style: none;
-    text-align: center;
-    li {
-      position: relative;
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      margin: 0 5px;
-      padding: 0;
-      cursor: pointer;
-    }
-    li > button {
-      cursor: pointer;
-    }
-    li.slick-active > button {
-      background: #ccc;
-    }
+    cursor: pointer;
+  }
+  li > button {
+    cursor: pointer;
+  }
+  li.slick-active > button {
+    background: #ccc;
   }
 }
