@@ -24,8 +24,10 @@ class MemberSerializer < ActiveModel::Serializer
 
   attribute :organization do
     id = object.id
+    updated_industry = ''
+    updated_industry = object.industry.gsub(";",",") if object.industry
     {
-      industry: object.industry,
+      industry: updated_industry,
       organization: object.current_org,
       title: object.title
     }
@@ -35,7 +37,7 @@ class MemberSerializer < ActiveModel::Serializer
     id = object.id
     base = ENV.fetch("S3_BASE")
     bucket = ENV.fetch("S3_BUCKET_NAME")
-    
+
     url = ''
     if object.profile_image.path
       url = base + bucket + object.profile_image.path

@@ -34,7 +34,6 @@ class MemberProcessor < SyncProcessor
     elsif member.Business_City__c
       city = member.Business_City__c
     end
-    puts "What is city: #{city}"
     city
   end
 
