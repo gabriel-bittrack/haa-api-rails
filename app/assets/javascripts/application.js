@@ -86,6 +86,12 @@ jQuery(document).on('turbolinks:load',function(){
     centerMode: true,
     centerPadding: '145px',
     slidesToShow: 1,
+    /*appendDots: $(".timeline"),*/
+    customPaging : function(slider, i) {
+        var data = $(".year_mark", slider.$slides[0]).text();
+        return '<a class="slick-dot slick-dot-' + i + '">' + data + '</a>';
+    },
+
   });
 
 });
