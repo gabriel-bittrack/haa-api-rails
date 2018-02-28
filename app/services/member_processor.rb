@@ -34,14 +34,13 @@ class MemberProcessor < SyncProcessor
     elsif member.Business_City__c
       city = member.Business_City__c
     end
-    puts "What is city: #{city}"
     city
   end
 
   def process_members(members)
     members.each do |account|
       image_url = extract_profile_image(account.Main_Profile_Picture__c) if account.Main_Profile_Picture__c
-      city = 
+
       member = Member.create(
         full_name: account.Name,
         first_name: account.FirstName,
@@ -68,9 +67,9 @@ class MemberProcessor < SyncProcessor
         ethnicity: account.haa_Race__c
       )
 
-      # if (image_url)
-      #   MemberProfileImageWorker.perform_async(image_url, member.id)
-      # end
+      if (image_url)
+        MemberProfileImageWorker.perform_async(image_url, member.id)
+      end
     end
   end
 

@@ -1,9 +1,8 @@
 class ScholarImporterWorker
   include Sidekiq::Worker
-  sidekiq_options :retry => 1
+  sidekiq_options retry: 0, queue: 'critical'
 
   def perform(*args)
-    puts "What are the args : #{args.inspect}"
     @current_user = args[0]
     @scholar_fields = args[1]
     insert_data
