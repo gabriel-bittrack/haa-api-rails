@@ -81,7 +81,7 @@ jQuery(document).on('turbolinks:load',function(){
   $(".chosen-select").chosen({disable_search_threshold: 10});
   $(".breadcrumb.city").hide();
 
-  $('.sliders').slick({
+  $('.history .sliders').slick({
     dots: true,
     centerMode: true,
     centerPadding: '145px',
@@ -91,7 +91,17 @@ jQuery(document).on('turbolinks:load',function(){
         var data = $(".year_mark", slider.$slides[i]).text();
         return '<a class="slick-dot slick-dot-' + i + '">' + data + '</a>';
     },
+  });
 
+  $(".demographics .sublink").click(function(e) {
+    if ($(this).hasClass("members_link")) {
+      $(".demographics .scholars_link").removeClass("active");
+      $(this).addClass("active");
+    } else {
+      $(".demographics .members_link").removeClass("active");
+      $(this).addClass("active");
+    }
+    return false;
   });
 
 });

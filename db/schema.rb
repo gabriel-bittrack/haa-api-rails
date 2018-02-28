@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20180226014459) do
     t.string "name"
     t.string "state"
     t.string "country"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", default: -> { "now()" }, null: false
+    t.datetime "updated_at", default: -> { "now()" }, null: false
   end
 
   create_table "friends", force: :cascade do |t|
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20180226014459) do
     t.string "undergraduate_institution"
     t.string "graduate_institution"
     t.string "profile_photo_url"
+    t.string "title"
     t.string "profile_image_file_name"
     t.string "profile_image_content_type"
     t.integer "profile_image_file_size"
