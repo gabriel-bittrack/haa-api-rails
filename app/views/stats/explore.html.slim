@@ -10,46 +10,36 @@
           <option value="/search/scholars">SCHOLARS</option>
         </select>
     .right
-      a{class='em_link link_btn'} EXPLORE MORE
+      a{href='/historical-timeline' class='em_link link_btn'} EXPLORE MORE
     .clearfix
   .navigation
     a{class='goback'}
       = image_tag("goback.png")
     ul.breadcrumbs
-      li.breadcrumb.root
+      li.breadcrumb.root.active.country
         h3 Select Map:
         .countries_dropdown_wrap.dropdown.dd_style2
-          <select class="chosen-select countries_dropdown" onchange="location = this.value;">
-            - if @country == 'usa'
-              <option value="/explore/usa" selected>USA</option>
-              <option value="/explore/canada">CANADA</option>
+          <select class="chosen-select countries_dropdown" id="countries_dropdown" onchange="location = this.value;">
+            - if @country == 'us'
+              <option value="/explore/us" selected country="US">USA</option>
+              <option value="/explore/ca" country="CA">CANADA</option>
             - else
-              <option value="/explore/usa">USA</option>
-              <option value="/explore/canada" selected>CANADA</option>
+              <option value="/explore/us" country="US">USA</option>
+              <option value="/explore/ca" selected country="CA">CANADA</option>
           </select>
 
-
-
-      li.breadcrumb.active
+      li.breadcrumb.state.last
         .states_dropdown_wrap.dropdown.dd_style3
-          <select class="chosen-select states_dropdown" data-placeholder="SELECT A STATE">
+          <select class="chosen-select states_dropdown" id="states_dropdown" data-placeholder="SELECT A STATE">
             <option value="" selected="selected" disabled>SELECT A STATE</option>
             - @states.each do |state|
               <option value="#{state[:code]}">#{state[:name]}</option>
-
           </select>
 
-      li.breadcrumb
+      li.breadcrumb.city.last
         .cities_dropdown_wrap.dropdown.dd_style3
-          <select class="chosen-select cities_dropdown" data-placeholder="SELECT A CITY">
+          <select class="chosen-select cities_dropdown" id="cities_dropdown" data-placeholder="SELECT A CITY">
             <option value="" selected="selected" disabled>SELECT A CITY</option>
-            <option value="Florida">Chicago</option>
-            <option value="Florida">Chickasaw</option>
-            <option value="Georgia">Chili</option>
-            <option value="Idaho">Chipps</option>
-            <option value="Illinois">Choat</option>
-            <option value="Iowa">Chittenden</option>
-            <option value="Kansas">Chicago</option>
           </select>
 
   .content.table

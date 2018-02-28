@@ -30,5 +30,7 @@ end
   get 'explore(/:country)' => 'stats#explore'
   get 'search/members' => 'search/members#index'
   get 'search/scholars' => 'search/scholars#index'
+  get 'get_cities' => 'stats#get_cities'
+  get 'history' => 'stats#history'
 
 end

@@ -54,6 +54,7 @@ h2, a {
 a {
   text-decoration: none;
   display: inline-block;
+  transition: all .2s;
 }
 a:hover {
   cursor: pointer;
@@ -77,6 +78,9 @@ div {
 }
 .right {
   float: right;
+}
+.hidden {
+  display: none;
 }
 .clearfix::after, #container::after, .col:after {
     content: "";
@@ -210,6 +214,7 @@ a.link_btn:hover {
     color: #fff;
     padding: 0px;
     margin: 0px;
+    max-height: 305px;
   }
   .chosen-container-single .chosen-drop {
     background: #28455c;
@@ -226,18 +231,24 @@ a.link_btn:hover {
   }
   .chosen-container .chosen-results li.highlighted {
     color: #111f2a;
-    font-weight: 600;
+    font-weight: 400;
     background: #d7edff;
     background: -moz-linear-gradient(top, #d7edff 0%, #afc8db 100%);
     background: -webkit-linear-gradient(top, #d7edff 0%,#afc8db 100%);
     background: linear-gradient(to bottom, #d7edff 0%,#afc8db 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d7edff', endColorstr='#afc8db',GradientType=0 );
   }
+  .chosen-container .chosen-results.scroll-wrapper li.highlighted  {
+    border-right: 1px solid #d7edff;
+  }
   .chosen-container .chosen-results li {
-    padding: 9px 6px 9px;
+    padding: 10px 6px 10px 12px;
   }
   .chosen-container-single .chosen-single div {
     width: 26px;
+  }
+  .chosen-container-single .chosen-single span {
+    padding-right: 4px;
   }
   .chosen-container-single .chosen-single div b {
     background: none;
@@ -257,7 +268,7 @@ a.link_btn:hover {
     -moz-osx-font-smoothing: grayscale;
     top: 50%;
     position: absolute;
-    margin-top: -10px;
+    margin-top: -9px;
     right: 0px;
   }
   .chosen-container-single .chosen-single div b:before {
@@ -265,6 +276,10 @@ a.link_btn:hover {
   }
   .chosen-container-active.chosen-with-drop .chosen-single div b:before {
     content: '\E801';
+  }
+  .chosen-search input[type=text] {
+    border: 1px solid #486377;
+    caret-color: #eee;
   }
 }
 
@@ -337,4 +352,34 @@ a.link_btn:hover {
 }
 #sponsor_modal {
   padding: 100px 40px 40px;
+}
+.sliders {
+  .slider {
+    outline: none;
+    background: #fff;
+    margin: 0px 3px;
+  }
+  .slick-arrow {
+    z-index: 2;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 0px;
+    display: block;
+    width: 145px;
+    height: 100%;
+    margin-top: 0px;
+    padding: 0;
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: rgba(15, 23, 33, 0.65);
+  }
+  .slick-prev {
+    left: 0px;
+  }
+  .slick-next {
+    right: 0px;
+  }
 }
