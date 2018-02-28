@@ -32,5 +32,6 @@ end
   get 'search/scholars' => 'search/scholars#index'
   get 'get_cities' => 'stats#get_cities'
   get 'history' => 'stats#history'
+  get 'demographics' => 'stats#demographics'
 
 end
