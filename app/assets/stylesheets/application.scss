@@ -82,7 +82,7 @@ div {
 .hidden {
   display: none;
 }
-.clearfix::after, #container::after, .col:after {
+.clearfix::after, #container::after, .row:before, .row:after, .col:after {
     content: "";
     clear: both;
     display: table;

@@ -420,7 +420,7 @@
   .top_nav {
     text-align: left;
     padding: 41px 0px;
-    .btn-group {
+    .btn_group {
       display: inline-block;
       float: left;
     }
@@ -551,12 +551,22 @@
         }
       }
     }
+    .charts_content {
+      height: 550px;
+    }
     .col {
-      margin: 0px 2px;
-      border: 1px solid #fff;
+      margin: 0px 6px;
+      width: calc(50% - 12px);
+      height: 100%;
+      border-radius: 6px;
+      background: rgba(157, 182, 202, 0.1);
     }
     .row {
-      margin: 0px -2px;
+      height: calc(50% - 6px);
+      margin: 0px -6px;
+    }
+    .row1 {
+      margin-bottom: 12px;
     }
     .gender {
 
