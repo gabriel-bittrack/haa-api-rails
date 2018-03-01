@@ -58,6 +58,7 @@ class MemberProcessor < SyncProcessor
         short_bio: account.Bio_Short__c,
         bio: account.Bio__c,
         award_date: account.Awards_Year__c,
+        class_year: account.Member_Class_Year__c,
         web_url: account.Member_Web_Video_Url__c,
         undergraduate_institution: account.Undergraduate_Studies_Institution__c,
         graduate_institution: account.PostGraduate_Studies_Institution__c,
@@ -101,5 +102,6 @@ class MemberProcessor < SyncProcessor
     Awards_Year__c
     Member_Web_Quote__c
     haa_Date_of_Death__c
+    Member_Class_Year__c
   ).freeze
 end
