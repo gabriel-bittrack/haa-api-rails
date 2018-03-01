@@ -18,7 +18,7 @@ class MemberProcessor < SyncProcessor
   end
 
   def member_sql_statement
-    @sql_statement ||= "select " + MEMBER_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Member', 'New Member') AND Association_Member__c = true"
+    @sql_statement ||= "select " + MEMBER_FIELDS.join(",") + " from Contact where RecordType.Name IN ('Member') AND Association_Member__c = true"
   end
 
   def delete
