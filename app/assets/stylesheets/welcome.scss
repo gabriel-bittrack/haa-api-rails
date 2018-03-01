@@ -3,14 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $white-font: #ffffff;
 .sponsored_by {
+  letter-spacing: 0px;
   font-family: Lora;
   font-style: italic;
   font-size: 16px;
   font-weight: 400;
-  color: #90cdff;
+  // color: #90cdff;
+  color: #413519;
   padding-bottom: 8px;
 }
 .sponsor {
+  letter-spacing: 0px;
   font-family: Lora;
   font-size: 18px;
   color: $white-font;
@@ -45,6 +48,7 @@ $white-font: #ffffff;
   .au_title {
     color: #75acd8;
     padding-bottom: 14px;
+    font-family: Montserrat;
   }
   .au_description {
     color: #abc4d6;
@@ -61,6 +65,7 @@ $white-font: #ffffff;
   .ue_title {
     color: #00325b;
     padding-bottom: 22px;
+    
   }
   .event_row {
     margin-bottom: 8px;
@@ -82,9 +87,12 @@ $white-font: #ffffff;
     letter-spacing: 1px;
     padding-bottom: 6px;
   }
-  .footer_sponsor {
-    background: url(asset_path('sponsor_bg.jpg')) no-repeat;
-    background-size: cover;
+  .footer_sponsor { 
+    background: -moz-linear-gradient(top, #c8b47c 0%, #8a7754 100%);
+    background: -webkit-linear-gradient(top, #c8b47c 0%,#8a7754 100%);
+    background: linear-gradient(to bottom, #c8b47c 0%,#8a7754 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c8b47c', endColorstr='#8a7754',GradientType=0 );
+
     text-align: center;
     padding: 24px 0px 24px;
     height: 100px;
@@ -98,6 +106,7 @@ $white-font: #ffffff;
   }
   .ss_title {
     padding-bottom: 48px;
+    font-family: Montserrat;
   }
   .ss_content {
     padding: 0px 52px;
@@ -184,6 +193,7 @@ $white-font: #ffffff;
   }
   .em_title {
     padding-bottom: 60px;
+    font-family: Montserrat;
   }
   .em_link_usa {
     margin-right: 20px;
@@ -263,7 +273,7 @@ $white-font: #ffffff;
       color: #02a1ce;
     }
     .scholars_row {
-      background: #e9e7db;
+      // background: #e9e7db;
     }
     .scholars_row .number {
       color: #cf0435;
