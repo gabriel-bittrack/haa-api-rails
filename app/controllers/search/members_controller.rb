@@ -5,6 +5,8 @@ class Search::MembersController < ApplicationController
     @links = 2
     @page = params[:page].to_i
 
+    puts ">>>> What are params for member search : #{params.inspect}"
+
     if not params[:s].nil?
       @where = "full_name like '#{params[:s]}%'"
       @query = "&s=#{params[:s]}"
