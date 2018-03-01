@@ -6,6 +6,9 @@ class Search::MembersController < ApplicationController
     @page = params[:page].to_i
 
     puts ">>>> What are params for member search : #{params.inspect}"
+    # @country = params[:country] 
+    @country = 'usa'
+    @states = States.instance.states[@country]
 
     if not params[:s].nil?
       @where = "full_name like '#{params[:s]}%'"
@@ -24,5 +27,4 @@ class Search::MembersController < ApplicationController
       @members = Member.where(@where).offset((@page - 1) * @limit).limit(@limit)
     end
   end
-
 end
