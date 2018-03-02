@@ -1,0 +1,22 @@
+.chart_wrapper.gender_chart
+  .title Gender
+  div{class="chart chart_for_#{type} donut"}
+    <div class="card">
+      <label class="chart_text cell">#{ (100.0 * male / (male + female)).round(1) }%<br/>Male</label>
+      <div class="donut-chart cell">
+        - perc = 100 * female / (male + female)
+        - if perc < 50
+          <div class="slice one" style="transform: rotate(#{ (90 + 360 * female / (male + female)) }deg);"></div>
+          <div class="slice two"></div>
+          <div class="chart-center">
+          </div>
+        - else
+          <div class="slice one"></div>
+          <div class="slice two" style="transform: rotate(#{ (360 * male / (male + female)) }deg);"></div>
+          <div class="chart-center">
+          </div>
+      </div>
+      <label class="chart_text cell">#{ (100.0 * female / (male + female)).round(1) }%<br/>Female</label>
+    </div>
+    .clearfix
+  .clearfix

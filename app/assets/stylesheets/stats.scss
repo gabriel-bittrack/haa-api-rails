@@ -400,6 +400,12 @@
   .header, .content {
     padding: 0px 46px;
   }
+  .sliders {
+    overflow: hidden;
+    .slick-arrow {
+      display: none !important;
+    }
+  }
 }
 .history, .demographics {
   overflow: hidden;
@@ -568,9 +574,6 @@
     .row1 {
       margin-bottom: 12px;
     }
-    .gender {
-
-    }
   }
   .timeline {
     border-top: 1px solid #5e7689;
@@ -641,5 +644,136 @@
     li.slick-active:last-child .slick-dot:before {
       left: 57px;
     }
+  }
+}
+.chart_wrapper {
+  .chart_for_member .bar, .chart_for_member .donut-chart {
+    background: #02a1ce;
+  }
+  .title {
+    font-family: Montserrat;
+    font-size: 13px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 20px 0px;
+    letter-spacing: 1px;
+  }
+  .chart_text {
+    font-size: 13px;
+    color: #fff;
+    font-family: Montserrat;
+    vertical-align: middle;
+    padding: 0px 50px;
+  }
+  .donut {
+    background: transparent;
+    display: inline-block;
+    .card {
+      float: left;
+      padding: 20px;
+      margin-top: 12px;
+    }
+    .donut-chart {
+      position: relative;
+      border-radius: 50%;
+      overflow: hidden;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+    }
+    .slice {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .slice.one {
+      clip: rect(0 120px 60px 0);
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+      background: #7de1fe;
+    }
+    .slice.two {
+      clip: rect(0 60px 120px 0);
+      background: #7de1fe;
+    }
+    .chart-center {
+      position: absolute;
+      border-radius: 50%;
+      top: 30px;
+      left: 30px;
+      width: 60px;
+      height: 60px;
+      background: #233441;
+    }
+  }
+  .hbar_chart {
+    .card {
+      margin-bottom: 15px;
+    }
+    .chart_text {
+      display: inline-block;
+      padding: 0px;
+      line-height: 19px;
+      &.one {
+        padding-right: 18px;
+        text-align: right;
+        min-width: 70px;
+        margin-left: 40px;
+      }
+      &.two {
+        padding-left: 18px;
+      }
+    }
+    .bar_wrap {
+      display: inline-block;
+      width: 220px;
+      background: #4d5861;
+      border-radius: 5px;
+      overflow: hidden;
+      vertical-align: top;
+      .bar {
+        height: 19px;
+      }
+    }
+  }
+  .bar_chart {
+    height: 190px;
+    display: table;
+    margin: 0 auto;
+    .card {
+      display: table-cell;
+      vertical-align: bottom;
+      .bar {
+        width: 33px;
+        margin: 0px 13px;
+      }
+    }
+    .chart_text {
+      padding: 0px;
+      text-align: center;
+      &.one {
+        margin-bottom: 10px;
+      }
+      &.two {
+        margin-top: 10px;
+      }
+    }
+  }
+
+}
+.gender_chart {
+  text-align: center;
+}
+.ethnicity_chart {
+  .hbar_chart {
+    padding-top: 24px;
+  }
+}
+.industry_chart {
+  .hbar_chart .chart_text.one {
+    margin-left: 80px;
   }
 }

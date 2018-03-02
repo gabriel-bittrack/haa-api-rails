@@ -356,6 +356,10 @@ a.link_btn:hover {
 .sliders {
   .slider {
     outline: none;
+  }
+}
+.sliders.center_mode {
+  .slider {
     background: #fff;
     margin: 0px 3px;
   }

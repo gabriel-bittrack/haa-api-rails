@@ -1,0 +1,13 @@
+.chart_wrapper.ethnicity_chart
+  .title Ethnicity
+  div{class="chart chart_for_#{type} hbar_chart"}
+    - sum = 0
+    - data.each do |d|
+      - sum = sum + d[:percent].to_f
+    - data.each do |d|
+      .card
+        .chart_text.one #{d[:percent]}%
+        .bar_wrap
+          <div class="bar" style="width: #{100.0 * d[:percent].to_f / sum}%"></div>
+        .chart_text.two #{d[:name]}
+        .clearfix

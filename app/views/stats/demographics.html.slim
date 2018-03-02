@@ -11,14 +11,19 @@
       .clearfix
 
   .content
-    .sliders2
-
-      .slider_content.charts_content
-        .row.row1
-          .col.gender
-          .col.ethnicity
-        .row.row2
-          .col.industry
-          .col.age
+    .sliders
+      - for i in (1..8)
+        div{class="slider slider_#{i}"}
+          .slider_content.charts_content
+            .row.row1
+              .col.gender
+                = render partial: "gender_chart", locals: {type: "member", male: 32, female: 25}
+              .col.ethnicity
+                = render partial: "ethnicity_chart", locals: {type: "member", data: @ethnicity}
+            .row.row2
+              .col.industry
+                = render partial: "industry_chart", locals: {type: "member", data: @industry}
+              .col.age
+                = render partial: "age_chart", locals: {type: "member", data: @age}
 
   .timeline

@@ -93,6 +93,15 @@ jQuery(document).on('turbolinks:load',function(){
     },
   });
 
+  $('.demographics .sliders').slick({
+    dots: true,
+    appendDots: $(".timeline"),
+    customPaging : function(slider, i) {
+        var year = 1950 + i * 10;
+        return '<a class="slick-dot slick-dot-' + i + '">' + year + '</a>';
+    },
+  });
+
   $(".demographics .sublink").click(function(e) {
     if ($(this).hasClass("members_link")) {
       $(".demographics .scholars_link").removeClass("active");

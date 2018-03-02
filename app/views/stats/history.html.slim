@@ -7,9 +7,9 @@
       .clearfix
 
   .content
-    .sliders
+    .sliders.center_mode
       - for i in (1..8)
-        .slider.slider_#{i}
+        div{class="slider slider_#{i}"}
           .slider_content
             .featured_col
               .featured
