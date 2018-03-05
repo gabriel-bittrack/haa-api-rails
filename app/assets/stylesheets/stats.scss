@@ -647,8 +647,14 @@
   }
 }
 .chart_wrapper {
-  .chart_for_member .bar, .chart_for_member .donut-chart {
+  .chart_for_members .bar, .chart_for_members .donut-chart {
     background: #02a1ce;
+  }
+  .chart_for_scholars .bar, .chart_for_scholars .donut-chart {
+    background: #cf0435;
+  }
+  .chart_for_scholars.donut .slice.one, .chart_for_scholars.donut .slice.two {
+    background: #ff6565;
   }
   .title {
     font-family: Montserrat;

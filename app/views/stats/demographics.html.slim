@@ -5,9 +5,9 @@
         a{href="/history" class='link history_link'} Historical Timeline
         a{href="/demographics" class='link demographics_link active'} Demographics
       .sub_nav
-        a{href="/demographics/members" class='sublink members_link active'} Members
+        a{href="/demographics/members" class=(@type == "members" ? "sublink members_link active" : "sublink members_link")} Members
         .divider
-        a{href="/demographics/scholars" class='sublink scholars_link'} Scholars
+        a{href="/demographics/scholars" class=(@type == "scholars" ? "sublink scholars_link active" : "sublink scholars_link")} Scholars
       .clearfix
 
   .content
@@ -17,13 +17,13 @@
           .slider_content.charts_content
             .row.row1
               .col.gender
-                = render partial: "gender_chart", locals: {type: "member", male: 32, female: 25}
+                = render partial: "gender_chart", locals: {type: @type, male: 32, female: 25}
               .col.ethnicity
-                = render partial: "ethnicity_chart", locals: {type: "member", data: @ethnicity}
+                = render partial: "ethnicity_chart", locals: {type: @type, data: @ethnicity}
             .row.row2
               .col.industry
-                = render partial: "industry_chart", locals: {type: "member", data: @industry}
+                = render partial: "industry_chart", locals: {type: @type, data: @industry}
               .col.age
-                = render partial: "age_chart", locals: {type: "member", data: @age}
+                = render partial: "age_chart", locals: {type: @type, data: @age}
 
   .timeline

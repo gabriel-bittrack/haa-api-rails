@@ -103,6 +103,7 @@ jQuery(document).on('turbolinks:load',function(){
   });
 
   $(".demographics .sublink").click(function(e) {
+    return;
     if ($(this).hasClass("members_link")) {
       $(".demographics .scholars_link").removeClass("active");
       $(this).addClass("active");

@@ -18,6 +18,11 @@ class StatsController < ApplicationController
   end
 
   def demographics
+    if (["members", "scholars"].include? params[:type])
+      @type = params[:type]
+    else
+      @type = "members"
+    end
     @ethnicity = [
         { name: "African-American or Black", percent: "35"},
         { name: "Asian or Pacific Islander", percent: "17" },
