@@ -13,13 +13,13 @@
 
   .dropdowns      
     .year_dropdown_wrap.dropdown.dd_style5
-      =select_tag 'class_year', options_for_select(years.collect {|m| [ m[:name], m[:name] ] }, params[:class_year]), prompt: "Award Year", class: 'chosen-select year_dropdown'
+      =select_tag 'class_year', options_for_select(@years.collect {|m| [ m[:name], m[:name] ] }, params[:class_year]), prompt: "Award Year", class: 'chosen-select year_dropdown'
     
     .states_dropdown_wrap.dropdown.dd_style5
-      =select_tag 'state', options_for_select(states.collect {|m| [ m[:name], m[:code] ] }, params[:state]), prompt: "State", class: 'chosen-select states_dropdown'
+      =select_tag 'state', options_for_select(@states.collect {|m| [ m[:name], m[:code] ] }, params[:state]), prompt: "State", class: 'chosen-select states_dropdown'
   
     .industry_dropdown_wrap.dropdown.dd_style5
-      =select_tag 'industry', options_for_select(industries.collect, params[:industry]), prompt: "Industry", class: 'chosen-select industry_dropdown'
+      =select_tag 'industry', options_for_select(@industries.collect, params[:industry]), prompt: "Industry", class: 'chosen-select industry_dropdown'
 
   input type="submit" value="SEARCH" class="btn search_btn"
   .clearfix
