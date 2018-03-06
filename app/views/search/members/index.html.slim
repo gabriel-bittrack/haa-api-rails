@@ -1,7 +1,7 @@
 .members
   .header
     .content
-      = render partial: "search/search_form", locals: {type: 'members'}
+      = render partial: "member_search_form", locals: {type: 'members'}
   .main-content
     .content
       h4.heading1 ALL MEMBERS
@@ -26,5 +26,5 @@
 
             = render partial: "member_modal", locals: {member: member}
         .clearfix
-
-      = render partial: "search/footer", locals: {type: 'members'}
+      / = will_paginate @members
+      = render partial: "member_footer", locals: {type: 'members'}

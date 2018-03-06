@@ -1,0 +1,22 @@
+= form_tag search_scholars_path, method: 'get' do
+  .search2_dropdown_wrap.dropdown.dd_style4
+    <select class="chosen-select search2_dropdown" onchange="location = this.value;">
+      - if type == "members"
+        <option value="/search/members" selected>Find a Member</option>
+      - else
+        <option value="/search/members">Find a Member</option>
+      - if type == "scholars"
+        <option value="/search/scholars" selected>Find a Scholar</option>
+      - else
+        <option value="/search/scholars">Find a Scholar</option>
+    </select>
+
+  .dropdowns      
+    .year_dropdown_wrap.dropdown.dd_style5
+      =select_tag 'class_year', options_for_select(scholar_class_years.collect, params[:class_year]), prompt: "Class Year", class: 'chosen-select year_dropdown'
+    
+    .states_dropdown_wrap.dropdown.dd_style5
+      =select_tag 'state', options_for_select(states.collect {|m| [ m[:name], m[:code] ] }, params[:state]), prompt: "State", class: 'chosen-select states_dropdown'
+  
+  input type="submit" value="SEARCH" class="btn search_btn"
+  .clearfix
