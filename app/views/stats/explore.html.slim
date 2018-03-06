@@ -74,7 +74,13 @@
     .col2.cell
       .visual_info
         .map_view
-          .map
+          <div id='map' style="position:absolute; top:0; bottom:0; width: 100px; "></div>
+          javascript:
+            mapboxgl.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
+            var map = new mapboxgl.Map({
+              container: 'map',
+              style: 'mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv'
+            });
           .color_bars
             .members.bar
               .outer

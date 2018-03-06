@@ -25,12 +25,12 @@
           option value="#{year}" #{year}
       </select>
 
-    .states_dropdown_wrap.dropdown.dd_style3
-      <select class="chosen-select states_dropdown" data-placeholder="SELECT A STATE">
-        <option value="" selected="selected" disabled>SELECT A STATE</option>
-        - @states.each do |state|
-          <option value="#{state[:code]}">#{state[:name]}</option>
-      </select>
+    / .states_dropdown_wrap.dropdown.dd_style3
+    /   <select class="chosen-select states_dropdown" data-placeholder="SELECT A STATE">
+    /     <option value="" selected="selected" disabled>SELECT A STATE</option>
+    /     - @states.each do |state|
+    /       <option value="#{state[:code]}">#{state[:name]}</option>
+    /   </select>
 
     .industry_dropdown_wrap.dropdown.dd_style5
       <select class="chosen-select industry_dropdown">
