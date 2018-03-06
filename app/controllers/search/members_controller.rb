@@ -9,9 +9,7 @@ class Search::MembersController < ApplicationController
   private 
 
   def years
-    (1947..2018).map do |year|
-      { name: year, value: year }
-    end
+    Member.distinct_class_years
   end
 
   def states

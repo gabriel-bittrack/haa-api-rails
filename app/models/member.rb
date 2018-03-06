@@ -34,6 +34,19 @@ class Member < ApplicationRecord
     return industries.sort!
   end
 
+  def self.distinct_class_years
+    members = Member.select(:class_year).distinct
+    class_years = []
+
+    members.each do |member|
+      unless member.class_year.nil?
+        class_years << member.class_year unless class_years.include? member.class_year
+      end
+    end
+
+    return class_years.sort!
+  end
+
   def self.search(search, page)
     Member.year(search[:class_year])
           .search_name(search[:s])
