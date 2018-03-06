@@ -13,7 +13,7 @@ class Search::MembersController < ApplicationController
   end
 
   def states
-    States.instance.states["usa"]
+    States.instance.states["us"]
   end
 
   def industries
