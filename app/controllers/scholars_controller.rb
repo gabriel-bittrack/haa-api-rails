@@ -2,10 +2,10 @@ class ScholarsController < BaseApiController
   before_action :doorkeeper_authorize!
 
   def index
-    @scholars = Scholar.all
+    @scholars = Scholar.search(params, params[:page])
     respond_to do |format|
-      format.json { render json: @scholars, each_serializer: ScholarSerializer }
-      format.csv { send_data @scholars.to_csv(CSV_COLUMNS) }
+      format.json { paginate json: @scholars, each_serializer: ScholarSerializer, per_page: 1000 }
+      # format.csv { send_data @scholars.to_csv(CSV_COLUMNS) }
     end
   end
 

@@ -1,5 +1,6 @@
 class BaseApiController < ActionController::Base
-
+  include Rails::Pagination
+  
   private
   def token
     token_param = request.headers[:Authorization].split(' ')
