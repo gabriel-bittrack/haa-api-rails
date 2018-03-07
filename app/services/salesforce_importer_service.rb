@@ -11,6 +11,8 @@ class SalesforceImporterService
       ScholarProcessor.new(current_user: @current_user).process
     when "attachments"
       AttachmentProcessor.new(current_user: @current_user).process
+    when "friends"
+      FriendProcessor.new(current_user: @current_user).process
     else
       "Nothing to process"
     end
