@@ -5,6 +5,7 @@ class CollegiatePartnerProcessor < SyncProcessor
 
   def process
     # delete
+    puts ">>>>> collegiate_sql_statement : #{collegiate_sql_statement}"
     process_colleges(client.query(collegiate_sql_statement))
   end
 

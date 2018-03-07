@@ -3,6 +3,7 @@ class Scholar < ApplicationRecord
   scope :year, ->(class_year) { where("class_year = ?", class_year) if class_year.present? }
   scope :search_name, ->(name) { where("full_name LIKE ?", "%#{name}%") if name.present? }
   scope :search_state, -> (state) { where("state = ?", state) if state.present? }
+  scope :search_alumni, -> (alumni) { where("alumni = ?", alumni) if alumni.present? }
 
   has_attached_file :profile_image, style: {
     original: ["100%", :png],
@@ -34,6 +35,7 @@ class Scholar < ApplicationRecord
     Scholar.year(search[:class_year])
            .search_name(search[:s])
            .search_state(search[:state])
+           .search_alumni(search[:alumni])
            .page(page)
   end
 
