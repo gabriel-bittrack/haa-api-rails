@@ -1,7 +1,7 @@
 .members
   .header
     .content
-      = render partial: "search/search_form", locals: {type: 'members'}
+      = render partial: "member_search_form", locals: {type: 'members'}
   .main-content
     .content
       h4.heading1 ALL MEMBERS
@@ -19,12 +19,12 @@
                 img{src='#{member.profile_photo_url}'}
             .info
               .name
-                a{data-id='#{member.id}' class='member_name'} #{member.id}. #{member.full_name}
+                a{data-id='#{member.id}' class='member_name'} #{member.full_name}
               .year #{member.class_year}
               .position #{member.title}
               .company #{member.current_org}
 
             = render partial: "member_modal", locals: {member: member}
         .clearfix
-
-      = render partial: "search/footer", locals: {type: 'members'}
+      / = will_paginate @members
+      = render partial: "member_footer", locals: {type: 'members'}

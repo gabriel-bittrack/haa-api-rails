@@ -12,6 +12,8 @@ div#user-widget
         =current_user.name
         = link_to "Import Members", admin_dashboard_index_path(sync_type: "members"), method: :post, id: "import_members", class: "btn"
         = link_to "Import Scholars", admin_dashboard_index_path(sync_type: "scholars"), method: :post, id: "import_scholars", class: "btn"
+        = link_to "Import Friends", admin_dashboard_index_path(sync_type: "friends"), method: :post, id: "import_friends", class: "btn"
+        = link_to "Import Collegiate Partners", admin_dashboard_index_path(sync_type: "colleges"), method: :post, id: "import_colleges", class: "btn"
         = link_to "Import Scholars Attachments", admin_dashboard_index_path(sync_type: "attachments"), method: :post, id: "import_scholars", class: "btn"
   - else
     = link_to "Sign in with Salesforce", "/auth/salesforce", id: "sign_in"
