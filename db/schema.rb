@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180226014459) do
+ActiveRecord::Schema.define(version: 20180307030858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,18 @@ ActiveRecord::Schema.define(version: 20180226014459) do
   create_table "friends", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "full_name"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "title"
+    t.string "current_org"
+    t.string "profile_image_file_name"
+    t.string "profile_image_content_type"
+    t.integer "profile_image_file_size"
+    t.datetime "profile_image_updated_at"
   end
 
   create_table "members", force: :cascade do |t|
@@ -77,6 +89,7 @@ ActiveRecord::Schema.define(version: 20180226014459) do
     t.string "undergraduate_institution"
     t.string "graduate_institution"
     t.string "profile_photo_url"
+    t.string "title"
     t.string "profile_image_file_name"
     t.string "profile_image_content_type"
     t.integer "profile_image_file_size"

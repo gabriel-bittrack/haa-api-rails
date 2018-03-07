@@ -1,6 +1,6 @@
 .footer
   .heading2 &#42;Deceased
-  = will_paginate @members
+  = will_paginate @members, :prev_label => '<<', :next_label => '>>'
   / ul.pagination
 
   /   - if @page == 1 || @page == 0
