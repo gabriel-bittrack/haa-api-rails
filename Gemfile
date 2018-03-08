@@ -21,6 +21,8 @@ gem 'sidekiq'
 gem 'paperclip'
 gem 'bulk_insert'
 gem 'aws-sdk', '~> 2.10.47'
+gem 'will_paginate'
+gem 'api-pagination'
 
 # Use sqlite3 as the database for Active Record
 gem 'pg', '~> 0.20'

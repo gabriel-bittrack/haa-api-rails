@@ -5,15 +5,7 @@ class FriendSerializer < ActiveModel::Serializer
     {
       city: object.city,
       state: object.state,
-      province: object.province,
       country: object.country
-    }
-  end
-
-  attribute :demographic do
-    id = object.id
-    {
-      relationship: object.relationship
     }
   end
 
@@ -22,6 +14,21 @@ class FriendSerializer < ActiveModel::Serializer
     {
       organization: object.current_org,
       title: object.title
+    }
+  end
+
+  attribute :information do
+    id = object.id
+    base = ENV.fetch("S3_BASE")
+    bucket = ENV.fetch("S3_BUCKET_NAME")
+
+    url = ''
+    if object.profile_image.path
+      url = base + bucket + object.profile_image.path
+    end
+
+    {
+      photo: url
     }
   end
 end

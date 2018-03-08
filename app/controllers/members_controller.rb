@@ -6,11 +6,12 @@ class MembersController < BaseApiController
     # to determine when the last time data was synced
     # with this particular device
 
-    @members = Member.all
+    # @members = Member.all
+    @members = Member.search(params, params[:page])
     # render json: @members, each_serializer: MemberSerializer
     respond_to do |format|
-      format.json { render json: @members, each_serializer: MemberSerializer }
-      format.csv { send_data @members.to_csv(CSV_COLUMNS) }
+      format.json { paginate json: @members, each_serializer: MemberSerializer, per_page: 150 }
+      # format.csv { send_data @members.to_csv(CSV_COLUMNS) }
     end
   end
 

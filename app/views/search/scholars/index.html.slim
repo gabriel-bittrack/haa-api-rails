@@ -1,7 +1,7 @@
 .scholars
   .header
     .content
-      = render partial: "search/search_form", locals: {type: 'scholars'}
+      = render partial: "scholar_search_form", locals: {type: 'scholars'}
 
   .main-content
     .content
@@ -21,11 +21,12 @@
                 = image_tag("user_default.jpg")
             .info
               .name
-                a{data-id='#{scholar.id}' class='member_name'} #{scholar.id}. #{scholar.full_name}
-              .year 2000
-              .position Senior Vice President
+                a{data-id='#{scholar.id}' class='member_name'} #{scholar.full_name}
+              .year = scholar.class_year
+              .city = scholar.city
+              .state = scholar.state
 
             = render partial: "scholar_modal", locals: {member: scholar}
         .clearfix
 
-      = render partial: "search/footer", locals: {type: 'scholars'}
+      = render partial: "scholar_footer", locals: {type: 'scholars'}

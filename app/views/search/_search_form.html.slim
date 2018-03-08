@@ -1,4 +1,5 @@
-form name="search_form"
+/ form name="search_form"
+= form_tag(search_members_path)
   .search2_dropdown_wrap.dropdown.dd_style4
     <select class="chosen-select search2_dropdown" onchange="location = this.value;">
       - if type == "members"
@@ -24,17 +25,12 @@ form name="search_form"
           option value="#{year}" #{year}
       </select>
 
-    .state_dropdown_wrap.dropdown.dd_style5
-      <select class="chosen-select state_dropdown" data-placeholder="STATE/PROVINCE">
-        <option value="" selected="selected" disabled>STATE/PROVINCE</option>
-        <option value="Florida">Florida</option>
-        <option value="Florida">Florida</option>
-        <option value="Georgia">Georgia</option>
-        <option value="Idaho">Idaho</option>
-        <option value="Illinois">Illinois</option>
-        <option value="Iowa">Iowa</option>
-        <option value="Kansas">Kansas</option>
-      </select>
+    / .states_dropdown_wrap.dropdown.dd_style3
+    /   <select class="chosen-select states_dropdown" data-placeholder="SELECT A STATE">
+    /     <option value="" selected="selected" disabled>SELECT A STATE</option>
+    /     - @states.each do |state|
+    /       <option value="#{state[:code]}">#{state[:name]}</option>
+    /   </select>
 
     .industry_dropdown_wrap.dropdown.dd_style5
       <select class="chosen-select industry_dropdown">
