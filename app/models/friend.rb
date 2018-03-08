@@ -10,6 +10,10 @@ class Friend < ApplicationRecord
     content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   }
 
+  def self.search(search, page)
+    Friend.page(page)
+  end
+
   def self.to_csv(fields = column_names, options = {})
   CSV.generate(options) do |csv|
     csv << fields
