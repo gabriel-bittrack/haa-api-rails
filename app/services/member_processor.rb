@@ -79,7 +79,7 @@ class MemberProcessor < SyncProcessor
       member_queue << member.id
 
       if (image_url)
-        # MemberProfileImageWorker.perform_async(image_url, member.id)
+        MemberProfileImageWorker.perform_async(image_url, member.id)
       end
     end
 
