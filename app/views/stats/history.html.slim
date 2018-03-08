@@ -1,18 +1,20 @@
 .history
   .header
     .top_nav
-      a{href="/history" class='link active'} Historical Timeline
-      a{href="/demographics" class='link'} Scholar Demographics
+      .btn_group
+        a{href="/history" class='link history_link active'} Historical Timeline
+        a{href="/demographics" class='link demographics_link'} Demographics
+      .clearfix
 
   .content
-    .sliders
+    .sliders.center_mode
       - for i in (1..8)
-        .slider.slider_#{i}
-          .content
-            .col1
+        div{class="slider slider_#{i}"}
+          .slider_content
+            .featured_col
               .featured
                 = image_tag("featured1.jpg", :class => "featured_img")
-            .col2
+            .right_col
               .right_section
                 .year_mark 1950 #{i}
                 .notes

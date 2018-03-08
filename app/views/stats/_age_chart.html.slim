@@ -1,0 +1,12 @@
+.chart_wrapper.age_chart
+  .title Age
+  div{class="chart chart_for_#{type} bar_chart"}
+    - sum = 0
+    - data.each do |d|
+      - sum = sum + d[:percent].to_f
+    - data.each do |d|
+      .card
+        .chart_text.one #{d[:percent]}%
+        <div class="bar" style="height: #{100.0 * 2 * d[:percent].to_f / sum}%"></div>
+        .chart_text.two #{d[:name]}
+        .clearfix

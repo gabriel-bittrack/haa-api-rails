@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20180308043530) do
     t.string "name"
     t.string "state"
     t.string "country"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", default: -> { "now()" }, null: false
+    t.datetime "updated_at", default: -> { "now()" }, null: false
   end
 
   create_table "friends", force: :cascade do |t|
