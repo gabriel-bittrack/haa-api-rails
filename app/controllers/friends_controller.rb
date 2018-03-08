@@ -2,10 +2,9 @@ class FriendsController < BaseApiController
   before_action :doorkeeper_authorize!
 
   def index
-    @friends = Friend.all
+    @friends = Friend.search(params, params[:page])
     respond_to do |format|
-      format.json { render json: @friends, each_serializer: FriendSerializer }
-      format.csv { send_data @friends.to_csv(CSV_COLUMNS) }
+      format.json { paginate json: @friends, each_serializer: FriendSerializer, per_page: 1000 }
     end
   end
 
