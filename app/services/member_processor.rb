@@ -1,6 +1,12 @@
 require 'nokogiri'
+require 'mapbox-sdk'
+
+Mapbox.access_token = ENV.fetch("MAPBOX_TOKEN")
 
 class MemberProcessor < SyncProcessor
+  API_RATE_LIMIT = 100
+  TIME_TO_WAIT = 120
+
   def initialize(current_user:)
     @current_user = current_user
   end
@@ -38,6 +44,8 @@ class MemberProcessor < SyncProcessor
   end
 
   def process_members(members)
+    member_queue = []
+
     members.each do |account|
       image_url = extract_profile_image(account.Main_Profile_Picture__c) if account.Main_Profile_Picture__c
 
@@ -68,10 +76,14 @@ class MemberProcessor < SyncProcessor
         ethnicity: account.haa_Race__c
       )
 
+      member_queue << member.id
+
       if (image_url)
-        MemberProfileImageWorker.perform_async(image_url, member.id)
+        # MemberProfileImageWorker.perform_async(image_url, member.id)
       end
     end
+
+    MemberCoordinatesWorker.perform_async(member_queue)
   end
 
   MEMBER_FIELDS =

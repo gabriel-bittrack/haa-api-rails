@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307030858) do
+ActiveRecord::Schema.define(version: 20180308043530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,8 @@ ActiveRecord::Schema.define(version: 20180307030858) do
     t.integer "award_date"
     t.string "quote"
     t.date "date_of_death"
+    t.decimal "lat", precision: 10, scale: 6
+    t.decimal "lng", precision: 10, scale: 6
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
