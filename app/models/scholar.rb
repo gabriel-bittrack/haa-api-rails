@@ -1,5 +1,5 @@
 class Scholar < ApplicationRecord
-  self.per_page = 25
+  self.per_page = 24
   scope :year, ->(class_year) { where("class_year = ?", class_year) if class_year.present? }
   scope :search_name, ->(name) { where("full_name LIKE ?", "%#{name}%") if name.present? }
   scope :search_state, -> (state) { where("state = ?", state) if state.present? }

@@ -1,7 +1,7 @@
 require 'csv'
 
 class Member < ApplicationRecord
-  self.per_page = 25
+  self.per_page = 24
   scope :year, ->(class_year) { where("class_year = ?", class_year) if class_year.present? }
   scope :search_name, ->(name) { where("full_name LIKE ?", "%#{name}%") if name.present? }
   scope :search_state, -> (state) { where("state = ?", state) if state.present? }
@@ -26,7 +26,7 @@ class Member < ApplicationRecord
       unless member.industry.nil?
         member_industries = member.industry.split(";")
         member_industries.each do |industry|
-          industries << industry unless industries.include? industry      
+          industries << industry unless industries.include? industry
         end
       end
     end

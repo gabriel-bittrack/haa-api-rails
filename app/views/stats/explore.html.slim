@@ -10,7 +10,7 @@
           <option value="/search/scholars">SCHOLARS</option>
         </select>
     .right
-      a{href='/historical-timeline' class='em_link link_btn'} EXPLORE MORE
+      a{href='/history' class='em_link link_btn'} EXPLORE MORE
     .clearfix
   .navigation
     a{class='goback'}
@@ -62,40 +62,40 @@
             h4.sponsored_by Sponsored by
             h1.sponsor Paul Anthony Novelly
     .col2.cell
+      .map_view
+        <div id='map'></div>
+        javascript:
+          mapboxgl.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
+          var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv'
+          });
       .visual_info
-        .map_view
-          <div id='map' style="position:absolute; top:0; bottom:0; width: 100px; "></div>
-          javascript:
-            mapboxgl.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
-            var map = new mapboxgl.Map({
-              container: 'map',
-              style: 'mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv'
-            });
-          .color_bars
-            .members.bar
-              .outer
-                .inner
-              .title MEMBERS
-            .scholars.bar
-              .outer
-                .inner
-              .title SCHOLARS
-            .alumni.bar
-              .outer
-                .inner
-              .title ALUMNI
-            .friends.bar
-              .outer
-                .inner
-              .title FRIENDS of DISTINCTION
-            .donations.bar
-              .outer
-                .inner
-              .title DONATIONS
-            .partners.bar
-              .outer
-                .inner
-              .title COLLEGIATE PARTNERS
+        .color_bars
+          .members.bar
+            .outer
+              .inner
+            .title MEMBERS
+          .scholars.bar
+            .outer
+              .inner
+            .title SCHOLARS
+          .alumni.bar
+            .outer
+              .inner
+            .title ALUMNI
+          .friends.bar
+            .outer
+              .inner
+            .title FRIENDS of DISTINCTION
+          .donations.bar
+            .outer
+              .inner
+            .title DONATIONS
+          .partners.bar
+            .outer
+              .inner
+            .title COLLEGIATE PARTNERS
         .line_graph
           .members.graph
             .title MEMBERS
