@@ -274,7 +274,7 @@
         height: calc(100% + 28px);
         z-index: 0;
       }
-      .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
+      .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right, .mapboxgl-ctrl-compass {
         display: none;
       }
       .visual_info {

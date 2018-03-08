@@ -70,6 +70,8 @@
             container: 'map',
             style: 'mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv'
           });
+          var nav = new mapboxgl.NavigationControl();
+          map.addControl(nav, 'top-right');
       .visual_info
         .color_bars
           .members.bar
