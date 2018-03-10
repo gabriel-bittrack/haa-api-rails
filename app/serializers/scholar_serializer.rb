@@ -6,7 +6,9 @@ class ScholarSerializer < ActiveModel::Serializer
     {
       city: object.city,
       state: object.state,
-      country: object.country
+      country: object.country,
+      lat: object.lat,
+      lng: object.lng
     }
   end
 
