@@ -4,6 +4,7 @@ class Member < ApplicationRecord
   self.per_page = 24
   scope :year, ->(class_year) { where("class_year = ?", class_year) if class_year.present? }
   scope :search_name, ->(name) { where("full_name LIKE ?", "%#{name}%") if name.present? }
+  scope :search_name_begins_with, -> (name) { where("last_name LIKE ?","#{name}%") if name.present? }
   scope :search_state, -> (state) { where("state = ?", state) if state.present? }
   scope :search_industry, -> (industry) { where("industry LIKE ?", "%#{industry}%") if industry.present? }
 
@@ -49,7 +50,8 @@ class Member < ApplicationRecord
 
   def self.search(search, page)
     Member.year(search[:class_year])
-          .search_name(search[:s])
+          .search_name_begins_with(search[:s])
+          .search_name(search[:name])
           .search_state(search[:state])
           .search_industry(search[:industry])
           .page(page)
