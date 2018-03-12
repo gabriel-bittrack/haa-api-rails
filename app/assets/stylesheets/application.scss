@@ -47,7 +47,18 @@ body * {
   // position: absolute;
   top: 50%;
   // margin-top: -400px;
+  // background: #f5f2e7;
 }
+
+.bio_container {
+  // padding-top: 10px;
+  padding-bottom: 10px;
+  // position: absolute;
+  top: 50%;
+  // margin-top: -400px;
+  background: #f5f2e7;
+}
+
 h2, a {
   font-family: Montserrat;
 }
@@ -172,6 +183,7 @@ a.link_btn:hover {
     font-family: Montserrat;
   }
   .modal_body {
+    background: #f5f2e7;
     max-height: 550px;
     float: left;
     overflow: hidden;
@@ -284,73 +296,128 @@ a.link_btn:hover {
   }
 }
 
-.bio_modal {
-  padding: 60px 40px 40px;
-  .sponsor_name {
-    font-family: Lora;
-    font-size: 33px;
-    color: #094c83;
-    font-weight: 400;
-    white-space: nowrap;
-    letter-spacing: 0;
-    margin-bottom: 10px;
-  }
-  .info_title {
-    font-size: 13px;
-    color: #1a1a1a;
-    font-weight: 600;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-  }
-  .sponsor_wording {
-    font-family: Lora;
-    font-size: 22px;
-    color: #ac1a2f;
-    font-style: italic;
-    margin: 20px 0px 28px;
-  }
-  .info_text {
-    font-family: Lora;
-    color: #094c83;
-    font-size: 17px;
-    margin-bottom: 14px;
-    letter-spacing: 0px;
-  }
-  .bio_wrap {
-    max-width: 384px;
+.bio {
+  background: #f5f2e7;
+  .main_bio {
+    padding: 60px 40px 40px;
+    background: #f5f2e7;
+    .quote {
+      display: inline-block;
+      font-size: 9.491px;
+      font-family: "Lora";
+      color: rgb(134, 117, 77);
+      font-style: italic;
+      line-height: 1.545;
+      -moz-transform: matrix( 2.31795370758523,0,0,2.31795370758523,0,0);
+      -webkit-transform: matrix( 2.31795370758523,0,0,2.31795370758523,0,0);
+      -ms-transform: matrix( 2.31795370758523,0,0,2.31795370758523,0,0);
+      // position: absolute;
+      // left: 474.751px;
+      // top: 312.304px;
+      // z-index: 247;
+    }
+    .all_members {
+      margin-bottom: 10px;
+
+      .all_members_button {
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgb(203, 210, 217);
+        border-radius: 5px;
+        background-image: -moz-linear-gradient( 90deg, rgb(210,221,229) 0%, rgb(255,255,255) 100%);
+        background-image: -webkit-linear-gradient( 90deg, rgb(210,221,229) 0%, rgb(255,255,255) 100%);
+        background-image: -ms-linear-gradient( 90deg, rgb(210,221,229) 0%, rgb(255,255,255) 100%);
+        // position: absolute;
+        position: relative;
+        // left: 60px;
+        // top: 132px;
+        width: 220px;
+        text-align: center;
+        // height: 45px;
+        // z-index: 281;
+        font-size: 13px;
+        font-family: "Montserrat";
+        color: rgb(0, 48, 87);
+        text-transform: uppercase;
+        line-height: 2.48;
+        -moz-transform: matrix( 1.00770729735238,0,0,1.00770729735238,0,0);
+        -webkit-transform: matrix( 1.00770729735238,0,0,1.00770729735238,0,0);
+        -ms-transform: matrix( 1.00770729735238,0,0,1.00770729735238,0,0);
+      }
+    }
+
+
+
     .scrollbar-outer {
       max-height: 483px;
     }
-  }
-  .bio_text {
-    font-family: Lora;
-    font-size: 13px;
-    color: #1a1a1a;
-    margin-bottom: 20px;
-    line-height: 1.68em;
-  }
-  .col1, .sponsor_photo > img {
-    width: 272px;
-  }
-  .col2 {
-    width: 420px;
-    vertical-align: top;
-  }
-  .col3 {
-    width: 430px;
-    vertical-align: top;
-  }
-  .sponsor_photo {
-    margin-bottom: 18px;
-    img {
-      width: 100%;
-      height: auto;
+    .sponsor_name {
+      font-family: Lora;
+      font-size: 33px;
+      color: #094c83;
+      font-weight: 400;
+      white-space: nowrap;
+      letter-spacing: 0;
+      margin-bottom: 10px;
+    }
+    .info_title {
+      font-size: 13px;
+      color: #1a1a1a;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .sponsor_wording {
+      font-family: Lora;
+      font-size: 22px;
+      color: #ac1a2f;
+      font-style: italic;
+      margin: 20px 0px 28px;
+    }
+    .info_text {
+      font-family: Lora;
+      color: #094c83;
+      font-size: 17px;
+      margin-bottom: 14px;
+      letter-spacing: 0px;
+    }
+    .bio_wrap {
+      max-width: 384px;
+      .scrollbar-outer {
+        max-height: 483px;
+      }
+    }
+    .bio_text {
+      font-family: Lora;
+      font-size: 13px;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+      line-height: 1.68em;
+    }
+    .col1, .sponsor_photo > img {
+      width: 272px;
+    }
+    .col2 {
+      width: 420px;
+      vertical-align: top;
+    }
+    .col3 {
+      width: 430px;
+      vertical-align: top;
+    }
+    .sponsor_photo {
+      margin-bottom: 18px;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .info_wrap {
+      padding: 0px 40px;
     }
   }
-  .info_wrap {
-    padding: 0px 40px;
-  }
 }
+
 #sponsor_modal {
   padding: 100px 40px 40px;
 }

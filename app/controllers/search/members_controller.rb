@@ -1,4 +1,5 @@
 class Search::MembersController < ApplicationController
+  layout "bio"
   def index
     @members = Member.search(params, params[:page])
     @years = years
@@ -6,7 +7,14 @@ class Search::MembersController < ApplicationController
     @industries = industries
   end
 
-  private 
+  def show
+    @member = Member.find_by(id: params[:id])
+    @years = years
+    @states = states
+    @industries = industries
+  end
+
+  private
 
   def years
     Member.distinct_class_years

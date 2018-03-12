@@ -15,15 +15,14 @@
         - @members.each do |member|
           .member{class="member_#{member.id}"}
             .photo
-              a{data-id='#{member.id}' class='member_name'}
-                img{src='#{member.profile_photo_url}'}
+              = link_to(image_tag("#{member.profile_image.url}", :alt => "profile", :title => "Home"), show_search_members_path(member.id))
+
             .info
               .name
-                a{data-id='#{member.id}' class='member_name'} #{member.full_name}
+                = link_to(member.full_name, show_search_members_path(member.id))
               .year #{member.class_year}
               .position #{member.title}
               .company #{member.current_org}
-
             = render partial: "member_modal", locals: {member: member}
         .clearfix
       / = will_paginate @members

@@ -12,6 +12,15 @@
       float: left;
     }
   }
+  form .name {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(203, 210, 217);
+    border-radius: 5px;
+    width: 184px;
+    height: 38px;
+  }
+
   form .dropdown {
     display: inline-block;
     float: left;

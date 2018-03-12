@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180309042423) do
+ActiveRecord::Schema.define(version: 20180310053330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 20180309042423) do
     t.string "undergraduate_institution"
     t.string "graduate_institution"
     t.string "profile_photo_url"
-    t.string "title"
     t.string "profile_image_file_name"
     t.string "profile_image_content_type"
     t.integer "profile_image_file_size"
@@ -100,6 +99,9 @@ ActiveRecord::Schema.define(version: 20180309042423) do
     t.date "date_of_death"
     t.decimal "lat", precision: 10, scale: 6
     t.decimal "lng", precision: 10, scale: 6
+    t.string "sf_id"
+    t.string "zipcode"
+    t.boolean "active_military", default: false, null: false
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|

@@ -17,6 +17,7 @@ end
 
   # root 'home#landing'
   root 'welcome#index'
+
   namespace :admin do
     resources :dashboard
     resource :salesforce_connect
@@ -29,6 +30,7 @@ end
 
   get 'explore(/:country)' => 'stats#explore'
   get 'search/members' => 'search/members#index'
+  get 'search/members/:id', to: 'search/members#show', as: :show_search_members
   post 'search/members' => 'search/members#index'
   get 'search/scholars' => 'search/scholars#index'
   get 'get_cities' => 'stats#get_cities'
