@@ -18,6 +18,9 @@ class SalesforceImporterService
     when "scholar_geocode"
       puts ">>>> process scholars geocode!"
       GeocodeScholarProcessor.new(current_user: @current_user).process
+    when "scholar_scholarships"
+      puts ">>>> process scholar scholar scholarships"
+      ScholarScholarshipProcessor.new(current_user: @current_user).process
     else
       "Nothing to process"
     end
