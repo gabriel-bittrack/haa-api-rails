@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180310053330) do
+ActiveRecord::Schema.define(version: 20180312122808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20180310053330) do
     t.string "undergraduate_institution"
     t.string "graduate_institution"
     t.string "profile_photo_url"
+    t.string "title"
     t.string "profile_image_file_name"
     t.string "profile_image_content_type"
     t.integer "profile_image_file_size"
@@ -142,6 +143,15 @@ ActiveRecord::Schema.define(version: 20180310053330) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
+  end
+
+  create_table "scholar_scholarships", force: :cascade do |t|
+    t.string "name"
+    t.date "year"
+    t.decimal "total_award", precision: 10, scale: 2
+    t.integer "awarded"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "scholars", force: :cascade do |t|

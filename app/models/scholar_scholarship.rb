@@ -1,0 +1,2 @@
+class ScholarScholarship < ApplicationRecord
+end
