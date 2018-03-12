@@ -30,7 +30,6 @@ end
 
   get 'explore(/:country)' => 'stats#explore'
   get 'search/members' => 'search/members#index'
-  get 'search/member(/:id)' => 'search/members#show'
   get 'search/members/:id', to: 'search/members#show', as: :show_search_members
   post 'search/members' => 'search/members#index'
   get 'search/scholars' => 'search/scholars#index'
