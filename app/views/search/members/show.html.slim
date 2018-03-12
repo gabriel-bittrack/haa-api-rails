@@ -19,7 +19,8 @@
             .sponsor_info
               h1.sponsor_name #{@member.full_name}
               h3.info_title MEMBER
-              p.sponsor_wording “#{@member.quote}”
+              = if not @member.quote.nil?
+                p.sponsor_wording “#{@member.quote}”
 
             .sponsor_info
               h3.info_title MEMBER SINCE
@@ -39,5 +40,6 @@
 
         .col.col3
           .bio_wrap
+            h3.info_title BIOGRAPHY
             .scrollbar-outer
-              =@member.bio.html_safe
+              p.bio_text #{@member.bio.html_safe}
