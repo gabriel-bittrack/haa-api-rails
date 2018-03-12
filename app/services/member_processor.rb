@@ -31,18 +31,6 @@ class MemberProcessor < SyncProcessor
     Member.delete_all
   end
 
-  def member_city(member)
-    city = ''
-    if member.PPA_City__c
-      city = member.PPA_City__c
-    elsif member.Home_Address_City__c
-      city = member.Home_Address_City__c
-    elsif member.Business_City__c
-      city = member.Business_City__c
-    end
-    city
-  end
-
   def member_title(member)
     member.haa_Date_of_Death__c ? member.Title_Current_Primary__c : member.Title_Induction_Primary__c
   end
@@ -54,8 +42,11 @@ class MemberProcessor < SyncProcessor
       image_url = extract_profile_image(account.Main_Profile_Picture__c) if account.Main_Profile_Picture__c
 
       # determine which title to use, based on them being alive
-      current_title = account.haa_Date_of_Death__c ? account.Title_Current_Primary__c : account.Title_Induction_Primary__c
-
+      puts ">>> current title: #{account.Title_Current_Primary__c}"
+      puts ">>> induction title: #{account.Title_Induction_Primary__c}"
+      puts ">>> date of death: #{account.haa_Date_of_Death__c}"
+      current_title = account.haa_Date_of_Death__c.blank? ? account.Title_Current_Primary__c : account.Title_Induction_Primary__c
+      puts ">>> title we are going to use: #{current_title}"
       member = Member.create(
         full_name: account.Name,
         first_name: account.FirstName,

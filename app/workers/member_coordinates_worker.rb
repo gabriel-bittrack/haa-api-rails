@@ -18,9 +18,9 @@ class MemberCoordinatesWorker
       puts ">>> processing current_count : #{job_counter} remaining: #{remaining_count}"
       puts "************* member id: #{member_id} ***********************"
       member = Member.find_by(id: member_id)
-      if (member.city || member.state)
+
         begin
-          places = Mapbox::Geocoder.geocode_forward("#{member.city}, #{member.state}")
+          places = geocode_member(member)
           coords = places[0].fetch('features')[0].fetch('geometry').fetch('coordinates')
           puts ">>>> processing coords : #{coords}"
 
@@ -30,12 +30,26 @@ class MemberCoordinatesWorker
         rescue Exception => e
           puts ">>>> handled exception: #{e.message}"
         end
-      end
-    
+
+
       if job_counter === 598 || remaining_count === 0
         job_counter = 0
         sleep(61) unless remaining_count === 0
       end
     end
+  end
+
+  private
+  def geocode_member(member)
+    places = ''
+    if (member.zipcode)
+      puts ">>>>> geocoding using zipcode: #{member.zipcode}"
+      places = Mapbox::Geocoder.geocode_forward("#{member.zipcode}")
+    else
+      puts ">>>>> geocoding using city, state: #{member.city}, #{member.state}"
+      places = Mapbox::Geocoder.geocode_forward("#{member.city}, #{member.state}")
+    end
+
+    places
   end
 end
