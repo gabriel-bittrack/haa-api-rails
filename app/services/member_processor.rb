@@ -71,7 +71,8 @@ class MemberProcessor < SyncProcessor
         date_of_death: account.haa_Date_of_Death__c,
         ethnicity: account.haa_Race__c,
         sf_id: account.Id,
-        active_military: account.Active_Military_or_Veteran__c
+        active_military: account.Active_Military_or_Veteran__c,
+        date_of_birth: account.Date_of_Birth__c
       )
 
       member_queue << member.id
@@ -114,5 +115,6 @@ class MemberProcessor < SyncProcessor
     Primary_Affiliation_Zip_Postal_Code__c
     Active_Military_or_Veteran__c
     Secondary_Graduate_Institution__c
+    Date_of_Birth__c
   ).freeze
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312122808) do
+ActiveRecord::Schema.define(version: 20180313184753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20180312122808) do
     t.string "sf_id"
     t.string "zipcode"
     t.boolean "active_military", default: false, null: false
+    t.date "date_of_birth"
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
