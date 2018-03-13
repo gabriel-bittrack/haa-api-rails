@@ -20,6 +20,7 @@ $white-font: #ffffff;
   font-weight: 400;
 }
 .welcome {
+  background: #fff;
   .col1 {
     max-width: 525px;
     width: 41.015625%;
@@ -65,7 +66,7 @@ $white-font: #ffffff;
   .ue_title {
     color: #00325b;
     padding-bottom: 22px;
-    
+
   }
   .event_row {
     margin-bottom: 8px;
@@ -87,7 +88,7 @@ $white-font: #ffffff;
     letter-spacing: 1px;
     padding-bottom: 6px;
   }
-  .footer_sponsor { 
+  .footer_sponsor {
     background: -moz-linear-gradient(top, #c8b47c 0%, #8a7754 100%);
     background: -webkit-linear-gradient(top, #c8b47c 0%,#8a7754 100%);
     background: linear-gradient(to bottom, #c8b47c 0%,#8a7754 100%);

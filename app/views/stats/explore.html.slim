@@ -2,7 +2,7 @@
   .header
     .left
       .logo
-        = image_tag("HAA_logo.png", :class => "haa_logo")
+        = link_to(image_tag("HAA_logo.png", :class => "haa_logo"), "/")
       .search_dropdown_wrap.dropdown.dd_style1
         <select class="chosen-select search_dropdown" onchange="location = this.value;">
           <option value="" selected="selected" disabled>Find a Member</option>
