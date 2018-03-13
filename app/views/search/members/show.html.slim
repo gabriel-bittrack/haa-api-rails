@@ -19,7 +19,7 @@
             .sponsor_info
               h1.sponsor_name #{@member.full_name}
               h3.info_title MEMBER
-              = if not @member.quote.nil?
+              - if @member.quote
                 p.sponsor_wording “#{@member.quote}”
 
             .sponsor_info
