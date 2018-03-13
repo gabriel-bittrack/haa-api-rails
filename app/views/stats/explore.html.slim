@@ -30,8 +30,8 @@
 
       li.breadcrumb.state.last
         .states_dropdown_wrap.dropdown.dd_style3
-          <select class="chosen-select states_dropdown" id="states_dropdown" data-placeholder="SELECT A STATE">
-            <option value="" selected="selected" disabled>SELECT A STATE</option>
+          <select class="chosen-select states_dropdown" id="states_dropdown" data-placeholder="#{@country == 'us' ? 'SELECT A STATE' : 'SELECT A PROVINCE'}">
+            <option value="" selected="selected" disabled>#{@country == 'us' ? 'SELECT A STATE' : 'SELECT A PROVINCE'}</option>
             - @states.each do |state|
               <option value="#{state[:code]}">#{state[:name]}</option>
           </select>
@@ -72,7 +72,21 @@
           });
           var nav = new mapboxgl.NavigationControl();
           map.addControl(nav, 'top-right');
-          map.scrollZoom.disable();
+          //map.scrollZoom.disable();
+
+          var el = document.createElement('div');
+          el.className = 'marker';
+          el.style.backgroundImage = 'url(http://files.softicons.com/download/web-icons/vista-map-markers-icons-by-icons-land/png/32x32/MapMarker_Marker_Outside_Pink.png)';
+          el.style.width = '32px';
+          el.style.height = '32px';
+
+          el.addEventListener('click', function() {
+              window.alert(marker.properties.message);
+          });
+          var marker = new mapboxgl.Marker(el);
+          marker.setLngLat([-66.324462890625, -16.024695711685304])
+          marker.addTo(map);
+
       .visual_info
         .color_bars
           .members.bar
@@ -106,3 +120,5 @@
             .title SCHOLARS
           .scholarships.graph
             .title SCHOLARSHIPS GIVEN
+
+  = render partial: "/welcome/sponsor_modal"
