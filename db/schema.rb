@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20180312122808) do
     t.string "name"
     t.string "state"
     t.string "country"
-    t.datetime "created_at", default: -> { "now()" }, null: false
-    t.datetime "updated_at", default: -> { "now()" }, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friends", force: :cascade do |t|
@@ -147,9 +147,9 @@ ActiveRecord::Schema.define(version: 20180312122808) do
 
   create_table "scholar_scholarships", force: :cascade do |t|
     t.string "name"
-    t.date "year"
+    t.string "year"
     t.decimal "total_award", precision: 10, scale: 2
-    t.integer "awarded"
+    t.integer "number_awarded"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
