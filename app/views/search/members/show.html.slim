@@ -7,7 +7,7 @@
     .main_content
       .all_members
         =link_to "VIEW ALL MEMBERS", search_members_path, class: "all_members_button"
-      .modal_body
+      .bio_body.clearfix
         .col.col1
           .sponsor_photo
             =image_tag @member.profile_image.url, class: "sponsor_photo1"
@@ -19,7 +19,7 @@
             .sponsor_info
               h1.sponsor_name #{@member.full_name}
               h3.info_title MEMBER
-              = if not @member.quote.nil?
+              - if @member.quote
                 p.sponsor_wording “#{@member.quote}”
 
             .sponsor_info

@@ -17,11 +17,11 @@
         - @scholars.each do |scholar|
           .member{class="member_#{scholar.id}"}
             .photo
-              a{data-id='#{scholar.id}' class='member_name'}
-                = image_tag("user_default.jpg")
+              = link_to(image_tag("#{scholar.profile_image.url}", :alt => "profile", :title => "Home"), show_search_scholars_path(scholar.id))
+
             .info
               .name
-                a{data-id='#{scholar.id}' class='member_name'} #{scholar.full_name}
+                = link_to(scholar.full_name, show_search_scholars_path(scholar.id))
               .year = scholar.class_year
               .city = scholar.city
               .state = scholar.state
