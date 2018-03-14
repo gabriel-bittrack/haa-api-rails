@@ -16,6 +16,7 @@ div#user-widget
         = link_to "Import Collegiate Partners", admin_dashboard_index_path(sync_type: "colleges"), method: :post, id: "import_colleges", class: "btn"
         = link_to "Import Scholars Attachments", admin_dashboard_index_path(sync_type: "attachments"), method: :post, id: "import_scholar_attachments", class: "btn"
         = link_to "Geocode Scholars Attachments", admin_dashboard_index_path(sync_type: "scholar_geocode"), method: :post, id: "geocode_scholars", class: "btn"
+        = link_to "Import Scholar Scholarships", admin_dashboard_index_path(sync_type: "scholar_scholarships"), method: :post, id: "scholar_scholarships", class: "btn"
   - else
     = link_to "Sign in with Salesforce", "/auth/salesforce", id: "sign_in"
 

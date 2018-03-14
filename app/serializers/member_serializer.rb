@@ -20,6 +20,8 @@ class MemberSerializer < ActiveModel::Serializer
       ethnicity: object.ethnicity,
       gender: object.gender,
       relationship: object.relationship,
+      date_of_birth: object.date_of_birth,
+      date_of_death: object.date_of_death,
       deceased: deceased
     }
   end

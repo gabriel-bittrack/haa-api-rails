@@ -1,6 +1,6 @@
 class ScholarSerializer < ActiveModel::Serializer
 
-  attributes :full_name, :first_name, :last_name
+  attributes :full_name, :first_name, :last_name, :scholar_standing
   attribute :address do
     id = object.id
     {
@@ -30,7 +30,7 @@ class ScholarSerializer < ActiveModel::Serializer
     if object.profile_image.path
       url = base + bucket + object.profile_image.path
     end
-    
+
     {
       photo: url,
       alumni: object.alumni,
@@ -39,7 +39,8 @@ class ScholarSerializer < ActiveModel::Serializer
       scholar_standing: object.scholar_standing,
       total_disbursement_allotment: object.total_disbursement_allotment,
       military_branch: object.military_branch,
-      scholar_class_year: object.class_year
+      scholar_class_year: object.class_year,
+      date_of_birth: object.date_of_birth
     }
   end
 
@@ -48,8 +49,11 @@ class ScholarSerializer < ActiveModel::Serializer
     {
       high_school: object.high_school,
       undergraduate_institution: object.undergraduate_institution,
-      undergraduate_degree: object.undergraduate_degree,
-      undergraduate_major: object.undergraduate_major,
+      post_graduate_institution: object.post_graduate_institution,
+      secondary_graduate_institution: object.secondary_graduate_institution,
+      under_graduate_studies: object.under_graduate_studies,
+      post_graduate_studies: object.post_graduate_studies,
+      secondary_graduate_studies: object.secondary_graduate_studies,
     }
   end
 end
