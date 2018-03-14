@@ -42,7 +42,10 @@ class ScholarProcessor < SyncProcessor
         gender: scholar.Gender__c,
         date_of_birth: scholar.Date_of_Birth__c,
         post_graduate_institution: scholar.PostGraduate_Studies_Institution__c,
-        secondary_graduate_institution: scholar.Secondary_Graduate_Institution__c
+        secondary_graduate_institution: scholar.Secondary_Graduate_Institution__c,
+        under_graduate_studies: scholar.Undergraduate_Studies_Major__c,
+        post_graduate_studies: scholar.Scholar_Major_Category__c,
+        secondary_graduate_studies: scholar.Scholar_Major_Category__c
       }
 
     end
@@ -70,6 +73,9 @@ class ScholarProcessor < SyncProcessor
       PostGraduate_Studies_Institution__c
       Secondary_Graduate_Institution__c
       Undergraduate_Studies_Major__c
+      toLabel(Scholar_Major_Category__c)
+      PostGraduate_Studies_Major__c
+      toLabel(Secondary_Graduate_Major_Category__c)
       Total_Disbursement_Allotment__c
       Scholar_Class_Year__c
       toLabel(haa_Race__c)

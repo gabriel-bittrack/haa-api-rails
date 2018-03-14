@@ -51,8 +51,9 @@ class ScholarSerializer < ActiveModel::Serializer
       undergraduate_institution: object.undergraduate_institution,
       post_graduate_institution: object.post_graduate_institution,
       secondary_graduate_institution: object.secondary_graduate_institution,
-      undergraduate_degree: object.undergraduate_degree,
-      undergraduate_major: object.undergraduate_major,
+      under_graduate_studies: object.under_graduate_studies,
+      post_graduate_studies: object.post_graduate_studies,
+      secondary_graduate_studies: object.secondary_graduate_studies,
     }
   end
 end
