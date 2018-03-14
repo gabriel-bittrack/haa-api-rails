@@ -1,6 +1,6 @@
 class ScholarSerializer < ActiveModel::Serializer
 
-  attributes :full_name, :first_name, :last_name
+  attributes :full_name, :first_name, :last_name, :scholar_standing
   attribute :address do
     id = object.id
     {
@@ -49,6 +49,8 @@ class ScholarSerializer < ActiveModel::Serializer
     {
       high_school: object.high_school,
       undergraduate_institution: object.undergraduate_institution,
+      post_graduate_institution: object.post_graduate_institution,
+      secondary_graduate_institution: object.secondary_graduate_institution,
       undergraduate_degree: object.undergraduate_degree,
       undergraduate_major: object.undergraduate_major,
     }
