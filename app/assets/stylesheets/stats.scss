@@ -782,6 +782,25 @@
       vertical-align: top;
       .bar {
         height: 19px;
+        transition:color 1.25s ease;
+        position: relative;
+        //animation: 1.5s ease-out 0.5s 1 slideInFromLeft;
+      }
+      .bar:after {
+        position: absolute;
+        content: '';
+        top:0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: white;
+        transform-origin:left;
+        transition:width 1.25s ease;
+        z-index:-1;
+
+      }
+      .bar:hover:after{
+        width: 100%;
       }
     }
   }

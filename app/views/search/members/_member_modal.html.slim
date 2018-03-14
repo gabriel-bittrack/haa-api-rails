@@ -5,7 +5,10 @@
       .modal_body
         .col.col1
           .sponsor_photo
-            img{src='#{member.profile_photo_url}' class='sponsor_photo1'}
+            - if member.profile_photo_url
+              img{src='#{member.profile_photo_url}' class='sponsor_photo1'}
+            - else
+              img{src='user_default.jpg' class='sponsor_photo1'}
           .sponsor_photo
             - if member.web_url
               = member.web_url.html_safe

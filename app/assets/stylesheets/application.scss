@@ -100,7 +100,7 @@ input[type="text"].form-control {
   border-radius: 5px;
   font-family: Montserrat;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   color: #081825;
   background: #f7f7f7;
   border: 1px solid #f7f7f7;
@@ -180,6 +180,25 @@ a.link_btn:hover {
 .cell {
   display: table-cell;
 }
+.close, .close_white {
+  background: url(asset_path('close.png')) center no-repeat;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.close_white {
+  background: url(asset_path('close_white.png')) center no-repeat;
+}
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 /* modal styles */
 .plainmodal-overlay {
 
@@ -188,6 +207,8 @@ a.link_btn:hover {
   background: #f5f2e7;
   max-width: 1202px;
   max-height: 692px;
+  width: 100%;
+  height: 100%;
   padding: 30px 54px;
   border-radius: 6px;
   .modal_header {
@@ -211,15 +232,6 @@ a.link_btn:hover {
     color: #1a1a1a;
     line-height: 1.6;
     margin-bottom: 20px;
-  }
-  .close {
-    background: url(asset_path('close.png')) no-repeat;
-    background-position: center;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    right: 20px;
-    top: 20px;
   }
 }
 /* end of modal styles */

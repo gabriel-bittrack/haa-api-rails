@@ -20,7 +20,16 @@
 
 jQuery(document).on('turbolinks:load',function(){
 
-  var modal_options = {duration: 100, overlay: {fillColor: '#000', opacity: 0.68}};
+  var modal_options = {duration: 100, overlay: {fillColor: '#000', opacity: 0.68},
+    offset: function() {
+      // Fit the position to a button.
+      var win = $(window);
+      return {
+        left:   (win.width() - parseInt(this.css('width'))) / 2,
+        top: 54
+      };
+    }
+  };
   $('.modal').plainModal(modal_options);
   $(".au_link").click(function(e) {
     $('#aboutus_modal').plainModal('open');

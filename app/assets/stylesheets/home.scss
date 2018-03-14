@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .members, .scholars {
+  position: relative;
   .header {
     background: #003057;
     padding: 30px 40px;
@@ -305,14 +306,16 @@
   }
   .chosen-container .chosen-results li.active-result {
     padding: 17px 20px 16px 40px;
-    font-size: 17px;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-family: Montserrat;
   }
 }
 .dropdown.dd_style5 {
   .chosen-container-single .chosen-single {
     font-family: Montserrat;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 500;
     color: #081825;
     background: #f7f7f7;
     border: 1px solid #f7f7f7;
