@@ -38,7 +38,8 @@ class ScholarProcessor < SyncProcessor
         total_disbursement_allotment: scholar.Total_Disbursement_Allotment__c,
         class_year: scholar.Scholar_Class_Year__c,
         ethnicity: scholar.haa_Race__c,
-        gender: scholar.Gender__c
+        gender: scholar.Gender__c,
+        date_of_birth: scholar.Date_of_Birth__c
       }
 
     end
@@ -68,5 +69,6 @@ class ScholarProcessor < SyncProcessor
       Scholar_Class_Year__c
       toLabel(haa_Race__c)
       toLabel(Gender__c)
+      Date_of_Birth__c
     )
 end

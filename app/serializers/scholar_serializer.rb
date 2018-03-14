@@ -30,7 +30,7 @@ class ScholarSerializer < ActiveModel::Serializer
     if object.profile_image.path
       url = base + bucket + object.profile_image.path
     end
-    
+
     {
       photo: url,
       alumni: object.alumni,
@@ -39,7 +39,8 @@ class ScholarSerializer < ActiveModel::Serializer
       scholar_standing: object.scholar_standing,
       total_disbursement_allotment: object.total_disbursement_allotment,
       military_branch: object.military_branch,
-      scholar_class_year: object.class_year
+      scholar_class_year: object.class_year,
+      date_of_birth: object.date_of_birth
     }
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180313184753) do
+ActiveRecord::Schema.define(version: 20180314001745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -185,6 +185,7 @@ ActiveRecord::Schema.define(version: 20180313184753) do
     t.datetime "profile_image_updated_at"
     t.decimal "lat", precision: 10, scale: 6
     t.decimal "lng", precision: 10, scale: 6
+    t.date "date_of_birth"
   end
 
   create_table "users", force: :cascade do |t|
