@@ -5,7 +5,8 @@ class FriendSerializer < ActiveModel::Serializer
     {
       city: object.city,
       state: object.state,
-      country: object.country
+      country: object.country,
+      zipcode: object.zipcode
     }
   end
 

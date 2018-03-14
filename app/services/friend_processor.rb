@@ -37,7 +37,8 @@ class FriendProcessor < SyncProcessor
         state: friend.PPA_State__c,
         country: friend.PPA_Country__c,
         current_org: friend.Current_Organization__c,
-        title: friend.Title
+        title: friend.Title,
+        zipcode: friend.Primary_Affiliation_Zip_Postal_Code__c
       )
 
       if (image_url)
@@ -46,7 +47,7 @@ class FriendProcessor < SyncProcessor
     end
   end
 
-  FRIEND_FIELDS = 
+  FRIEND_FIELDS =
   %w(
     Id
     Name
@@ -58,5 +59,6 @@ class FriendProcessor < SyncProcessor
     Title
     Current_Organization__c
     Main_Profile_Picture__c
+    Primary_Affiliation_Zip_Postal_Code__c
   )
 end
