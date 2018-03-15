@@ -29,6 +29,7 @@ class ScholarProcessor < SyncProcessor
         high_school: scholar.High_School__c,
         state: scholar.PPA_State__c,
         city: scholar.PPA_City__c,
+        scholar_standing: scholar.Scholar_Standing__c,
         country: scholar.PPA_Country__c,
         scholar: scholar.Association_Scholar__c,
         alumni: scholar.Association_Alumni__c,
@@ -38,7 +39,13 @@ class ScholarProcessor < SyncProcessor
         total_disbursement_allotment: scholar.Total_Disbursement_Allotment__c,
         class_year: scholar.Scholar_Class_Year__c,
         ethnicity: scholar.haa_Race__c,
-        gender: scholar.Gender__c
+        gender: scholar.Gender__c,
+        date_of_birth: scholar.Date_of_Birth__c,
+        post_graduate_institution: scholar.PostGraduate_Studies_Institution__c,
+        secondary_graduate_institution: scholar.Secondary_Graduate_Institution__c,
+        under_graduate_studies: scholar.Undergraduate_Studies_Major__c,
+        post_graduate_studies: scholar.Scholar_Major_Category__c,
+        secondary_graduate_studies: scholar.Scholar_Major_Category__c
       }
 
     end
@@ -60,13 +67,19 @@ class ScholarProcessor < SyncProcessor
       Association_Alumni__c
       Association_Specialized_Scholar__c
       Association_Military_Scholar__c
-      Scholar_Standing__c
+      toLabel(Scholar_Standing__c)
       Military_Service_Military_Branch__c
       Undergraduate_Studies_Institution__c
+      PostGraduate_Studies_Institution__c
+      Secondary_Graduate_Institution__c
       Undergraduate_Studies_Major__c
+      toLabel(Scholar_Major_Category__c)
+      PostGraduate_Studies_Major__c
+      toLabel(Secondary_Graduate_Major_Category__c)
       Total_Disbursement_Allotment__c
       Scholar_Class_Year__c
       toLabel(haa_Race__c)
       toLabel(Gender__c)
+      Date_of_Birth__c
     )
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312122808) do
+ActiveRecord::Schema.define(version: 20180314031037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20180312122808) do
     t.string "name"
     t.string "state"
     t.string "country"
-    t.datetime "created_at", default: -> { "now()" }, null: false
-    t.datetime "updated_at", default: -> { "now()" }, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friends", force: :cascade do |t|
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20180312122808) do
     t.string "profile_image_content_type"
     t.integer "profile_image_file_size"
     t.datetime "profile_image_updated_at"
+    t.string "zipcode"
   end
 
   create_table "members", force: :cascade do |t|
@@ -103,6 +104,7 @@ ActiveRecord::Schema.define(version: 20180312122808) do
     t.string "sf_id"
     t.string "zipcode"
     t.boolean "active_military", default: false, null: false
+    t.date "date_of_birth"
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
@@ -147,9 +149,9 @@ ActiveRecord::Schema.define(version: 20180312122808) do
 
   create_table "scholar_scholarships", force: :cascade do |t|
     t.string "name"
-    t.date "year"
+    t.string "year"
     t.decimal "total_award", precision: 10, scale: 2
-    t.integer "awarded"
+    t.integer "number_awarded"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -184,6 +186,12 @@ ActiveRecord::Schema.define(version: 20180312122808) do
     t.datetime "profile_image_updated_at"
     t.decimal "lat", precision: 10, scale: 6
     t.decimal "lng", precision: 10, scale: 6
+    t.date "date_of_birth"
+    t.string "post_graduate_institution"
+    t.string "secondary_graduate_institution"
+    t.string "under_graduate_studies"
+    t.string "post_graduate_studies"
+    t.string "secondary_graduate_studies"
   end
 
   create_table "users", force: :cascade do |t|

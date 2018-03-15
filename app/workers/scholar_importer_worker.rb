@@ -10,7 +10,7 @@ class ScholarImporterWorker
 
   private
   def insert_data
-    Scholar.bulk_insert do |worker|
+    Scholar.bulk_insert(set_size: 250) do |worker|
       if @scholar_fields.present?
         @scholar_fields.each do |attrs|
           worker.add(attrs)
