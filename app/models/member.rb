@@ -15,6 +15,14 @@ class Member < ApplicationRecord
     medium: ['300x300>', :png],
   }
 
+  def as_json(options={})
+    super(only: [:full_name, :lat, :lng ], options: options)
+  end
+
+  def count
+
+  end
+
   validates_attachment :profile_image,
     content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   }

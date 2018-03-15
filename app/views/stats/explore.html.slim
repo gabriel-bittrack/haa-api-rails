@@ -68,11 +68,12 @@
           mapboxgl.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
           var map = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv'
+            style: 'mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv',
+            zoom: 3
           });
           var nav = new mapboxgl.NavigationControl();
           map.addControl(nav, 'top-right');
-          //map.scrollZoom.disable();
+          map.scrollZoom.disable();
 
           var el = document.createElement('div');
           el.className = 'marker';

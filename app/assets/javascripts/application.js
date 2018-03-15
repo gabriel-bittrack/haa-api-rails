@@ -77,6 +77,15 @@ jQuery(document).on('turbolinks:load',function(){
   });
 
   $("#cities_dropdown").change(function(e) {
+    data = {
+      state: $("#states_dropdown").val(),
+      country: $("#countries_dropdown option:selected").attr("country"),
+      city: $("#cities_dropdown").val()
+    };
+    $.get("/get_search_results", data, function(response) {
+      $('#cities_dropdown').empty();
+      $('#cities_dropdown').append('<option value="" selected="selected" disabled>SELECT A CITY</option>');
+    });
     $(".breadcrumb").removeClass("active");
     $(".breadcrumb.city").removeClass("last");
     $(".breadcrumb.city").addClass("active");

@@ -4,7 +4,12 @@ class StatsController < ApplicationController
 
   end
 
+  def update_map
+    puts ">>>> params : #{params}"
+  end
+
   def explore
+    puts ">>>>>> params from explore: #{params}"
     if (["us", "ca"].include? params[:country])
       @country = params[:country]
     else
@@ -53,7 +58,20 @@ class StatsController < ApplicationController
 
   def get_cities
     @cities = City.where("country = ? AND state = ?", params[:country], params[:state])
+    @members = Member.where("state = ?", params[:state])
+    puts ">>>> found members : #{@members.inspect}"
     render json: @cities
+  end
+
+  def get_search_results
+    @cities = City.where("country = ? AND state = ?", params[:country], params[:state])
+    @members = Member.where("city = ? AND state = ?", params[:city], params[:state])
+    @scholars = Scholar.where("city = ? AND state = ?", params[:city], params[:state])
+    render json: {
+      cities: @cities,
+      members: @members.as_json(options: { count: @members.length }),
+      scholars: @scholars
+    }
   end
 
 end
