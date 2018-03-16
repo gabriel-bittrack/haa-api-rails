@@ -65,12 +65,13 @@ class StatsController < ApplicationController
 
   def get_search_results
     @cities = City.where("country = ? AND state = ?", params[:country], params[:state])
-    @members = Member.where("city = ? AND state = ?", params[:city], params[:state])
-    @scholars = Scholar.where("city = ? AND state = ?", params[:city], params[:state])
+    @member = Member.map_search(params)
+    @scholars = Scholar.map_search(params)
+
     render json: {
       cities: @cities,
       members: @members.as_json(options: { count: @members.length }),
-      scholars: @scholars
+      scholars: @scholars.as_json(options: {count: @scholars.length }),
     }
   end
 
