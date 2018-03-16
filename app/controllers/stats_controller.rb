@@ -67,9 +67,11 @@ class StatsController < ApplicationController
     @cities = City.where("country = ? AND state = ?", params[:country], params[:state])
     @member = Member.map_search(params)
     @scholars = Scholar.map_search(params)
+    @selected_state = States.instance.find_us_state_by_code(params[:state]) if params[:state].present?
 
     render json: {
       cities: @cities,
+      selected_state: @selected_state,
       members: @members.as_json(options: { count: @members.length }),
       scholars: @scholars.as_json(options: {count: @scholars.length }),
     }
