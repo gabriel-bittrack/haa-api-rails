@@ -19,6 +19,16 @@
 //= require_tree .
 
 jQuery(document).on('turbolinks:load',function(){
+  mapboxgl.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv',
+    zoom: 3,
+    center: [-101.384458, 39.414028]
+  });
+  var nav = new mapboxgl.NavigationControl();
+  map.addControl(nav, 'top-right');
+  //map.scrollZoom.disable();
 
   var modal_options = {duration: 100, overlay: {fillColor: '#000', opacity: 0.68},
     offset: function() {
@@ -30,6 +40,7 @@ jQuery(document).on('turbolinks:load',function(){
       };
     }
   };
+
   $('.modal').plainModal(modal_options);
   $(".au_link").click(function(e) {
     $('#aboutus_modal').plainModal('open');
@@ -82,9 +93,26 @@ jQuery(document).on('turbolinks:load',function(){
       country: $("#countries_dropdown option:selected").attr("country"),
       city: $("#cities_dropdown").val()
     };
+
     $.get("/get_search_results", data, function(response) {
-      $('#cities_dropdown').empty();
-      $('#cities_dropdown').append('<option value="" selected="selected" disabled>SELECT A CITY</option>');
+      var members = response.members;
+      var scholars = response.scholars;
+
+      for (i = 0; i < members.length; i++) {
+        var el = document.createElement('div');
+        el.className = 'marker';
+        el.style.backgroundColor = '#f00';
+        el.style.width = '32px';
+        el.style.height = '32px';
+
+        el.addEventListener('click', function() {
+            window.alert(marker.properties.message);
+        });
+        var marker = new mapboxgl.Marker(el);
+        marker.setLngLat([members[i].lng, members[i].lat]);
+        marker.addTo(map);
+      }
+
     });
     $(".breadcrumb").removeClass("active");
     $(".breadcrumb.city").removeClass("last");

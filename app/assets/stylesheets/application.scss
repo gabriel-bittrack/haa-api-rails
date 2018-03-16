@@ -411,15 +411,18 @@ a.link_btn:hover {
       max-height: 483px;
     }
   }
-  .bio_text {
+  .bio_text, .bio_wrap p {
     font-family: Lora;
     font-size: 13px;
     color: #1a1a1a;
     margin-bottom: 20px;
     line-height: 1.68em;
   }
-  .col1, .sponsor_photo > img {
+  .col1 {
     width: 272px;
+  }
+  .sponsor_photo > img, .sponsor_video > iframe {
+    width: 100%;
   }
   .col2 {
     width: 420px;

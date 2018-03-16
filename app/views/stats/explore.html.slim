@@ -65,28 +65,7 @@
       .map_view
         <div id='map'></div>
         javascript:
-          mapboxgl.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
-          var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv',
-            zoom: 3
-          });
-          var nav = new mapboxgl.NavigationControl();
-          map.addControl(nav, 'top-right');
-          map.scrollZoom.disable();
-
-          var el = document.createElement('div');
-          el.className = 'marker';
-          el.style.backgroundImage = 'url(http://files.softicons.com/download/web-icons/vista-map-markers-icons-by-icons-land/png/32x32/MapMarker_Marker_Outside_Pink.png)';
-          el.style.width = '32px';
-          el.style.height = '32px';
-
-          el.addEventListener('click', function() {
-              window.alert(marker.properties.message);
-          });
-          var marker = new mapboxgl.Marker(el);
-          marker.setLngLat([-66.324462890625, -16.024695711685304])
-          marker.addTo(map);
+          
 
       .visual_info
         .color_bars
@@ -106,11 +85,11 @@
             .outer
               .inner
             .title FRIENDS of DISTINCTION
-          .donations.bar
+          .donations.bar.hidden
             .outer
               .inner
             .title DONATIONS
-          .partners.bar
+          .partners.bar.hidden
             .outer
               .inner
             .title COLLEGIATE PARTNERS
