@@ -18,16 +18,61 @@
 //= require turbolinks
 //= require_tree .
 
-jQuery(document).on('turbolinks:load',function(){
-  mapboxgl.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
-  var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv',
-    zoom: 3,
-    center: [-101.384458, 39.414028]
+var member_color = "#02a1ce";
+var scholar_color = "#cf0435";
+var countries_center = {US: [-87.928880, 41.480055], CA: [-95.099104, 60.263248]};
+var map;
+var markers;
+
+function refresh_map(data) {
+  $.get("/get_search_results", data, function(response) {
+    var members = response.members;
+    var scholars = response.scholars;
+
+    for (i = 0; i < members.length; i++) {
+      var el = document.createElement('div');
+      el.className = 'member marker1';
+
+      el.addEventListener('click', function() {
+          //window.alert(marker.properties.message);
+      });
+      var marker = new mapboxgl.Marker(el);
+      marker.setLngLat([members[i].lng, members[i].lat]);
+      marker.addTo(map);
+    }
+
+    /*for (i = 0; i < scholars.length; i++) {
+      var el = document.createElement('div');
+      el.className = 'scholar marker1';
+
+      el.addEventListener('click', function() {
+          //window.alert(marker.properties.message);
+      });
+      var marker = new mapboxgl.Marker(el);
+      marker.setLngLat([scholars[i].lng, scholars[i].lat]);
+      marker.addTo(map);
+    }*/
+
+    if (typeof data.state != 'undefined') {
+
+    } else {
+      map.setCenter(countries_center[data.country]);
+      map.flyTo(map.flyTo({
+        center: [-95.099104, 60.263248],
+        zoom: 9,
+        speed: 0.2,
+        curve: 1,
+        easing(t) {
+          return t;
+        }
+      }));
+
+    }
+
   });
-  var nav = new mapboxgl.NavigationControl();
-  map.addControl(nav, 'top-right');
+}
+jQuery(document).on('turbolinks:load',function(){
+
   //map.scrollZoom.disable();
 
   var modal_options = {duration: 100, overlay: {fillColor: '#000', opacity: 0.68},
@@ -65,9 +110,16 @@ jQuery(document).on('turbolinks:load',function(){
     return false;
   });
 
-  $("#states_dropdown").change(function(e) {
-    data = {state: $("#states_dropdown").val(), country: $("#countries_dropdown option:selected").attr("country")};
+  $("#countries_dropdown").change(function(e) {
 
+  });
+
+  $("#states_dropdown").change(function(e) {
+    coutry = $("#countries_dropdown option:selected").attr("country") == "US" ? "United States" : "Canada";
+    data = {country: country, state: $("#states_dropdown").val()};
+    refresh_map(data);
+
+    data = {country: $("#countries_dropdown option:selected").attr("country"), state: $("#states_dropdown").val()};
     $.get("/get_cities", data, function(response) {
       $('#cities_dropdown').empty();
       $('#cities_dropdown').append('<option value="" selected="selected" disabled>SELECT A CITY</option>');
@@ -84,36 +136,18 @@ jQuery(document).on('turbolinks:load',function(){
       $(".breadcrumb.state").addClass("active");
       $(".breadcrumb.city").addClass("last");
       $(".breadcrumb.city").fadeIn();
-    })
+    });
   });
 
   $("#cities_dropdown").change(function(e) {
+    coutry = $("#countries_dropdown option:selected").attr("country") == "US" ? "United States" : "Canada";
     data = {
+      country: country,
       state: $("#states_dropdown").val(),
-      country: $("#countries_dropdown option:selected").attr("country"),
       city: $("#cities_dropdown").val()
     };
+    refresh_map(data);
 
-    $.get("/get_search_results", data, function(response) {
-      var members = response.members;
-      var scholars = response.scholars;
-
-      for (i = 0; i < members.length; i++) {
-        var el = document.createElement('div');
-        el.className = 'marker';
-        el.style.backgroundColor = '#f00';
-        el.style.width = '32px';
-        el.style.height = '32px';
-
-        el.addEventListener('click', function() {
-            window.alert(marker.properties.message);
-        });
-        var marker = new mapboxgl.Marker(el);
-        marker.setLngLat([members[i].lng, members[i].lat]);
-        marker.addTo(map);
-      }
-
-    });
     $(".breadcrumb").removeClass("active");
     $(".breadcrumb.city").removeClass("last");
     $(".breadcrumb.city").addClass("active");

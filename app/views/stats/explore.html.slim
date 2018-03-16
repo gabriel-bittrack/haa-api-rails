@@ -65,7 +65,19 @@
       .map_view
         <div id='map'></div>
         javascript:
-          
+          mapboxgl.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
+          map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv',
+            zoom: 3,
+            center: [-101.384458, 39.414028]
+          });
+          var nav = new mapboxgl.NavigationControl();
+          map.addControl(nav, 'top-right');
+
+          var country = "#{@country}";
+          country = (country == 'us') ? 'United States' : 'Canada';
+          refresh_map({country: country});
 
       .visual_info
         .color_bars

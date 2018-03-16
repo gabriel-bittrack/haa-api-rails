@@ -89,6 +89,9 @@
     }
     .members_wrap {
       margin-bottom: 20px;
+      .member:nth-child(3n+1) {
+        clear: left;
+      }
       .member {
         float: left;
         width: 32.333333333333%;

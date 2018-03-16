@@ -325,12 +325,17 @@ a.link_btn:hover {
   }
 }
 
+.bio_modal .main_bio {
+  padding: 60px 40px 40px;
+  background: #f5f2e7;
+}
+.bio .main_bio {
+  padding: 22px 40px 40px;
+  background: #f5f2e7;
+}
+
 .bio, .bio_modal {
   background: #f5f2e7;
-  .main_bio {
-    padding: 60px 40px 40px;
-    background: #f5f2e7;
-  }
   .quote {
     display: inline-block;
     font-size: 9.491px;
@@ -369,6 +374,7 @@ a.link_btn:hover {
       -moz-transform: matrix( 1.00770729735238,0,0,1.00770729735238,0,0);
       -webkit-transform: matrix( 1.00770729735238,0,0,1.00770729735238,0,0);
       -ms-transform: matrix( 1.00770729735238,0,0,1.00770729735238,0,0);
+      margin-bottom: 12px;
     }
   }
 

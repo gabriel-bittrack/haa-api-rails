@@ -273,6 +273,19 @@
         width: calc(100% + 12px);
         height: calc(100% + 28px);
         z-index: 0;
+        .mapboxgl-marker {
+          border-radius: 50%;
+        }
+        .member {
+          background: #02a1ce;
+        }
+        .scholar {
+          background: #cf0435;
+        }
+        .marker1 {
+          width: 11px;
+          height: 11px;
+        }
         .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right, .mapboxgl-ctrl-compass {
           display: none !important;
         }
