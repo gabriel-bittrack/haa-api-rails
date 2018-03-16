@@ -82,8 +82,12 @@ class States
     @states.find {|x| x[:name] == name.titlecase}
   end
 
-  def find_by_code(code)
-    @states.find {|x| x[:code] == code.upcase}
+  def find_us_state_by_code(code)
+    @states["us"].select {|x| x[:code] == code.upcase}
+  end
+
+  def find_ca_province_by_code(code)
+    @states["ca"].select {|x| x[:code] == code.upcase}
   end
 
   def version
