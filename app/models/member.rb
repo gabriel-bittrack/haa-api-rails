@@ -5,8 +5,10 @@ class Member < ApplicationRecord
   scope :year, ->(class_year) { where("class_year = ?", class_year) if class_year.present? }
   scope :search_name, ->(name) { where("full_name LIKE ?", "%#{name}%") if name.present? }
   scope :search_name_begins_with, -> (name) { where("last_name LIKE ?","#{name}%") if name.present? }
+  scope :search_country, -> (country) { where("country = ?", country) if country.present? }
   scope :search_state, -> (state) { where("state = ?", state) if state.present? }
   scope :search_industry, -> (industry) { where("industry LIKE ?", "%#{industry}%") if industry.present? }
+  scope :search_city, -> (city) { where("city = ?", city) if city.present? }
 
   has_attached_file :profile_image, style: {
     original: ["100%", :png],
@@ -17,10 +19,6 @@ class Member < ApplicationRecord
 
   def as_json(options={})
     super(only: [:full_name, :lat, :lng ], options: options)
-  end
-
-  def count
-
   end
 
   validates_attachment :profile_image,
@@ -63,6 +61,12 @@ class Member < ApplicationRecord
           .search_state(search[:state])
           .search_industry(search[:industry])
           .page(page)
+  end
+
+  def self.map_search(search)
+    Member.search_country(search[:country])
+          .search_state(search[:state])
+          .search_city(search[:city])
   end
 
   def self.to_csv(fields = column_names, options = {})
