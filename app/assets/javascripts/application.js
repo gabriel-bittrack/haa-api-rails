@@ -18,97 +18,71 @@
 //= require turbolinks
 //= require_tree .
 
-var member_color = "#02a1ce";
-var scholar_color = "#cf0435";
+var member_color = "02a1ce";
+var scholar_color = "cf0435";
 var countries_center = {US: [-87.928880, 41.480055], CA: [-95.099104, 60.263248]};
 var map;
-var markers;
+var layer = [];
+
+function getDivIcon(count, type) {
+  if (count < 10) {
+    html = "<div class='" + type + "_cluster_icon' data-value='" + count + "'><div class='marker1'></div></div>";
+  } else if (count < 100) {
+    html = "<div class='" + type + "_cluster_icon' data-value='" + count + "'><div class='marker2'><div class='marker1'></div></div></div>";
+  } else {
+    html = "<div class='" + type + "_cluster_icon' data-value='" + count + "'><div class='marker3'><div class='marker2'><div class='marker1'></div></div></div></div>";
+  }
+
+  return new L.DivIcon({
+    iconSize: [20, 20],
+    html: html
+  });
+}
 
 function refresh_map2(data) {
+  var memberIcon = L.icon({
+  	iconUrl: '/assets/member_marker.png',
+  	iconSize: [9, 9]
+  });
+  var scholarIcon = L.icon({
+  	iconUrl: '/assets/scholar_marker.png',
+  	iconSize: [9, 9]
+  });
+  overlays = L.layerGroup().addTo(map);
+
   $.get("/get_search_results", data, function(response) {
     var members = response.members;
     var scholars = response.scholars;
 
-    var memberLayer = L.mapbox.featureLayer().addTo(map);
-    var memberjson = [];
-
-    var markers = new L.MarkerClusterGroup();
-
+    layer["members"] = new L.MarkerClusterGroup({
+      iconCreateFunction: function(cluster) {
+        count = cluster.getChildCount();
+        return getDivIcon(count, "member");
+      }
+    });
     for (i = 0; i < members.length; i++) {
-      point = {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [members[i].lng, members[i].lat]
-        },
-        properties: {
-          icon: {
-            className: 'member marker1', // class name to style
-          }
-        }
-      };
-      memberjson.push(point);
-
-
       var marker = L.marker(new L.LatLng(members[i].lat, members[i].lng), {
-          icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '0044FF'}),
+        //icon: memberIcon,
+        icon: L.mapbox.marker.icon({'marker-symbol': 'marker', 'marker-color': member_color}),
       });
-      markers.addLayer(marker);
+      layer["members"].addLayer(marker);
     }
-    map.addLayer(markers);
-    return;
+    map.addLayer(layer["members"]);
 
-    L.mapbox.featureLayer(memberjson).on('ready', function(e) {
-      var clusterGroup = new L.MarkerClusterGroup({
-        iconCreateFunction: function(cluster) {
-          return L.mapbox.marker.icon({
-            'marker-symbol': cluster.getChildCount(),
-            'marker-color': '#422'
-          });
-        }
-      });
-
-      e.target.eachLayer(function(layer) {
-          clusterGroup.addLayer(layer);
-      });
-      map.addLayer(clusterGroup);
-      console.log("xxx");
+    layer["scholars"] = new L.MarkerClusterGroup({
+      iconCreateFunction: function(cluster) {
+        count = cluster.getChildCount();
+        return getDivIcon(count, "scholar");
+      }
     });
-
-    /*memberLayer.on('layeradd', function(e) {
-      var marker = e.layer,
-      feature = marker.feature;
-      marker.setIcon(L.divIcon(feature.properties.icon));
-    });*/
-
-
-    memberLayer.setGeoJSON(memberjson);
-    memberLayer.on('ready', function(e) {
-      var clusterGroup = new L.MarkerClusterGroup({
-        iconCreateFunction: function(cluster) {
-          return L.mapbox.marker.icon({
-            'marker-symbol': cluster.getChildCount(),
-            'marker-color': '#422'
-          });
-        }
+    for (i = 0; i < scholars.length; i++) {
+      var marker = L.marker(new L.LatLng(scholars[i].lat, scholars[i].lng), {
+        //icon: scholarIcon,
+        icon: L.mapbox.marker.icon({'marker-symbol': 'marker', 'marker-color': scholar_color}),
       });
-
-      e.target.eachLayer(function(layer) {
-          clusterGroup.addLayer(layer);
-      });
-      map.addLayer(clusterGroup);
-      console.log("ccc");
-    });
-
-    /*L.mapbox.featureLayer()
-    .loadURL(memberjson)
-    .on('ready', function(e) {
-      var clusterGroup = new L.MarkerClusterGroup();
-      e.target.eachLayer(function(layer) {
-        clusterGroup.addLayer(layer);
-      });
-      map.addLayer(clusterGroup);
-    });*/
+      layer["scholars"].addLayer(marker);
+    }
+    map.addLayer(layer["scholars"]);
 
     if (typeof data.state != 'undefined') {
 
@@ -287,6 +261,17 @@ jQuery(document).on('turbolinks:load',function(){
       $(this).addClass("active");
     }
     return false;
+  });
+
+  $(".color_bars > .bar").click(function(e) {
+    $(this).toggleClass("checked");
+
+    var value = $(this).attr("data-value");
+    if ($(this).hasClass("checked")) {
+      map.addLayer(layer[value]);
+    } else {
+      map.removeLayer(layer[value]);
+    }
   });
 
 });

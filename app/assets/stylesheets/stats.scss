@@ -273,10 +273,10 @@
         width: calc(100% + 12px);
         height: calc(100% + 28px);
         z-index: 0;
-        .member {
+        .member_cluster_icon {
           background: #02a1ce;
         }
-        .scholar {
+        .scholar_cluster_icon {
           background: #cf0435;
         }
         .marker1 {
@@ -326,6 +326,7 @@
           margin-bottom: 10px;
           padding: 6px 10px 5px;
           text-align: center;
+          cursor: pointer;
           .outer, .inner {
             display: inline-block;
             border-radius: 50%;
@@ -358,7 +359,7 @@
           .outer {
             border-color: #005784;
           }
-          .inner {
+          &.checked .inner {
             background: #005784;
           }
         }
@@ -367,7 +368,7 @@
           .outer {
             border-color: #960202;
           }
-          .inner {
+          &.checked .inner {
             background: #960202;
           }
         }
@@ -376,7 +377,7 @@
           .outer {
             border-color: #be7000;
           }
-          .inner {
+          &.checked .inner {
             background: #be7000;
           }
         }
@@ -385,7 +386,7 @@
           .outer {
             border-color: #7e0489;
           }
-          .inner {
+          &.checked .inner {
             background: #7e0489;
           }
         }
@@ -394,7 +395,7 @@
           .outer {
             border-color: #008616;
           }
-          .inner {
+          &.checked .inner {
             background: #008616;
           }
         }
@@ -404,7 +405,7 @@
           .outer {
             border-color: #7e909f;
           }
-          .inner {
+          &.checked .inner {
             background: #7e909f;
           }
         }

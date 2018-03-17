@@ -79,7 +79,6 @@
             map.setView([58.551971, -99.839907], 4);
           }
 
-
           country = (country == 'us') ? 'United States' : 'Canada';
           refresh_map2({country: country});
 
@@ -133,19 +132,19 @@
 
       .visual_info
         .color_bars
-          .members.bar
+          .members.bar.checked{data-value="members"}
             .outer
               .inner
             .title MEMBERS
-          .scholars.bar
+          .scholars.bar.checked{data-value="scholars"}
             .outer
               .inner
             .title SCHOLARS
-          .alumni.bar
+          .alumni.bar.checked{data-value="alumni"}
             .outer
               .inner
             .title ALUMNI
-          .friends.bar
+          .friends.bar.checked{data-value="friends"}
             .outer
               .inner
             .title FRIENDS of DISTINCTION
