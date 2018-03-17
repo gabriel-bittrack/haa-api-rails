@@ -29,43 +29,90 @@ function refresh_map2(data) {
     var members = response.members;
     var scholars = response.scholars;
 
+    var memberLayer = L.mapbox.featureLayer().addTo(map);
+    var memberjson = [];
+
+    var markers = new L.MarkerClusterGroup();
+
     for (i = 0; i < members.length; i++) {
-      var el = document.createElement('div');
-      el.className = 'member marker1';
+      point = {
+        type: 'Feature',
+        geometry: {
+          type: 'Point',
+          coordinates: [members[i].lng, members[i].lat]
+        },
+        properties: {
+          icon: {
+            className: 'member marker1', // class name to style
+          }
+        }
+      };
+      memberjson.push(point);
 
-      el.addEventListener('click', function() {
-          //window.alert(marker.properties.message);
+
+      var marker = L.marker(new L.LatLng(members[i].lat, members[i].lng), {
+          icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '0044FF'}),
       });
-      var marker = new mapboxgl.Marker(el);
-      marker.setLngLat([members[i].lng, members[i].lat]);
-      marker.addTo(map);
+      markers.addLayer(marker);
     }
+    map.addLayer(markers);
+    return;
 
-    /*for (i = 0; i < scholars.length; i++) {
-      var el = document.createElement('div');
-      el.className = 'scholar marker1';
-
-      el.addEventListener('click', function() {
-          //window.alert(marker.properties.message);
+    L.mapbox.featureLayer(memberjson).on('ready', function(e) {
+      var clusterGroup = new L.MarkerClusterGroup({
+        iconCreateFunction: function(cluster) {
+          return L.mapbox.marker.icon({
+            'marker-symbol': cluster.getChildCount(),
+            'marker-color': '#422'
+          });
+        }
       });
-      var marker = new mapboxgl.Marker(el);
-      marker.setLngLat([scholars[i].lng, scholars[i].lat]);
-      marker.addTo(map);
-    }*/
+
+      e.target.eachLayer(function(layer) {
+          clusterGroup.addLayer(layer);
+      });
+      map.addLayer(clusterGroup);
+      console.log("xxx");
+    });
+
+    /*memberLayer.on('layeradd', function(e) {
+      var marker = e.layer,
+      feature = marker.feature;
+      marker.setIcon(L.divIcon(feature.properties.icon));
+    });*/
+
+
+    memberLayer.setGeoJSON(memberjson);
+    memberLayer.on('ready', function(e) {
+      var clusterGroup = new L.MarkerClusterGroup({
+        iconCreateFunction: function(cluster) {
+          return L.mapbox.marker.icon({
+            'marker-symbol': cluster.getChildCount(),
+            'marker-color': '#422'
+          });
+        }
+      });
+
+      e.target.eachLayer(function(layer) {
+          clusterGroup.addLayer(layer);
+      });
+      map.addLayer(clusterGroup);
+      console.log("ccc");
+    });
+
+    /*L.mapbox.featureLayer()
+    .loadURL(memberjson)
+    .on('ready', function(e) {
+      var clusterGroup = new L.MarkerClusterGroup();
+      e.target.eachLayer(function(layer) {
+        clusterGroup.addLayer(layer);
+      });
+      map.addLayer(clusterGroup);
+    });*/
 
     if (typeof data.state != 'undefined') {
 
     } else {
-      map.setCenter(countries_center[data.country]);
-      map.flyTo(map.flyTo({
-        center: [-95.099104, 60.263248],
-        zoom: 9,
-        speed: 0.2,
-        curve: 1,
-        easing(t) {
-          return t;
-        }
-      }));
 
     }
 

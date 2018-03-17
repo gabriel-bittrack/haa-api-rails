@@ -273,9 +273,6 @@
         width: calc(100% + 12px);
         height: calc(100% + 28px);
         z-index: 0;
-        .mapboxgl-marker {
-          border-radius: 50%;
-        }
         .member {
           background: #02a1ce;
         }
@@ -283,10 +280,11 @@
           background: #cf0435;
         }
         .marker1 {
+          border-radius: 50%;
           width: 11px;
           height: 11px;
         }
-        .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right, .mapboxgl-ctrl-compass {
+        .leaflet-bottom, .mapboxgl-ctrl-compass {
           display: none !important;
         }
         .mapboxgl-ctrl-group {
