@@ -274,15 +274,88 @@
         height: calc(100% + 28px);
         z-index: 0;
         .member_cluster_icon {
-          background: #02a1ce;
+          position: relative;
+          border-radius: 50%;
+          width: 100%;
+          height: 100%;
+          & * {
+            border-radius: 50%;
+            position: absolute;
+          }
+          .marker3 {
+            background: rgba(2, 161, 206, 0.14);
+          }
+          .marker2 {
+            background: rgba(2, 161, 206, 0.15);
+          }
+          .marker1 {
+            background: rgba(2, 161, 206, 0.30);
+          }
+          .marker1:before {
+            background: rgb(2, 161, 206);
+          }
         }
         .scholar_cluster_icon {
-          background: #cf0435;
+          position: relative;
+          border-radius: 50%;
+          width: 100%;
+          height: 100%;
+          & * {
+            border-radius: 50%;
+            position: absolute;
+          }
+          .marker3 {
+            background: rgba(214, 3, 3, 0.14);
+          }
+          .marker2 {
+            background: rgba(214, 3, 3, 0.15);
+          }
+          .marker1 {
+            background: rgba(214, 3, 3, 0.30);
+          }
+          .marker1:before {
+            background: rgb(214, 3, 3);
+          }
         }
         .marker1 {
+          width: 28px;
+          height: 28px;
+          top: 8px;
+          left: 8px;
+        }
+        .marker1:before {
+          content: "";
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          top: 9px;
+          left: 9px;
           border-radius: 50%;
-          width: 11px;
-          height: 11px;
+        }
+        .marker2 {
+          width: 44px;
+          height: 44px;
+          top: 7px;
+          left: 7px;
+        }
+        .marker3 {
+          background: rgba(2, 161, 206, 0.14);
+          width: 58px;
+          height: 58px;
+          top: 0px;
+          left: 0px;
+        }
+        .leaflet-div-icon {
+          width: 58px !important;
+          height: 58px !important;
+          margin-top: -24px !important;
+          margin-left: -24px !important;
+          border: none;
+          background: transparent;
+        }
+        .leaflet-div-icon > img {
+          width: auto !important;
+          height: auto !important;
         }
         .leaflet-bottom, .mapboxgl-ctrl-compass {
           display: none !important;

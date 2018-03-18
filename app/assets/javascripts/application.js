@@ -62,8 +62,8 @@ function refresh_map2(data) {
     });
     for (i = 0; i < members.length; i++) {
       var marker = L.marker(new L.LatLng(members[i].lat, members[i].lng), {
-        //icon: memberIcon,
-        icon: L.mapbox.marker.icon({'marker-symbol': 'marker', 'marker-color': member_color}),
+        icon: memberIcon,
+        //icon: L.mapbox.marker.icon({'marker-symbol': 'marker', 'marker-color': member_color}),
       });
       layer["members"].addLayer(marker);
     }
@@ -77,8 +77,8 @@ function refresh_map2(data) {
     });
     for (i = 0; i < scholars.length; i++) {
       var marker = L.marker(new L.LatLng(scholars[i].lat, scholars[i].lng), {
-        //icon: scholarIcon,
-        icon: L.mapbox.marker.icon({'marker-symbol': 'marker', 'marker-color': scholar_color}),
+        icon: scholarIcon,
+        //icon: L.mapbox.marker.icon({'marker-symbol': 'marker', 'marker-color': scholar_color}),
       });
       layer["scholars"].addLayer(marker);
     }
