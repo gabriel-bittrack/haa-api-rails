@@ -48,11 +48,16 @@ function refresh_map2(data) {
   	iconUrl: '/assets/scholar_marker.png',
   	iconSize: [9, 9]
   });
-  overlays = L.layerGroup().addTo(map);
 
+  clearMap();
   $.get("/get_search_results", data, function(response) {
     var members = response.members;
     var scholars = response.scholars;
+
+    if (typeof data.state != 'undefined') {
+      var state = response.selected_state;
+      map.flyTo(L.latLng(state[0].lat, state[0].lng),6);
+    }
 
     layer["members"] = new L.MarkerClusterGroup({
       iconCreateFunction: function(cluster) {
@@ -84,13 +89,13 @@ function refresh_map2(data) {
     }
     map.addLayer(layer["scholars"]);
 
-    if (typeof data.state != 'undefined') {
-
-    } else {
-
-    }
-
   });
+}
+
+function clearMap() {
+  for (key in layer) {
+    layer[key].clearLayers();
+  }
 }
 
 function refresh_map(data) {
@@ -186,7 +191,7 @@ jQuery(document).on('turbolinks:load',function(){
   $("#states_dropdown").change(function(e) {
     coutry = $("#countries_dropdown option:selected").attr("country") == "US" ? "United States" : "Canada";
     data = {country: country, state: $("#states_dropdown").val()};
-    refresh_map(data);
+    refresh_map2(data);
 
     data = {country: $("#countries_dropdown option:selected").attr("country"), state: $("#states_dropdown").val()};
     $.get("/get_cities", data, function(response) {
@@ -215,7 +220,7 @@ jQuery(document).on('turbolinks:load',function(){
       state: $("#states_dropdown").val(),
       city: $("#cities_dropdown").val()
     };
-    refresh_map(data);
+    refresh_map2(data);
 
     $(".breadcrumb").removeClass("active");
     $(".breadcrumb.city").removeClass("last");
