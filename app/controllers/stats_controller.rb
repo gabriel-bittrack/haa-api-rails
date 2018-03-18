@@ -59,15 +59,19 @@ class StatsController < ApplicationController
   def get_cities
     @cities = City.where("country = ? AND state = ?", params[:country], params[:state])
     @members = Member.where("state = ?", params[:state])
-    puts ">>>> found members : #{@members.inspect}"
     render json: @cities
   end
 
   def get_search_results
     @cities = City.where("country = ? AND state = ?", params[:country], params[:state])
-    #@members = Member.where("city = ? AND state = ?", params[:city], params[:state])
+
     @members = Member.map_search(params)
     @scholars = Scholar.map_search(params)
+    scholarships = 0
+    @scholars.each do |scholar|
+      scholarships += scholar.total_disbursement_allotment
+    end
+    puts "Scholarships : #{@scholarships}"
     @selected_state = States.instance.find_us_state_by_code(params[:state]) if params[:state].present?
 
     render json: {
@@ -75,6 +79,7 @@ class StatsController < ApplicationController
       selected_state: @selected_state,
       members: @members.as_json(options: { count: @members.length }),
       scholars: @scholars.as_json(options: {count: @scholars.length }),
+      scholarships: scholarships
     }
   end
 

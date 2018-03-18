@@ -49,15 +49,18 @@
     .col1.cell
       .stats_info
         .members_info.info
-          h1.number 486
+          h1.number
+            span#total_members
           .text MEMBERS
           .three_stars
         .scholars_info.info
-          h1.number 1,179
+          h1.number
+            span#total_scholars
           .text SCHOLARS
           .three_stars
         .sholarships_info.info
-          h1.number $85m
+          h1.number
+            span#total_scholarships
           .text SCHOLARSHIPS GIVEN
           .three_stars
         .sponsor_info
@@ -81,6 +84,54 @@
 
           country = (country == 'us') ? 'United States' : 'Canada';
           refresh_map2({country: country});
+
+          /*mapboxgl.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
+          map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv',
+            zoom: 3,
+            center: [-101.384458, 39.414028]
+          });
+          var nav = new mapboxgl.NavigationControl();
+          map.addControl(nav, 'top-right');
+
+
+          map.setView([40.73, -74.011], 13)
+          map.addLayer(mapboxgl.tileLayer('mapbox.streets'));
+
+          var country = "#{@country}";
+          if (country == "us") {
+            map.setCenter([-88.503195, 36.876669]);
+          } else {
+            map.setCenter([-99.839907, 58.551971]);
+          }
+
+          country = (country == 'us') ? 'United States' : 'Canada';
+          refresh_map({country: country});
+
+
+          mapboxgl.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
+
+          map = L.mapbox.map('map')
+              .setView([36.876669, -88.503195], 4);
+          myLayer = map.addLayer(L.mapbox.tileLayer('mapbox.light'));
+
+          L.marker([38.913184, -77.031952]).addTo(map);
+          L.marker([37.775408, -122.413682]).addTo(map);
+
+          myLayer.on('layeradd', function(e) {
+            var marker = e.layer,
+              feature = marker.feature;
+            marker.setIcon(L.divIcon(feature.properties.icon));
+          });
+
+          L.mapbox.featureLayer('examples.map-h61e8o8e').on('ready', function(e) {
+              var clusterGroup = new L.MarkerClusterGroup();
+              e.target.eachLayer(function(layer) {
+                  clusterGroup.addLayer(layer);
+              });
+              map.addLayer(clusterGroup);
+          });*/
 
       .visual_info
         .color_bars

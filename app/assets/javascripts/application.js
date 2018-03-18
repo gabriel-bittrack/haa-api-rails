@@ -53,7 +53,11 @@ function refresh_map2(data) {
   $.get("/get_search_results", data, function(response) {
     var members = response.members;
     var scholars = response.scholars;
+    var scholarships = response.scholarships;
 
+    $("#total_members").text(members.length);
+    $("#total_scholars").text(scholars.length);
+    $("#total_scholarships").text(numeral(scholarships).format('($ 0.00 a)'));
     if (typeof data.state != 'undefined') {
       var state = response.selected_state;
       map.flyTo(L.latLng(state[0].lat, state[0].lng),6);
@@ -102,6 +106,8 @@ function refresh_map(data) {
   $.get("/get_search_results", data, function(response) {
     var members = response.members;
     var scholars = response.scholars;
+    alert(members.length);
+    $("total_members").text = members.length;
 
     for (i = 0; i < members.length; i++) {
       var el = document.createElement('div');
