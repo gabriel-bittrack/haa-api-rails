@@ -55,6 +55,19 @@ class Scholar < ApplicationRecord
           .limit_by_standing
   end
 
+  def self.map_scholarship_total(search)
+    scholarships = 0
+
+    scholars = Scholar.search_country(search[:country])
+           .search_state(search[:state])
+           .search_alumni(search[:alumni])
+
+    scholars.each do |scholar|
+     scholarships += scholar.total_disbursement_allotment
+    end
+    scholarships
+  end
+
   def self.to_csv(fields = column_names, options = {})
     CSV.generate(options) do |csv|
       csv << fields

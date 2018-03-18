@@ -73,6 +73,11 @@ class StatsController < ApplicationController
     s_two_thousands = Scholar.sum_two_thousands
     s_two_thousand_tens = Scholar.sum_two_thousand_tens
 
+    scholarship_eighties = ScholarScholarship.sum_eighties
+    scholarship_nineties = ScholarScholarship.sum_nineties
+    scholarship_two_thousands = ScholarScholarship.sum_two_thousands
+    scholarship_two_thousand_tens = ScholarScholarship.sum_two_thousand_tens
+
     render json: {
       members: {
         eighties: eighties,
@@ -85,26 +90,28 @@ class StatsController < ApplicationController
         nineties: s_nineties,
         two_thousands: s_two_thousands,
         two_thousand_tens: s_two_thousand_tens
+      },
+      scholarships: {
+        eighties: scholarship_eighties,
+        nineties: scholarship_nineties,
+        two_thousands: scholarship_two_thousands,
+        two_thousand_tens: scholarship_two_thousand_tens
       }
     }
   end
 
   def get_search_results
-    @cities = City.where("country = ? AND state = ?", params[:country], params[:state])
-
-    @members = Member.map_search(params)
-    @scholars = Scholar.map_search(params)
-    scholarships = 0
-    @scholars.each do |scholar|
-      scholarships += scholar.total_disbursement_allotment
-    end
-    @selected_state = States.instance.find_us_state_by_code(params[:state]) if params[:state].present?
+    cities = City.where("country = ? AND state = ?", params[:country], params[:state])
+    members = Member.map_search(params)
+    scholars = Scholar.map_search(params)
+    scholarships = Scholar.map_scholarship_total(params)
+    selected_state = States.instance.find_us_state_by_code(params[:state]) if params[:state].present?
 
     render json: {
-      cities: @cities,
-      selected_state: @selected_state,
-      members: @members.as_json(options: { count: @members.length }),
-      scholars: @scholars.as_json(options: {count: @scholars.length }),
+      cities: cities,
+      selected_state: selected_state,
+      members: members.as_json(options: { count: members.length }),
+      scholars: scholars.as_json(options: {count: scholars.length }),
       scholarships: scholarships
     }
   end
