@@ -77,4 +77,120 @@ class Member < ApplicationRecord
       end
     end
   end
+
+  def self.sum_seventies
+    seventies.count
+  end
+
+  def self.sum_eighties
+    eighties.count
+  end
+
+  def self.sum_nineties
+    nineties.count
+  end
+
+  def self.sum_two_thousands
+    two_thousands.count
+  end
+
+  def self.sum_two_thousand_tens
+    two_thousand_tens.count
+  end
+
+  def self.sum_all_time
+    eighties + nineties + two_thousands + two_thousand_tens
+  end
+
+  def self.seventies
+    Member.where(class_year: SEVENTIES)
+  end
+
+  def self.eighties
+    Member.where(class_year: EIGHTIES)
+  end
+
+  def self.nineties
+    Member.where(class_year: NINETIES)
+  end
+
+  def self.two_thousands
+    Member.where(class_year: TWO_THOUSANDS)
+  end
+
+  def self.two_thousand_tens
+    Member.where(class_year: TWO_THOUSAND_TENS)
+  end
+
+  private
+
+  SEVENTIES =
+    %(
+      1970
+      1971
+      1972
+      1973
+      1974
+      1975
+      1976
+      1977
+      1978
+      1979
+    )
+
+  EIGHTIES =
+    %w(
+      1980
+      1981
+      1982
+      1983
+      1984
+      1985
+      1986
+      1987
+      1988
+      1989
+    ).freeze
+
+  NINETIES =
+    %w(
+      1990
+      1991
+      1992
+      1993
+      1994
+      1995
+      1996
+      1997
+      1998
+      1999
+    ).freeze
+
+  TWO_THOUSANDS =
+    %w(
+      2000
+      2001
+      2002
+      2003
+      2004
+      2005
+      2006
+      2007
+      2008
+      2009
+    ).freeze
+
+  TWO_THOUSAND_TENS =
+    %w(
+      2010
+      2011
+      2012
+      2013
+      2014
+      2015
+      2016
+      2017
+      2018
+      2019
+    ).freeze
 end

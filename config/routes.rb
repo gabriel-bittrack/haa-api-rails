@@ -37,6 +37,7 @@ end
   get 'search/scholars' => 'search/scholars#index'
   get 'get_cities' => 'stats#get_cities'
   get 'get_search_results' => 'stats#get_search_results'
+  get 'growth' => 'stats#growth'
   get 'history' => 'stats#history'
   get 'demographics(/:type)' => 'stats#demographics'
 

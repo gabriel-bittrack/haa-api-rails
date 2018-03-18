@@ -64,21 +64,24 @@ class Scholar < ApplicationRecord
     end
   end
 
+  def self.sum_seventies
+    seventies.count
+  end
 
   def self.sum_eighties
-    eighties
+    eighties.count
   end
 
   def self.sum_nineties
-    nineties
+    nineties.count
   end
 
   def self.sum_two_thousands
-    two_thousands
+    two_thousands.count
   end
 
   def self.sum_two_thousand_tens
-    two_thousand_tens
+    two_thousand_tens.count
   end
 
   def self.sum_all_time
@@ -95,23 +98,41 @@ class Scholar < ApplicationRecord
     total_awarded
   end
 
+  def self.seventies
+    Scholar.where(class_year: SEVENTIES)
+  end
+
   def self.eighties
-    Scholar.where(class_year: EIGHTIES).limit_by_standing
+    Scholar.where(class_year: EIGHTIES)
   end
 
   def self.nineties
-    Scholar.where(class_year: NINETIES).limit_by_standing
+    Scholar.where(class_year: NINETIES)
   end
 
   def self.two_thousands
-    Scholar.where(class_year: TWO_THOUSANDS).limit_by_standing
+    Scholar.where(class_year: TWO_THOUSANDS)
   end
 
   def self.two_thousand_tens
-    Scholar.where(class_year: TWO_THOUSAND_TENS).limit_by_standing
+    Scholar.where(class_year: TWO_THOUSAND_TENS)
   end
 
   private
+
+  SEVENTIES =
+    %(
+      1970
+      1971
+      1972
+      1973
+      1974
+      1975
+      1976
+      1977
+      1978
+      1979
+    )
 
   EIGHTIES =
     %w(

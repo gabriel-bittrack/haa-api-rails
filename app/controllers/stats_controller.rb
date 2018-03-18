@@ -62,6 +62,33 @@ class StatsController < ApplicationController
     render json: @cities
   end
 
+  def growth
+    eighties = Member.sum_eighties
+    nineties = Member.sum_nineties
+    two_thousands = Member.sum_two_thousands
+    two_thousand_tens = Member.sum_two_thousand_tens
+
+    s_eighties = Scholar.sum_eighties
+    s_nineties = Scholar.sum_nineties
+    s_two_thousands = Scholar.sum_two_thousands
+    s_two_thousand_tens = Scholar.sum_two_thousand_tens
+
+    render json: {
+      members: {
+        eighties: eighties,
+        nineties: nineties,
+        two_thousands: two_thousands,
+        two_thousand_tens: two_thousand_tens
+      },
+      scholars: {
+        eighties: s_eighties,
+        nineties: s_nineties,
+        two_thousands: s_two_thousands,
+        two_thousand_tens: s_two_thousand_tens
+      }
+    }
+  end
+
   def get_search_results
     @cities = City.where("country = ? AND state = ?", params[:country], params[:state])
 
@@ -71,7 +98,6 @@ class StatsController < ApplicationController
     @scholars.each do |scholar|
       scholarships += scholar.total_disbursement_allotment
     end
-    puts "Scholarships : #{@scholarships}"
     @selected_state = States.instance.find_us_state_by_code(params[:state]) if params[:state].present?
 
     render json: {
