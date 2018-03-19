@@ -56,8 +56,8 @@ function refresh_map2(data) {
     var scholarships = response.scholarships;
 
     $("#total_members").text(members.length);
-    $("#total_scholars").text(scholars.length);
-    $("#total_scholarships").text(numeral(scholarships).format('($ 0.00 a)'));
+    $("#total_scholars").text(numeral(scholars.length).format('0,0'));
+    $("#total_scholarships").text(numeral(scholarships).format('($0.00a)'));
     if (typeof data.state != 'undefined') {
       var state = response.selected_state;
       map.flyTo(L.latLng(state[0].lat, state[0].lng),6);
@@ -152,8 +152,6 @@ function refresh_map(data) {
   });
 }
 jQuery(document).on('turbolinks:load',function(){
-
-  //map.scrollZoom.disable();
 
   var modal_options = {duration: 100, overlay: {fillColor: '#000', opacity: 0.68},
     offset: function() {
@@ -298,5 +296,4 @@ jQuery(document).on('turbolinks:load',function(){
       map.removeLayer(layer[value]);
     }
   });
-
 });

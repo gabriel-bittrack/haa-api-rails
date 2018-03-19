@@ -80,22 +80,22 @@ class StatsController < ApplicationController
 
     render json: {
       members: {
-        eighties: eighties,
-        nineties: nineties,
-        two_thousands: two_thousands,
-        two_thousand_tens: two_thousand_tens
+        "1980": eighties,
+        "1990": nineties,
+        "2000": two_thousands,
+        "2010": two_thousand_tens
       },
       scholars: {
-        eighties: s_eighties,
-        nineties: s_nineties,
-        two_thousands: s_two_thousands,
-        two_thousand_tens: s_two_thousand_tens
+        "1980": s_eighties,
+        "1990": s_nineties,
+        "2000": s_two_thousands,
+        "2010": s_two_thousand_tens
       },
       scholarships: {
-        eighties: scholarship_eighties,
-        nineties: scholarship_nineties,
-        two_thousands: scholarship_two_thousands,
-        two_thousand_tens: scholarship_two_thousand_tens
+        "1980": scholarship_eighties,
+        "1990": scholarship_nineties,
+        "2000": scholarship_two_thousands,
+        "2010": scholarship_two_thousand_tens
       }
     }
   end
