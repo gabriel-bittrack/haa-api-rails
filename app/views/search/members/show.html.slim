@@ -11,7 +11,7 @@
         .col.col1
           .sponsor_photo
             =image_tag @member.profile_image.url, class: "sponsor_photo1"
-          .sponsor_photo
+          .sponsor_video
             - if @member.web_url
               =@member.web_url.html_safe
         .col.col2

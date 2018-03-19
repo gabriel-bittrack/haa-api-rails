@@ -18,6 +18,140 @@
 //= require turbolinks
 //= require_tree .
 
+var member_color = "02a1ce";
+var scholar_color = "cf0435";
+var countries_center = {US: [-87.928880, 41.480055], CA: [-95.099104, 60.263248]};
+var map;
+var layer = [];
+
+function getDivIcon(count, type) {
+  if (count < 10) {
+    html = "<div class='" + type + "_cluster_icon' data-value='" + count + "'><div class='marker1'></div></div>";
+  } else if (count < 100) {
+    html = "<div class='" + type + "_cluster_icon' data-value='" + count + "'><div class='marker2'><div class='marker1'></div></div></div>";
+  } else {
+    html = "<div class='" + type + "_cluster_icon' data-value='" + count + "'><div class='marker3'><div class='marker2'><div class='marker1'></div></div></div></div>";
+  }
+
+  return new L.DivIcon({
+    iconSize: [20, 20],
+    html: html
+  });
+}
+
+function refresh_map2(data) {
+  var memberIcon = L.icon({
+  	iconUrl: '/assets/member_marker.png',
+  	iconSize: [9, 9]
+  });
+  var scholarIcon = L.icon({
+  	iconUrl: '/assets/scholar_marker.png',
+  	iconSize: [9, 9]
+  });
+
+  clearMap();
+  $.get("/get_search_results", data, function(response) {
+    var members = response.members;
+    var scholars = response.scholars;
+    var scholarships = response.scholarships;
+
+    $("#total_members").text(members.length);
+    $("#total_scholars").text(numeral(scholars.length).format('0,0'));
+    $("#total_scholarships").text(numeral(scholarships).format('($0.00a)'));
+
+    if (typeof data.state != 'undefined') {
+      var state = response.selected_state;
+      map.flyTo(L.latLng(state[0].lat, state[0].lng),6);
+    }
+
+    layer["members"] = new L.MarkerClusterGroup({
+      iconCreateFunction: function(cluster) {
+        count = cluster.getChildCount();
+        return getDivIcon(count, "member");
+      }
+    });
+    for (i = 0; i < members.length; i++) {
+      var marker = L.marker(new L.LatLng(members[i].lat, members[i].lng), {
+        icon: memberIcon,
+        //icon: L.mapbox.marker.icon({'marker-symbol': 'marker', 'marker-color': member_color}),
+      });
+      layer["members"].addLayer(marker);
+    }
+    map.addLayer(layer["members"]);
+
+    layer["scholars"] = new L.MarkerClusterGroup({
+      iconCreateFunction: function(cluster) {
+        count = cluster.getChildCount();
+        return getDivIcon(count, "scholar");
+      }
+    });
+    for (i = 0; i < scholars.length; i++) {
+      var marker = L.marker(new L.LatLng(scholars[i].lat, scholars[i].lng), {
+        icon: scholarIcon,
+        //icon: L.mapbox.marker.icon({'marker-symbol': 'marker', 'marker-color': scholar_color}),
+      });
+      layer["scholars"].addLayer(marker);
+    }
+    map.addLayer(layer["scholars"]);
+
+  });
+}
+
+function clearMap() {
+  for (key in layer) {
+    layer[key].clearLayers();
+  }
+}
+
+function refresh_map(data) {
+  $.get("/get_search_results", data, function(response) {
+    var members = response.members;
+    var scholars = response.scholars;
+    alert(members.length);
+    $("total_members").text = members.length;
+
+    for (i = 0; i < members.length; i++) {
+      var el = document.createElement('div');
+      el.className = 'member marker1';
+
+      el.addEventListener('click', function() {
+          //window.alert(marker.properties.message);
+      });
+      var marker = new mapboxgl.Marker(el);
+      marker.setLngLat([members[i].lng, members[i].lat]);
+      marker.addTo(map);
+    }
+
+    /*for (i = 0; i < scholars.length; i++) {
+      var el = document.createElement('div');
+      el.className = 'scholar marker1';
+
+      el.addEventListener('click', function() {
+          //window.alert(marker.properties.message);
+      });
+      var marker = new mapboxgl.Marker(el);
+      marker.setLngLat([scholars[i].lng, scholars[i].lat]);
+      marker.addTo(map);
+    }*/
+
+    if (typeof data.state != 'undefined') {
+
+    } else {
+      map.setCenter(countries_center[data.country]);
+      map.flyTo(map.flyTo({
+        center: [-95.099104, 60.263248],
+        zoom: 9,
+        speed: 0.2,
+        curve: 1,
+        easing(t) {
+          return t;
+        }
+      }));
+
+    }
+
+  });
+}
 jQuery(document).on('turbolinks:load',function(){
 
   var modal_options = {duration: 100, overlay: {fillColor: '#000', opacity: 0.68},
@@ -30,6 +164,7 @@ jQuery(document).on('turbolinks:load',function(){
       };
     }
   };
+
   $('.modal').plainModal(modal_options);
   $(".au_link").click(function(e) {
     $('#aboutus_modal').plainModal('open');
@@ -54,9 +189,16 @@ jQuery(document).on('turbolinks:load',function(){
     return false;
   });
 
-  $("#states_dropdown").change(function(e) {
-    data = {state: $("#states_dropdown").val(), country: $("#countries_dropdown option:selected").attr("country")};
+  $("#countries_dropdown").change(function(e) {
 
+  });
+
+  $("#states_dropdown").change(function(e) {
+    coutry = $("#countries_dropdown option:selected").attr("country") == "US" ? "United States" : "Canada";
+    data = {country: country, state: $("#states_dropdown").val()};
+    refresh_map2(data);
+
+    data = {country: $("#countries_dropdown option:selected").attr("country"), state: $("#states_dropdown").val()};
     $.get("/get_cities", data, function(response) {
       $('#cities_dropdown').empty();
       $('#cities_dropdown').append('<option value="" selected="selected" disabled>SELECT A CITY</option>');
@@ -73,10 +215,18 @@ jQuery(document).on('turbolinks:load',function(){
       $(".breadcrumb.state").addClass("active");
       $(".breadcrumb.city").addClass("last");
       $(".breadcrumb.city").fadeIn();
-    })
+    });
   });
 
   $("#cities_dropdown").change(function(e) {
+    coutry = $("#countries_dropdown option:selected").attr("country") == "US" ? "United States" : "Canada";
+    data = {
+      country: country,
+      state: $("#states_dropdown").val(),
+      city: $("#cities_dropdown").val()
+    };
+    refresh_map2(data);
+
     $(".breadcrumb").removeClass("active");
     $(".breadcrumb.city").removeClass("last");
     $(".breadcrumb.city").addClass("active");
@@ -102,6 +252,13 @@ jQuery(document).on('turbolinks:load',function(){
     },
   });
 
+  $('.history .inner-slider').slick({
+    swipe: false,
+    speed: 500,
+    fade: true,
+  });
+
+
   $('.demographics .sliders').slick({
     dots: true,
     appendDots: $(".timeline"),
@@ -123,4 +280,14 @@ jQuery(document).on('turbolinks:load',function(){
     return false;
   });
 
+  $(".color_bars > .bar").click(function(e) {
+    $(this).toggleClass("checked");
+
+    var value = $(this).attr("data-value");
+    if ($(this).hasClass("checked")) {
+      map.addLayer(layer[value]);
+    } else {
+      map.removeLayer(layer[value]);
+    }
+  });
 });

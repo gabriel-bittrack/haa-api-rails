@@ -1,8 +1,14 @@
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/leaflet.markercluster.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.css' rel='stylesheet' />
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v1.0.0/MarkerCluster.Default.css' rel='stylesheet' />
 .stats
   .header
     .left
       .logo
-        = link_to(image_tag("HAA_logo.png", :class => "haa_logo"), "/")
+        - if @country == 'us'
+          = link_to(image_tag("HAA_logo.png", :class => "haa_logo"), "/")
+        - else
+          = link_to(image_tag("medallion.png", :class => "haa_logo"), "/")
       .search_dropdown_wrap.dropdown.dd_style1
         <select class="chosen-select search_dropdown" onchange="location = this.value;">
           <option value="" selected="selected" disabled>Find a Member</option>
@@ -46,15 +52,18 @@
     .col1.cell
       .stats_info
         .members_info.info
-          h1.number 486
+          h1.number
+            span#total_members -
           .text MEMBERS
           .three_stars
         .scholars_info.info
-          h1.number 1,179
+          h1.number
+            span#total_scholars -
           .text SCHOLARS
           .three_stars
         .sholarships_info.info
-          h1.number $85m
+          h1.number
+            span#total_scholarships -
           .text SCHOLARSHIPS GIVEN
           .three_stars
         .sponsor_info
@@ -64,61 +73,193 @@
     .col2.cell
       .map_view
         <div id='map'></div>
-        javascript:
-          mapboxgl.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
-          var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv'
-          });
-          var nav = new mapboxgl.NavigationControl();
-          map.addControl(nav, 'top-right');
-          //map.scrollZoom.disable();
-
-          var el = document.createElement('div');
-          el.className = 'marker';
-          el.style.backgroundImage = 'url(http://files.softicons.com/download/web-icons/vista-map-markers-icons-by-icons-land/png/32x32/MapMarker_Marker_Outside_Pink.png)';
-          el.style.width = '32px';
-          el.style.height = '32px';
-
-          el.addEventListener('click', function() {
-              window.alert(marker.properties.message);
-          });
-          var marker = new mapboxgl.Marker(el);
-          marker.setLngLat([-66.324462890625, -16.024695711685304])
-          marker.addTo(map);
-
       .visual_info
         .color_bars
-          .members.bar
+          .members.bar.checked{data-value="members"}
             .outer
               .inner
             .title MEMBERS
-          .scholars.bar
+          .scholars.bar.checked{data-value="scholars"}
             .outer
               .inner
             .title SCHOLARS
-          .alumni.bar
+          .alumni.bar.checked{data-value="alumni"}
             .outer
               .inner
             .title ALUMNI
-          .friends.bar
+          .friends.bar.checked{data-value="friends"}
             .outer
               .inner
             .title FRIENDS of DISTINCTION
-          .donations.bar
+          .donations.bar.hidden
             .outer
               .inner
             .title DONATIONS
-          .partners.bar
+          .partners.bar.hidden
             .outer
               .inner
             .title COLLEGIATE PARTNERS
         .line_graph
           .members.graph
             .title MEMBERS
+            <canvas id="members_graph" width="344" height="85"></canvas>
           .scholars.graph
             .title SCHOLARS
+            <canvas id="scholars_graph" width="344" height="85"></canvas>
           .scholarships.graph
             .title SCHOLARSHIPS GIVEN
+            <canvas id="scholarships_graph" width="344" height="85"></canvas>
 
   = render partial: "/welcome/sponsor_modal"
+
+javascript:
+  L.mapbox.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
+  map = L.mapbox.map('map', false, {zoomControl: false, scrollWheelZoom: false, featureLayer: false, tileLayer: false, gridLayer: false});
+  styleLayer = L.mapbox.styleLayer('mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv');
+  styleLayer.addTo(map);
+
+  var country = "#{@country}";
+  if (country == "us") {
+    map.setView([36.876669, -88.503195], 4);
+  } else {
+    map.setView([58.551971, -99.839907], 4);
+  }
+
+  country = (country == 'us') ? 'United States' : 'Canada';
+  refresh_map2({country: country});
+
+  new L.Control.Zoom({ position: 'topright' }).addTo(map);
+  map.on('zoomed', function () {
+      currentZoom = map.getZoom();
+      if (currentZoom == 15) {
+          polygon.setStyle({weight: 2});
+      }
+      else {
+          polygon.setStyle({weight: 3});
+      }
+  });
+  jQuery(document).ready(function($) {
+    $.get("/growth", {}, function(response) {
+
+      var m = {
+        "members" : {"color": "#01c0f6"},
+        "scholars" : {"color": "#ff4040"},
+        "scholarships" : {"color": "#23b03a"}
+      };
+
+      for (i in m) {
+        var yLabels = [], data = [];
+        var sum = 0;
+        for (k in response[i]) {
+          sum += response[i][k];
+          yLabels.push(k);
+          data.push(sum);
+        }
+
+        new Chart(document.getElementById(i + "_graph"), {
+          type: 'line',
+          data: {
+            labels: yLabels,
+            datasets: [{
+              data: data,
+              label: false,
+              borderColor: "#abc4d6",
+              pointRadius: 4,
+              borderWidth: 1,
+              pointBackgroundColor: m[i].color,
+              pointBorderColor: m[i].color,
+              fill: false
+            }]
+          },
+          options: {
+            legend: {
+              display: false
+            },
+            tooltips: {
+              callbacks: {
+                label: function(tooltipItem) {
+                  return tooltipItem.yLabel;
+                }
+              }
+            },
+            scales: {
+              yAxes: [{
+                gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                    zeroLineColor: "rgba(105,130,149,0.3)",
+                    zeroLineWidth: 0
+                },
+                ticks: {
+                  fontColor: "#3c4d5a",
+                  fontFamily: "Montserrat",
+                  fontSize: 9,
+                  beginAtZero: true
+                }
+              }],
+              xAxes: [{
+                gridLines: {
+                  color: "rgba(0, 0, 0, 0)",
+                },
+                ticks: {
+                  fontColor: "#3c4d5a",
+                  fontFamily: "Montserrat",
+                  fontSize: 9,
+                  beginAtZero: true
+                }
+              }]
+           }
+          }
+        });
+      }
+
+    });
+
+  });
+
+  /*mapboxgl.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
+  map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv',
+    zoom: 3,
+    center: [-101.384458, 39.414028]
+  });
+  var nav = new mapboxgl.NavigationControl();
+  map.addControl(nav, 'top-right');
+
+
+  map.setView([40.73, -74.011], 13)
+  map.addLayer(mapboxgl.tileLayer('mapbox.streets'));
+
+  var country = "#{@country}";
+  if (country == "us") {
+    map.setCenter([-88.503195, 36.876669]);
+  } else {
+    map.setCenter([-99.839907, 58.551971]);
+  }
+
+  country = (country == 'us') ? 'United States' : 'Canada';
+  refresh_map({country: country});
+
+
+  mapboxgl.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
+
+  map = L.mapbox.map('map')
+      .setView([36.876669, -88.503195], 4);
+  myLayer = map.addLayer(L.mapbox.tileLayer('mapbox.light'));
+
+  L.marker([38.913184, -77.031952]).addTo(map);
+  L.marker([37.775408, -122.413682]).addTo(map);
+
+  myLayer.on('layeradd', function(e) {
+    var marker = e.layer,
+      feature = marker.feature;
+    marker.setIcon(L.divIcon(feature.properties.icon));
+  });
+
+  L.mapbox.featureLayer('examples.map-h61e8o8e').on('ready', function(e) {
+      var clusterGroup = new L.MarkerClusterGroup();
+      e.target.eachLayer(function(layer) {
+          clusterGroup.addLayer(layer);
+      });
+      map.addLayer(clusterGroup);
+  });*/

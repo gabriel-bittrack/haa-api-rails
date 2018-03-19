@@ -231,6 +231,7 @@
           color: #abc4d6;
           margin-bottom: 10px;
           font-weight: 300;
+          min-height: 38px;
         }
         .text {
           font-size: 11px;
@@ -273,27 +274,115 @@
         width: calc(100% + 12px);
         height: calc(100% + 28px);
         z-index: 0;
-        .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right, .mapboxgl-ctrl-compass {
+        .member_cluster_icon {
+          position: relative;
+          border-radius: 50%;
+          width: 100%;
+          height: 100%;
+          & * {
+            border-radius: 50%;
+            position: absolute;
+          }
+          .marker3 {
+            background: rgba(2, 161, 206, 0.14);
+          }
+          .marker2 {
+            background: rgba(2, 161, 206, 0.15);
+          }
+          .marker1 {
+            background: rgba(2, 161, 206, 0.30);
+          }
+          .marker1:before {
+            background: rgb(2, 161, 206);
+          }
+        }
+        .scholar_cluster_icon {
+          position: relative;
+          border-radius: 50%;
+          width: 100%;
+          height: 100%;
+          & * {
+            border-radius: 50%;
+            position: absolute;
+          }
+          .marker3 {
+            background: rgba(214, 3, 3, 0.14);
+          }
+          .marker2 {
+            background: rgba(214, 3, 3, 0.15);
+          }
+          .marker1 {
+            background: rgba(214, 3, 3, 0.30);
+          }
+          .marker1:before {
+            background: rgb(214, 3, 3);
+          }
+        }
+        .marker1 {
+          width: 28px;
+          height: 28px;
+          top: 8px;
+          left: 8px;
+        }
+        .marker1:before {
+          content: "";
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          top: 9px;
+          left: 9px;
+          border-radius: 50%;
+        }
+        .marker2 {
+          width: 44px;
+          height: 44px;
+          top: 7px;
+          left: 7px;
+        }
+        .marker3 {
+          background: rgba(2, 161, 206, 0.14);
+          width: 58px;
+          height: 58px;
+          top: 0px;
+          left: 0px;
+        }
+        .leaflet-div-icon {
+          width: 58px !important;
+          height: 58px !important;
+          margin-top: -24px !important;
+          margin-left: -24px !important;
+          border: none;
+          background: transparent;
+        }
+        .leaflet-div-icon > img {
+          width: auto !important;
+          height: auto !important;
+        }
+        .leaflet-bottom, .mapboxgl-ctrl-compass {
           display: none !important;
         }
-        .mapboxgl-ctrl-group {
+        .leaflet-control-zoom {
           background: #1c3549;
           border-radius: 0px;
           width: 27px;
+          border: 1px solid #5e7689;
+          margin: 16px;
         }
-
-        .mapboxgl-ctrl-group > button {
-          width: 27px;
+        .leaflet-control-zoom > a {
+          width: 100%;
           height: 30px;
           border-radius: 0px !important;
-          background-image: none;
           color: #fff;
           font-size: 18px;
           display: block;
           border: 0px;
           margin: 0px;
+          background-image: none;
+          text-indent: 2px;
+          text-align: center;
+          line-height: 30px;
         }
-        .mapboxgl-ctrl-group > button:hover {
+        .leaflet-control-zoom > a:hover {
           background-color: rgba(0,0,0,0.18);
         }
       }
@@ -315,6 +404,7 @@
           margin-bottom: 10px;
           padding: 6px 10px 5px;
           text-align: center;
+          cursor: pointer;
           .outer, .inner {
             display: inline-block;
             border-radius: 50%;
@@ -347,7 +437,7 @@
           .outer {
             border-color: #005784;
           }
-          .inner {
+          &.checked .inner {
             background: #005784;
           }
         }
@@ -356,7 +446,7 @@
           .outer {
             border-color: #960202;
           }
-          .inner {
+          &.checked .inner {
             background: #960202;
           }
         }
@@ -365,16 +455,17 @@
           .outer {
             border-color: #be7000;
           }
-          .inner {
+          &.checked .inner {
             background: #be7000;
           }
         }
         .friends {
           background: #a101af;
+          margin-bottom: 0px;
           .outer {
             border-color: #7e0489;
           }
-          .inner {
+          &.checked .inner {
             background: #7e0489;
           }
         }
@@ -383,7 +474,7 @@
           .outer {
             border-color: #008616;
           }
-          .inner {
+          &.checked .inner {
             background: #008616;
           }
         }
@@ -393,7 +484,7 @@
           .outer {
             border-color: #7e909f;
           }
-          .inner {
+          &.checked .inner {
             background: #7e909f;
           }
         }
@@ -615,75 +706,77 @@
       margin-bottom: 12px;
     }
   }
-  .timeline {
-    border-top: 1px solid #5e7689;
+
+}
+
+.timeline {
+  border-top: 1px solid #5e7689;
+}
+.sliders {
+  .slick-list {
+    overflow: visible;
   }
-  .sliders {
-    .slick-list {
-      overflow: visible;
-    }
-  }
-  .slick-dots {
-    bottom: -45px;
-    display: block;
-    width: 100%;
-    padding: 0;
-    list-style: none;
-    text-align: center;
-    padding: 15px 0px 15px;
-    li {
-      border-bottom: 2px solid #57778b;
+}
+.slick-dots {
+  bottom: -45px;
+  display: block;
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  padding: 15px 0px 15px;
+  li {
+    border-bottom: 2px solid #57778b;
+    position: relative;
+    width: 144px;
+    height: 10px;
+    margin: 0px;
+    display: inline-block;
+    cursor: pointer;
+    .slick-dot {
+      font-family: Montserrat;
+      font-size: 13px;
+      padding-top: 32px;
+      color: #fff;
+      width: 72px;
       position: relative;
-      width: 144px;
-      height: 10px;
-      margin: 0px;
-      display: inline-block;
-      cursor: pointer;
-      .slick-dot {
-        font-family: Montserrat;
-        font-size: 13px;
-        padding-top: 32px;
-        color: #fff;
-        width: 72px;
-        position: relative;
-        &:before {
-          content: "";
-          border-left: 1px solid #57778b;
-          height: 20px;
-          position: absolute;
-          top: 1px;
-          left: 36px;
-        }
+      &:before {
+        content: "";
+        border-left: 1px solid #57778b;
+        height: 20px;
+        position: absolute;
+        top: 1px;
+        left: 36px;
       }
     }
-    li:first-child {
-      width: 72px;
-      .slick-dot {
-        margin-left: -72px;
-      }
+  }
+  li:first-child {
+    width: 72px;
+    .slick-dot {
+      margin-left: -72px;
     }
-    li:last-child {
-      width: 72px;
-      .slick-dot {
-        padding-left: 36px;
-      }
-      .slick-dot:before {
-        left: 72px;
-      }
+  }
+  li:last-child {
+    width: 72px;
+    .slick-dot {
+      padding-left: 36px;
     }
-    li.slick-active .slick-dot:before {
-      content: "";
-      width: 23px;
-      height: 23px;
-      background: #fff;
-      border-radius: 50%;
-      border: 3px solid #1c3549;
-      top: -4px;
-      left: 21px;
+    .slick-dot:before {
+      left: 72px;
     }
-    li.slick-active:last-child .slick-dot:before {
-      left: 57px;
-    }
+  }
+  li.slick-active .slick-dot:before {
+    content: "";
+    width: 23px;
+    height: 23px;
+    background: #fff;
+    border-radius: 50%;
+    border: 3px solid #1c3549;
+    top: -4px;
+    left: 21px;
+  }
+  li.slick-active:last-child .slick-dot:before {
+    left: 57px;
   }
 }
 .chart_wrapper {
