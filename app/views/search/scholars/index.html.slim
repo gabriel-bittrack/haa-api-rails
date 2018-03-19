@@ -18,7 +18,7 @@
         - @scholars.each do |scholar|
           .member{class="member_#{scholar.id}"}
             .photo
-              = link_to(image_tag("#{scholar.profile_image.url}", :alt => "profile", :title => "Home"), show_search_scholars_path(scholar.id))
+              = link_to(image_tag("scholars.png", :alt => "profile", :title => "Home"), show_search_scholars_path(scholar.id))
 
             .info
               .name

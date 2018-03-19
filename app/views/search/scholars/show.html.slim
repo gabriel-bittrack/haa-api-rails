@@ -1,5 +1,5 @@
 .bio
-  .members
+  .scholars
     .header
       .content
         = render partial: "scholar_search_form", locals: {type: 'scholars'}
@@ -10,7 +10,7 @@
       .bio_body.clearfix
         .col.col1
           .sponsor_photo
-            =image_tag @scholar.profile_image.url, class: "sponsor_photo1"
+            =image_tag "scholars.png", class: "sponsor_photo1"
           .sponsor_photo
             //- if @member.web_url
             //  =@scholar.web_url.html_safe
