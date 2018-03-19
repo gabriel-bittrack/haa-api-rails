@@ -261,6 +261,7 @@ jQuery(document).on('turbolinks:load',function(){
     // arrows: true,
     // swipe: false,
     // slidesToShow: 1,
+    swipe: false,
     speed: 500,
     fade: true,
     centerPadding: '145px',
