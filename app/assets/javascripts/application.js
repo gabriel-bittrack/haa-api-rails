@@ -153,8 +153,6 @@ function refresh_map(data) {
 }
 jQuery(document).on('turbolinks:load',function(){
 
-  //map.scrollZoom.disable();
-
   var modal_options = {duration: 100, overlay: {fillColor: '#000', opacity: 0.68},
     offset: function() {
       // Fit the position to a button.
@@ -284,5 +282,4 @@ jQuery(document).on('turbolinks:load',function(){
       map.removeLayer(layer[value]);
     }
   });
-
 });
