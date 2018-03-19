@@ -453,7 +453,7 @@ a.link_btn:hover {
 #sponsor_modal {
   padding: 100px 40px 40px;
 }
-.slider, .slider_content {
+.slider_content {
   outline: none;
   background: #fff;
   margin: 0px 3px;
@@ -461,6 +461,7 @@ a.link_btn:hover {
 .sliders {
   .slider_content {
     display: flex;
+    height: 600px;
   }
   & > .slick-prev {
     display: none !important;
@@ -468,9 +469,12 @@ a.link_btn:hover {
   & > .slick-next {
     display: none !important;
   }
+  .slider:not(.slick-current) {
+    overflow: hidden;
+  }
 }
 
-.inner-slider.center_mode {
+.inner-slider {
   .demo_title {
     position: absolute;
     top: 200px;
@@ -480,7 +484,7 @@ a.link_btn:hover {
     color: #4b57c3;
   }
   .slick-list {
-    padding: 0px 145px;
+    //padding: 0px 145px;
   }
   .slick-arrow {
     display: none;
@@ -501,11 +505,9 @@ a.link_btn:hover {
     background: rgba(15, 23, 33, 0.65);
   }
   .slick-prev {
-    left: 0px;
-    //display: none !important;
+    left: -145px;
   }
   .slick-next {
-    right: 0px;
-    //display: none !important;
+    right: -145px;
   }
 }

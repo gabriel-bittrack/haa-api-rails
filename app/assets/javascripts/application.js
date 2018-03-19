@@ -242,9 +242,9 @@ jQuery(document).on('turbolinks:load',function(){
 
   $('.history .sliders').slick({
     dots: true,
-    //centerMode: true,
-    //centerPadding: '145px',
-    //slidesToShow: 1,
+    centerMode: true,
+    centerPadding: '145px',
+    slidesToShow: 1,
     appendDots: $(".timeline"),
     customPaging : function(slider, i) {
         var data = $(".year_mark", slider.$slides[i]).text();
@@ -253,20 +253,9 @@ jQuery(document).on('turbolinks:load',function(){
   });
 
   $('.history .inner-slider').slick({
-    // dots: true,
-    // infinite: true,
-    // touchMove: true,
-    // prevArrow: $('.innerPrevArrow'),
-    // nextArrow: $('.innerNextArrow'),
-    // arrows: true,
-    // swipe: false,
-    // slidesToShow: 1,
     swipe: false,
     speed: 500,
     fade: true,
-    centerPadding: '145px',
-    slidesToShow: 1,
-    centerMode: true,
   });
 
 
