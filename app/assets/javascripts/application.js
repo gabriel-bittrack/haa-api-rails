@@ -240,6 +240,18 @@ jQuery(document).on('turbolinks:load',function(){
   $(".chosen-select").chosen({disable_search_threshold: 10});
   $(".breadcrumb.city").hide();
 
+  $('.history .sliders').slick({
+    dots: true,
+    //centerMode: true,
+    //centerPadding: '145px',
+    //slidesToShow: 1,
+    appendDots: $(".timeline"),
+    customPaging : function(slider, i) {
+        var data = $(".year_mark", slider.$slides[i]).text();
+        return '<a class="slick-dot slick-dot-' + i + '">' + data + '</a>';
+    },
+  });
+
   $('.history .inner-slider').slick({
     // dots: true,
     // infinite: true,
@@ -247,24 +259,16 @@ jQuery(document).on('turbolinks:load',function(){
     // prevArrow: $('.innerPrevArrow'),
     // nextArrow: $('.innerNextArrow'),
     // arrows: true,
-    swipe: false,
+    // swipe: false,
     // slidesToShow: 1,
     speed: 500,
     fade: true,
-    cssEase: 'linear'
+    centerPadding: '145px',
+    slidesToShow: 1,
+    centerMode: true,
   });
 
-  $('.history .sliders').slick({
-    dots: true,
-    centerMode: false,
-    // centerPadding: '145px',
-    slidesToShow: 1,
-    appendDots: $(".timeline"),
-    customPaging : function(slider, i) {
-        var data = $(".year_mark", slider.$slides[i]).text();
-        return '<a class="slick-dot slick-dot-' + i + '">' + data + '</a>';
-    },
-  });
+
 
   $('.demographics .sliders').slick({
     dots: true,
