@@ -20,7 +20,10 @@
 
             .info
               .name
-                = link_to(member.full_name, show_search_members_path(member.id))
+                -if member.date_of_death
+                  = link_to("#{member.full_name} *", show_search_members_path(member.id))
+                - else
+                  = link_to(member.full_name, show_search_members_path(member.id))
               .year #{member.class_year}
               .position #{member.title}
               .company #{member.current_org}
