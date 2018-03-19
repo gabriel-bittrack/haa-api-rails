@@ -184,10 +184,10 @@ jQuery(document).on('turbolinks:load',function(){
     $(this).parents('.modal').plainModal('close');
   });
 
-  $(".goback").click(function(e) {
-    window.history.back();
-    return false;
-  });
+  // $(".goback").click(function(e) {
+  //   window.history.back();
+  //   return false;
+  // });
 
   $("#countries_dropdown").change(function(e) {
 
