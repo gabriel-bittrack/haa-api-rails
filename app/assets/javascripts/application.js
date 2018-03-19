@@ -58,6 +58,7 @@ function refresh_map2(data) {
     $("#total_members").text(members.length);
     $("#total_scholars").text(numeral(scholars.length).format('0,0'));
     $("#total_scholarships").text(numeral(scholarships).format('($0.00a)'));
+
     if (typeof data.state != 'undefined') {
       var state = response.selected_state;
       map.flyTo(L.latLng(state[0].lat, state[0].lng),6);

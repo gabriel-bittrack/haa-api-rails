@@ -112,7 +112,8 @@
 javascript:
   L.mapbox.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
   map = L.mapbox.map('map', false, {zoomControl: false, scrollWheelZoom: false, featureLayer: false, tileLayer: false, gridLayer: false});
-  L.mapbox.styleLayer('mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv').addTo(map);
+  styleLayer = L.mapbox.styleLayer('mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv');
+  styleLayer.addTo(map);
 
   var country = "#{@country}";
   if (country == "us") {
@@ -125,7 +126,15 @@ javascript:
   refresh_map2({country: country});
 
   new L.Control.Zoom({ position: 'topright' }).addTo(map);
-
+  map.on('zoomed', function () {
+      currentZoom = map.getZoom();
+      if (currentZoom == 15) {
+          polygon.setStyle({weight: 2});
+      }
+      else {
+          polygon.setStyle({weight: 3});
+      }
+  });
   jQuery(document).ready(function($) {
     $.get("/growth", {}, function(response) {
 
