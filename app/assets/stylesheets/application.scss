@@ -138,7 +138,7 @@ a.link_btn:hover {
   color: #111f2a;
   background-color: #abc4d6;
 }
-.icon, .mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-in, .mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-out {
+.icon, .mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-in, .mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-out, .slick-prev, .slick-next {
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
@@ -487,7 +487,6 @@ a.link_btn:hover {
     //padding: 0px 145px;
   }
   .slick-arrow {
-    display: none;
     z-index: 2;
     font-size: 0;
     line-height: 0;
@@ -506,8 +505,18 @@ a.link_btn:hover {
   }
   .slick-prev {
     left: -145px;
+    &:before {
+      content: '\E803';
+      font-size: 40px;
+      color: #fff;
+    }
   }
   .slick-next {
     right: -145px;
+    &:before {
+      content: '\E804';
+      font-size: 40px;
+      color: #fff;
+    }
   }
 }
