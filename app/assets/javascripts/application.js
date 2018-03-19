@@ -240,10 +240,24 @@ jQuery(document).on('turbolinks:load',function(){
   $(".chosen-select").chosen({disable_search_threshold: 10});
   $(".breadcrumb.city").hide();
 
+  $('.history .inner-slider').slick({
+    // dots: true,
+    // infinite: true,
+    // touchMove: true,
+    // prevArrow: $('.innerPrevArrow'),
+    // nextArrow: $('.innerNextArrow'),
+    // arrows: true,
+    swipe: false,
+    // slidesToShow: 1,
+    speed: 500,
+    fade: true,
+    cssEase: 'linear'
+  });
+
   $('.history .sliders').slick({
     dots: true,
-    centerMode: true,
-    centerPadding: '145px',
+    centerMode: false,
+    // centerPadding: '145px',
     slidesToShow: 1,
     appendDots: $(".timeline"),
     customPaging : function(slider, i) {
