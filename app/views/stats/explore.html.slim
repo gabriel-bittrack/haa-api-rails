@@ -50,17 +50,17 @@
       .stats_info
         .members_info.info
           h1.number
-            span#total_members
+            span#total_members -
           .text MEMBERS
           .three_stars
         .scholars_info.info
           h1.number
-            span#total_scholars
+            span#total_scholars -
           .text SCHOLARS
           .three_stars
         .sholarships_info.info
           h1.number
-            span#total_scholarships
+            span#total_scholarships -
           .text SCHOLARSHIPS GIVEN
           .three_stars
         .sponsor_info
@@ -111,7 +111,7 @@
 
 javascript:
   L.mapbox.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
-  map = L.mapbox.map('map', false, {zoomControl: false, scrollWheelZoom: false});
+  map = L.mapbox.map('map', false, {zoomControl: false, scrollWheelZoom: false, featureLayer: false, tileLayer: false, gridLayer: false});
   L.mapbox.styleLayer('mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv').addTo(map);
 
   var country = "#{@country}";
