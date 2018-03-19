@@ -259,7 +259,6 @@ jQuery(document).on('turbolinks:load',function(){
   });
 
 
-
   $('.demographics .sliders').slick({
     dots: true,
     appendDots: $(".timeline"),
