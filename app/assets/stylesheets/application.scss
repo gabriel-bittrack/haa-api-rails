@@ -453,19 +453,34 @@ a.link_btn:hover {
 #sponsor_modal {
   padding: 100px 40px 40px;
 }
+.slider, .slider_content {
+  outline: none;
+  background: #fff;
+  margin: 0px 3px;
+}
 .sliders {
-  .slider {
-    outline: none;
-  }
   .slider_content {
     display: flex;
   }
+  & > .slick-prev {
+    display: none !important;
+  }
+  & > .slick-next {
+    display: none !important;
+  }
 }
 
-.sliders.center_mode {
-  .slider {
-    background: #fff;
-    margin: 0px 3px;
+.inner-slider.center_mode {
+  .demo_title {
+    position: absolute;
+    top: 200px;
+    width: 100%;
+    text-align: center;
+    font-size: 50px;
+    color: #4b57c3;
+  }
+  .slick-list {
+    padding: 0px 145px;
   }
   .slick-arrow {
     display: none;
