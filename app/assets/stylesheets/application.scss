@@ -455,14 +455,14 @@ a.link_btn:hover {
 }
 .slider_content {
   outline: none;
-  background: #fff;
   margin: 0px 3px;
 }
+.history .slider_content {
+  background: #fff;
+  display: flex;
+  height: 600px;
+}
 .sliders {
-  .slider_content {
-    display: flex;
-    height: 600px;
-  }
   & > .slick-prev {
     display: none !important;
   }
