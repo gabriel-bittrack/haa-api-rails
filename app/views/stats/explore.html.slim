@@ -19,8 +19,8 @@
       a{href='/history' class='em_link link_btn'} EXPLORE MORE
     .clearfix
   .navigation
-    a{class='goback'}
-      = image_tag("goback.png")
+    .goback
+      = link_to(image_tag("goback.png", :alt => "profile", :title => "Home"), root_path)
     ul.breadcrumbs
       li.breadcrumb.root.active.country
         h3 Select Map:
