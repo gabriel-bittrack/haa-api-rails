@@ -785,7 +785,7 @@
 .scrollbar-chrome > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_track { left: -19px; }
 .scrollbar-chrome > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_track { top: -19px; }
 
-.dd_style3 .chosen-results {
+.dd_style3 .chosen-results, .stats_panel .panel_body {
   > .scroll-element,
   > .scroll-element div
   {

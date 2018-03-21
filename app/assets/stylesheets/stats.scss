@@ -521,6 +521,91 @@
       }
     }
   }
+
+  .stats_panel {
+    position: absolute;
+    width: 310px;
+    max-height: 395px;
+    top: 0px;
+    border: 1px solid #5e7689;
+    border-radius: 4px;
+    background: rgba(20, 37, 51, 0.8);
+    -webkit-box-shadow: 0px 0px 2px 0px rgba(94,118,137,1);
+    -moz-box-shadow: 0px 0px 2px 0px rgba(94,118,137,1);
+    box-shadow: 0px 0px 2px 0px rgba(94,118,137,1);
+    .panel > .panel_header, .panel > .panel_body {
+      display: none;
+    }
+    .panel.open > .panel_header, .panel.open > .panel_body {
+      display: block;
+    }
+    .panel_header, .count_info, .panel_body {
+
+    }
+    .members_panel {
+      .header_bar {
+        background: #0485ab;
+      }
+      .count {
+        color: #01c0f6;
+        text-transform: uppercase;
+      }
+    }
+    .scholars_panel {
+      .header_bar {
+        background: #a80a34;
+      }
+      .count {
+        color: #ff4040;
+      }
+    }
+    .header_bar {
+      height: 20px;
+    }
+    .state_name {
+      text-transform: uppercase;
+      font-size: 15px;
+      color: #fff;
+      margin: 16px 0px;
+    }
+    .state_name, .count_info, .panel_body {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+    .count {
+      font-size: 11px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .toggle_collapse {
+      float: right;
+      width: 15px;
+      height: 15px;
+    }
+    .panel .toggle_collapse {
+      background: url(asset_path('plus.png')) no-repeat;
+    }
+    .panel.open .toggle_collapse {
+      background: url(asset_path('minus.png')) no-repeat;
+    }
+    .panel_body {
+      height: 260px;
+      font-family: Lora;
+      font-size: 14px;
+      .member_row {
+        margin: 10px 0px;
+      }
+      .name {
+        color: #fff;
+        width: 135px;
+        display: inline-block;
+      }
+      .location {
+        color: #abc4d6;
+        display: inline-block;
+      }
+    }
+  }
 }
 .history {
   .header {
