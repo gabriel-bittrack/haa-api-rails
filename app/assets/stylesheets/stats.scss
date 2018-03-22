@@ -525,8 +525,9 @@
   .stats_panel {
     position: absolute;
     width: 310px;
-    max-height: 395px;
-    top: 0px;
+    height: auto;
+    top: 42px;
+    left: 28px;
     border: 1px solid #5e7689;
     border-radius: 4px;
     background: rgba(20, 37, 51, 0.8);
@@ -539,8 +540,11 @@
     .panel.open > .panel_header, .panel.open > .panel_body {
       display: block;
     }
-    .panel_header, .count_info, .panel_body {
-
+    .panel {
+      border-bottom: 1px solid #5e7689;
+    }
+    & > .panel:last-child {
+      border-bottom: none;
     }
     .members_panel {
       .header_bar {
@@ -566,16 +570,20 @@
       text-transform: uppercase;
       font-size: 15px;
       color: #fff;
-      margin: 16px 0px;
+      margin: 20px 0px 0px;
     }
     .state_name, .count_info, .panel_body {
-      padding-left: 12px;
-      padding-right: 12px;
+      padding-left: 20px;
+      padding-right: 10px;
     }
     .count {
       font-size: 11px;
       display: inline-block;
-      margin-bottom: 10px;
+      text-transform: uppercase;
+      margin: 14px 0px;
+    }
+    .panel.open .count {
+      margin: 0px 0px 10px;
     }
     .toggle_collapse {
       float: right;
@@ -583,17 +591,27 @@
       height: 15px;
     }
     .panel .toggle_collapse {
-      background: url(asset_path('plus.png')) no-repeat;
+      background: url(asset_path('plus.png')) center no-repeat;
+      height: 42px;
     }
     .panel.open .toggle_collapse {
       background: url(asset_path('minus.png')) no-repeat;
+      height: 32px;
     }
     .panel_body {
-      height: 260px;
+      width: 100%;
+      height: 250px;
       font-family: Lora;
       font-size: 14px;
+      margin-bottom: 10px;
       .member_row {
-        margin: 10px 0px;
+        margin: 12px 0px;
+      }
+      .member_row:first-child {
+        margin-top: 0px;
+      }
+      .member_row:last-child {
+        margin-bottom: 0px;
       }
       .name {
         color: #fff;
@@ -603,6 +621,26 @@
       .location {
         color: #abc4d6;
         display: inline-block;
+      }
+      &.scroll-scrolly_visible {
+        padding-right: 2px;
+      }
+      .scroll-element.scroll-y {
+        border-left: none;
+      }
+      .scroll-element .scroll-element_size {
+        width: 1px;
+        left: 8px;
+        background-color: #5f7584;
+      }
+      .scroll-element .scroll-bar {
+        background-image: url(asset_path('scroll2.png'));
+      }
+      .scroll-element.scroll-y .scroll-element_outer {
+        left: 3px;
+        top: 0px;
+        bottom: 0px;
+        height: auto;
       }
     }
   }

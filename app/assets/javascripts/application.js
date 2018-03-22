@@ -350,6 +350,7 @@ jQuery(document).on('turbolinks:load', function(){
     }
 
     panel.toggleClass("open");
+    panel.parent().prepend(panel);
 
   });
 });
