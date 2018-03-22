@@ -8,23 +8,18 @@
       .clearfix
   .content
     .sliders
-      - for i in (1..8)
-        div{class="slider slider_#{i}"}
+      - @timeline.each do |time|
+        div{class="slider slider_#{time.decade}"}
           .inner-slider.center_mode
-            .slider_content
-              .featured_col
-                .featured
-                  = image_tag("featured1.jpg", :class => "featured_img")
-              .right_col
-                .right_section
-                  .year_mark 1951 #{i}
-                  .notes
-                    h3.title First Scholarship Awarded
-                    p.text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas erat nisl, pulvinar convallis lectus dictum vitae. Integer convallis purus ac luctus pharetra. Nam aliquet congue leo vel rhoncus. Quisque et mattis enim. In et nisl at justo volutpat egestas. Curabitur mi dui, lobortis nec libero at, finibus lacinia ipsum. Pellentesque suscipit magna at mollis eleifend. Duis semper mauris odio, vitae dapibus lectus suscipit in. Aenean varius ultrices diam nec fermentum.
-                    p.text Quisque et mattis enim. In et nisl at justo volutpat egestas. Curabitur mi dui, lobortis nec libero at, finibus lacinia ipsum. Pellentesque suscipit magna at mollis eleifend. Duis semper mauris odio, vitae dapibus lectus suscipit in. Aenean varius ultrices diam nec fermentum.
-            .slider_content
-              h3.demo_title This is a demo content for slider 2
-            .slider_content
-              h3.demo_title This is a demo content for slider 3
-
+            - time.slides.each do |slide|
+              .slider_content
+                .featured_col
+                  .featured
+                    = image_tag("featured1.jpg", :class => "featured_img")
+                .right_col
+                  .right_section
+                    .year_mark #{time.decade}
+                    .notes
+                      h3.title #{slide.title}
+                      p.text #{slide.slide_text}
   .timeline

@@ -248,7 +248,7 @@ jQuery(document).on('turbolinks:load',function(){
     appendDots: $(".timeline"),
     customPaging : function(slider, i) {
         var data = $(".year_mark", slider.$slides[i]).text();
-        return '<a class="slick-dot slick-dot-' + i + '">' + data + '</a>';
+        return '<a class="slick-dot slick-dot-' + i + '">' + data.substring(0,4) + '</a>';
     },
   });
 
