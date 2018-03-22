@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314031037) do
+ActiveRecord::Schema.define(version: 20180321030657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,6 +192,21 @@ ActiveRecord::Schema.define(version: 20180314031037) do
     t.string "under_graduate_studies"
     t.string "post_graduate_studies"
     t.string "secondary_graduate_studies"
+  end
+
+  create_table "slides", force: :cascade do |t|
+    t.integer "slide_number"
+    t.string "slide_text"
+    t.integer "timeline_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+  end
+
+  create_table "timelines", force: :cascade do |t|
+    t.string "decade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

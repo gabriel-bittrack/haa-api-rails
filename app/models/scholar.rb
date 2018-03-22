@@ -16,7 +16,7 @@ class Scholar < ApplicationRecord
   }
 
   def as_json(options={})
-    super(only: [:full_name, :lat, :lng], methods: [])
+    super(only: [:full_name, :state, :city, :lat, :lng], methods: [])
   end
 
   validates_attachment :profile_image,

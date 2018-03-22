@@ -19,7 +19,8 @@ class StatsController < ApplicationController
   end
 
   def history
-
+    @timeline = Timeline.order(:decade)
+    puts ">>>>> timeline: #{@timeline}"
   end
 
   def demographics

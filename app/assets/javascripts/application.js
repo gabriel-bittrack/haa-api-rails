@@ -54,14 +54,15 @@ function refresh_map2(data) {
     var members = response.members;
     var scholars = response.scholars;
     var scholarships = response.scholarships;
+    var selected_state = response.selected_state;
+    var mapdata = {"members": members, "scholars": scholars}
 
     $("#total_members").text(members.length);
     $("#total_scholars").text(numeral(scholars.length).format('0,0'));
     $("#total_scholarships").text(numeral(scholarships).format('($0.00a)'));
 
-    if (typeof data.state != 'undefined') {
-      var state = response.selected_state;
-      map.flyTo(L.latLng(state[0].lat, state[0].lng),6);
+    if (typeof data.state != 'undefined' && selected_state.length > 0) {
+      map.flyTo(L.latLng(selected_state[0].lat, selected_state[0].lng),6);
     }
 
     layer["members"] = new L.MarkerClusterGroup({
@@ -93,6 +94,55 @@ function refresh_map2(data) {
       layer["scholars"].addLayer(marker);
     }
     map.addLayer(layer["scholars"]);
+
+    if (typeof data.state != 'undefined') {
+      // adding data to left side panel
+      if (typeof data.city != 'undefined') {
+        selected_location = data.city + ", " + data.state;
+      } else {
+        selected_location = response.selected_state[0].name;
+      }
+      $(".stats_panel").html("");
+      k = 0;
+      for (var type in mapdata) {
+
+        member_rows = "";
+        for (i = 0; i < mapdata[type].length; i++) {
+          member_rows += ' \
+            <div class="member_row"> \
+              <div class="name">' + mapdata[type][i].full_name + '</div> \
+              <div class="location">' + mapdata[type][i].city + ", " + mapdata[type][i].state + '</div> \
+            </div> \
+          ';
+        }
+
+        count = mapdata[type].length;
+        if (k == 0) {
+          open = "open";
+        } else {
+          open = "";
+        }
+        html = ' \
+          <div class="panel ' + type + '_panel ' + open + '"> \
+            <div class="panel_header"> \
+              <div class="header_bar"></div> \
+              <div class="state_name">' + selected_location + '</div> \
+            </div> \
+            <div class="count_info"> \
+              <div class="count">' + count + ' ' + type + '</div> \
+              <a class="toggle_collapse"></a> \
+            </div> \
+            <div class="panel_body">' + member_rows + '</div> \
+          </div> \
+        ';
+        $(".stats_panel").append(html);
+        k++;
+      }
+
+      $('.stats_panel .panel_body').scrollbar();
+      $(".stats_panel").fadeIn();
+    }
+
 
   });
 }
@@ -152,7 +202,7 @@ function refresh_map(data) {
 
   });
 }
-jQuery(document).on('turbolinks:load',function(){
+jQuery(document).on('turbolinks:load', function(){
 
   var modal_options = {duration: 100, overlay: {fillColor: '#000', opacity: 0.68},
     offset: function() {
@@ -248,7 +298,7 @@ jQuery(document).on('turbolinks:load',function(){
     appendDots: $(".timeline"),
     customPaging : function(slider, i) {
         var data = $(".year_mark", slider.$slides[i]).text();
-        return '<a class="slick-dot slick-dot-' + i + '">' + data + '</a>';
+        return '<a class="slick-dot slick-dot-' + i + '">' + data.substring(0,4) + '</a>';
     },
   });
 
@@ -257,7 +307,6 @@ jQuery(document).on('turbolinks:load',function(){
     speed: 500,
     fade: true,
   });
-
 
   $('.demographics .sliders').slick({
     dots: true,
@@ -289,5 +338,19 @@ jQuery(document).on('turbolinks:load',function(){
     } else {
       map.removeLayer(layer[value]);
     }
+  });
+
+  $(document).on("click", ".toggle_collapse", function(e) {
+    var panel = $(this).closest(".panel");
+
+    if (panel.hasClass("open")) {
+
+    } else {
+      $(".stats_panel > .panel").removeClass("open");
+    }
+
+    panel.toggleClass("open");
+    panel.parent().prepend(panel);
+
   });
 });
