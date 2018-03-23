@@ -19,7 +19,7 @@ class Search::ScholarsController < ApplicationController
   end
 
   def years
-    Scholar.distinct_class_years
+    Scholar.distinct_class_years.reverse
   end
 
   def states

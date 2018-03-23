@@ -15,6 +15,32 @@ class Scholar < ApplicationRecord
     medium: ['300x300>', :png],
   }
 
+  def self.distinct_studies
+    studies = []
+    scholars = Scholar.all 
+    scholars.each do |scholar|
+      
+      studies << scholar.under_graduate_studies
+      studies << scholar.post_graduate_studies
+      studies << scholar.secondary_graduate_studies
+    end
+    uniq_studies = studies.uniq
+
+    new_array = []
+    uniq_studies.each do |study|
+      puts "#{study}"
+      ar = study.split(",") unless study == nil
+      new_array << ar
+    end
+
+    ar_u = new_array.uniq
+    puts "number of studies : #{ar_u.length}"
+
+    File.open("studies", "w+") do |f|
+      f.each
+    end
+  end
+
   def as_json(options={})
     super(only: [:full_name, :state, :city, :lat, :lng], methods: [])
   end

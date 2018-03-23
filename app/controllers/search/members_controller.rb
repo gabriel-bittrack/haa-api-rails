@@ -17,7 +17,7 @@ class Search::MembersController < ApplicationController
   private
 
   def years
-    Member.distinct_class_years
+    Member.distinct_class_years.reverse
   end
 
   def states
