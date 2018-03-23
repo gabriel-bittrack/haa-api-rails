@@ -13,6 +13,9 @@
 
   .dropdowns
     .year_dropdown_wrap.dropdown.dd_style5
+      =text_field_tag 'name', params[:name], placeholder: 'Enter Name', class: 'name form-control'
+      
+    .year_dropdown_wrap.dropdown.dd_style5
       =select_tag 'class_year', options_for_select(@years.collect, params[:class_year]), prompt: "Class Year", class: 'chosen-select year_dropdown'
 
     .states_dropdown_wrap.dropdown.dd_style5
