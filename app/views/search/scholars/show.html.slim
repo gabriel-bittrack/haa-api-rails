@@ -26,10 +26,20 @@
               h3.info_text #{@scholar.class_year}
             .sponsor_info
               h3.info_title LOCATION
-              h3.info_text #{@scholar.city}, #{@scholar.state}
+              - if @scholar.city && @scholar.city
+                h3.info_text #{@scholar.city}, #{@scholar.state}
+              - elsif @scholar.city
+                h3.info_text #{@scholar.city}
+              - elsif @scholar.state
+                h3.info_text #{@scholar.state}
             .sponsor_info
               h3.info_title EDUCATION
-              h3.info_text #{@scholar.undergraduate_institution}
+              - if @scholar.secondary_graduate_studies
+                h3.info_text #{@scholar.secondary_graduate_studies}
+              - elsif @scholar.post_graduate_studies
+                h3.info_text #{@scholar.post_graduate_studies}
+              - elsif @scholar.under_graduate_studies
+                h3.info_text #{@scholar.under_graduate_studies}
 
         .col.col3
           .bio_wrap
