@@ -336,6 +336,10 @@ a.link_btn:hover {
 .bio .bio_body .col1 {
   width: 350px;
 }
+.bio .sponsor_photo {
+  height: 350px;
+  overflow: hidden;
+}
 .bio, .bio_modal {
   background: #f5f2e7;
   .quote {
@@ -391,6 +395,7 @@ a.link_btn:hover {
     white-space: nowrap;
     letter-spacing: 0;
     margin-bottom: 10px;
+    white-space: initial;
   }
   .info_title {
     font-size: 13px;
@@ -412,6 +417,7 @@ a.link_btn:hover {
     font-size: 17px;
     margin-bottom: 14px;
     letter-spacing: 0px;
+    word-wrap: break-word;
   }
   .bio_wrap {
     max-width: 430px;

@@ -41,21 +41,23 @@ function getDivIcon(count, type) {
 
 function refresh_map2(data) {
   var memberIcon = L.icon({
-  	iconUrl: 'member_marker.png',
+  	iconUrl: '/assets/member_marker.png',
   	iconSize: [9, 9]
   });
   var scholarIcon = L.icon({
-  	iconUrl: 'scholar_marker.png',
+  	iconUrl: '/assets/scholar_marker.png',
   	iconSize: [9, 9]
   });
 
-  clearMap();
+
   $.get("/get_search_results", data, function(response) {
     var members = response.members;
     var scholars = response.scholars;
     var scholarships = response.scholarships;
     var selected_state = response.selected_state;
     var mapdata = {"members": members, "scholars": scholars}
+
+    clearMap();
 
     $("#total_members").text(members.length);
     $("#total_scholars").text(numeral(scholars.length).format('0,0'));
@@ -66,6 +68,7 @@ function refresh_map2(data) {
     }
 
     layer["members"] = new L.MarkerClusterGroup({
+      showCoverageOnHover: false,
       iconCreateFunction: function(cluster) {
         count = cluster.getChildCount();
         return getDivIcon(count, "member");
@@ -81,6 +84,7 @@ function refresh_map2(data) {
     map.addLayer(layer["members"]);
 
     layer["scholars"] = new L.MarkerClusterGroup({
+      showCoverageOnHover: false,
       iconCreateFunction: function(cluster) {
         count = cluster.getChildCount();
         return getDivIcon(count, "scholar");
@@ -244,7 +248,7 @@ jQuery(document).on('turbolinks:load', function(){
   });
 
   $("#states_dropdown").change(function(e) {
-    coutry = $("#countries_dropdown option:selected").attr("country") == "US" ? "United States" : "Canada";
+    country = $("#countries_dropdown option:selected").attr("country") == "US" ? "United States" : "Canada";
     data = {country: country, state: $("#states_dropdown").val()};
     refresh_map2(data);
 

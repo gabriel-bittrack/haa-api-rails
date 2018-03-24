@@ -14,6 +14,8 @@ ActiveRecord::Schema.define(version: 20180321030657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+  enable_extension "pg_stat_statements"
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -46,8 +48,8 @@ ActiveRecord::Schema.define(version: 20180321030657) do
     t.string "name"
     t.string "state"
     t.string "country"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", default: -> { "now()" }, null: false
+    t.datetime "updated_at", default: -> { "now()" }, null: false
   end
 
   create_table "friends", force: :cascade do |t|
@@ -149,9 +151,9 @@ ActiveRecord::Schema.define(version: 20180321030657) do
 
   create_table "scholar_scholarships", force: :cascade do |t|
     t.string "name"
-    t.string "year"
+    t.date "year"
     t.decimal "total_award", precision: 10, scale: 2
-    t.integer "number_awarded"
+    t.integer "awarded"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
