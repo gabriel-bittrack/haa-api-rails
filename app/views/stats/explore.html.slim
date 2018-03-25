@@ -10,7 +10,7 @@
         - else
           = link_to(image_tag("medallion.png", :class => "haa_logo"), "/")
       .search_dropdown_wrap.dropdown.dd_style1
-        <select class="chosen-select search_dropdown" onchange="location = this.value;">
+        <select class="chosen-select search_dropdown" onchange="location.href = this.value;">
           <option value="" selected="selected" disabled>Find a Member</option>
           <option value="/search/members">MEMBERS</option>
           <option value="/search/scholars">SCHOLARS</option>
@@ -115,7 +115,11 @@
   = render partial: "/welcome/sponsor_modal"
 
 javascript:
-  jQuery(document).on('turbolinks:load', function(){
+  jQuery(document).on('turbolinks:load', function() {
+    if (typeof L == "undefined") {
+      location.reload();
+      return;
+    }
     L.mapbox.accessToken = 'pk.eyJ1IjoibWlrZW9kZWxsNzciLCJhIjoiY2plOTc2ZHZsMDdrYjJ3bnc5ZHVnNnR4OCJ9.I4UmDkBF4sb-Hfari1eyug';
     map = L.mapbox.map('map', false, {zoomControl: false, scrollWheelZoom: false, featureLayer: false, tileLayer: false, gridLayer: false});
     styleLayer = L.mapbox.styleLayer('mapbox://styles/mikeodell77/cje992u7p00vh2roby0exalcv');

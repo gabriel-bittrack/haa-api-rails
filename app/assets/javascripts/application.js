@@ -49,7 +49,6 @@ function refresh_map2(data) {
   	iconSize: [9, 9]
   });
 
-
   $.get("/get_search_results", data, function(response) {
     var members = response.members;
     var scholars = response.scholars;
@@ -147,7 +146,6 @@ function refresh_map2(data) {
       $(".stats_panel").fadeIn();
     }
 
-
   });
 }
 
@@ -157,56 +155,7 @@ function clearMap() {
   }
 }
 
-function refresh_map(data) {
-  $.get("/get_search_results", data, function(response) {
-    var members = response.members;
-    var scholars = response.scholars;
-    alert(members.length);
-    $("total_members").text = members.length;
-
-    for (i = 0; i < members.length; i++) {
-      var el = document.createElement('div');
-      el.className = 'member marker1';
-
-      el.addEventListener('click', function() {
-          //window.alert(marker.properties.message);
-      });
-      var marker = new mapboxgl.Marker(el);
-      marker.setLngLat([members[i].lng, members[i].lat]);
-      marker.addTo(map);
-    }
-
-    /*for (i = 0; i < scholars.length; i++) {
-      var el = document.createElement('div');
-      el.className = 'scholar marker1';
-
-      el.addEventListener('click', function() {
-          //window.alert(marker.properties.message);
-      });
-      var marker = new mapboxgl.Marker(el);
-      marker.setLngLat([scholars[i].lng, scholars[i].lat]);
-      marker.addTo(map);
-    }*/
-
-    if (typeof data.state != 'undefined') {
-
-    } else {
-      map.setCenter(countries_center[data.country]);
-      map.flyTo(map.flyTo({
-        center: [-95.099104, 60.263248],
-        zoom: 9,
-        speed: 0.2,
-        curve: 1,
-        easing(t) {
-          return t;
-        }
-      }));
-
-    }
-
-  });
-}
-jQuery(document).on('turbolinks:load', function(){
+jQuery(document).on('turbolinks:load', function() {
 
   var modal_options = {duration: 100, overlay: {fillColor: '#000', opacity: 0.68},
     offset: function() {
