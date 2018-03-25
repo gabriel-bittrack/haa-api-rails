@@ -8,10 +8,11 @@ class MembersController < BaseApiController
 
     # @members = Member.all
     @members = Member.search(params, params[:page])
+    @csv_members = Member.all
     # render json: @members, each_serializer: MemberSerializer
     respond_to do |format|
       format.json { paginate json: @members, each_serializer: MemberSerializer, per_page: 150 }
-      # format.csv { send_data @members.to_csv(CSV_COLUMNS) }
+      format.csv { send_data @csv_members.to_csv(CSV_COLUMNS) }
     end
   end
 
@@ -21,26 +22,26 @@ class MembersController < BaseApiController
     full_name
     first_name
     last_name
-    gender
-    relationship
+    profile_photo_url
     city
     state
+    zipcode
     province
     country
-    class_year
+    gender
     industry
     current_org
-    ethnicity
-    military_branch
-    short_bio
+    title
     bio
+    class_year
     web_url
     undergraduate_institution
     graduate_institution
-    title
     profile_photo_url
-    award_date
     quote
+    date_of_birth
+    ethnicity
+    active_military
     date_of_death
   )
 
