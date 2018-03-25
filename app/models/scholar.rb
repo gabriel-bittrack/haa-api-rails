@@ -1,7 +1,7 @@
 class Scholar < ApplicationRecord
   self.per_page = 24
   scope :year, ->(class_year) { where("class_year = ?", class_year) if class_year.present? }
-  scope :search_name, ->(name) { where("full_name LIKE ?", "%#{name}%") if name.present? }
+  scope :search_name, ->(name) { where("LOWER(full_name) LIKE LOWER(?)", "%#{name}%") if name.present? }
   scope :search_name_begins_with, -> (name) { where("last_name LIKE ?","#{name}%") if name.present? }
   scope :search_country, -> (country) { where("country = ?", country) if country.present? }
   scope :search_state, -> (state) { where("state = ?", state) if state.present? }
@@ -18,9 +18,9 @@ class Scholar < ApplicationRecord
 
   def self.distinct_studies
     studies = []
-    scholars = Scholar.all 
+    scholars = Scholar.all
     scholars.each do |scholar|
-      
+
       studies << scholar.under_graduate_studies
       studies << scholar.post_graduate_studies
       studies << scholar.secondary_graduate_studies
@@ -67,8 +67,8 @@ class Scholar < ApplicationRecord
 
   def self.search(search, page)
     Scholar.year(search[:class_year])
-           .search_name(search[:s])
-           .search_name_begins_with(search[:name])
+           .search_name_begins_with(search[:s])
+           .search_name(search[:name])
            .search_state(search[:state])
            .search_alumni(search[:alumni])
            .limit_by_standing

@@ -3,9 +3,10 @@ class ScholarsController < BaseApiController
 
   def index
     @scholars = Scholar.search(params, params[:page])
+    @csv_scholars = Scholar.all
     respond_to do |format|
       format.json { paginate json: @scholars, each_serializer: ScholarSerializer, per_page: 1000 }
-      # format.csv { send_data @scholars.to_csv(CSV_COLUMNS) }
+      format.csv { send_data @csv_scholars.to_csv(CSV_COLUMNS) }
     end
   end
 
@@ -15,22 +16,27 @@ class ScholarsController < BaseApiController
     full_name
     first_name
     last_name
-    high_school
-    state
+    scholar_standing
     city
+    state
     country
-    scholar
+    lat
+    lng
+    ethnicity
+    gender
+    photo
     alumni
     specialized_scholar
     military_scholar
-    scholar_standing
-    military_branch
-    undergraduate_institution
-    undergraduate_degree
-    undergraduate_major
     total_disbursement_allotment
     class_year
-    ethnicity
-    gender
+    date_of_birth
+    high_school
+    undergraduate_institution
+    post_graduate_institution
+    secondary_graduate_institution
+    under_graduate_studies
+    post_graduate_studies
+    secondary_graduate_studies
   )
 end

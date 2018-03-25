@@ -26,7 +26,7 @@ class ScholarProcessor < SyncProcessor
         full_name: scholar.Name,
         first_name: scholar.FirstName,
         last_name: scholar.LastName,
-        high_school: scholar.High_School__c,
+        high_school: scholar.High_School_Label__c,
         state: scholar.PPA_State__c,
         city: scholar.PPA_City__c,
         scholar_standing: scholar.Scholar_Standing__c,
@@ -43,7 +43,7 @@ class ScholarProcessor < SyncProcessor
         date_of_birth: scholar.Date_of_Birth__c,
         post_graduate_institution: scholar.PostGraduate_Studies_Institution__c,
         secondary_graduate_institution: scholar.Secondary_Graduate_Institution__c,
-        under_graduate_studies: scholar.Undergraduate_Studies_Major__c,
+        under_graduate_studies: scholar.Graduate_Major_Category__c,
         post_graduate_studies: scholar.Scholar_Major_Category__c,
         secondary_graduate_studies: scholar.Scholar_Major_Category__c
       }
@@ -59,7 +59,7 @@ class ScholarProcessor < SyncProcessor
       Name
       FirstName
       LastName
-      High_School__c
+      High_School_Label__c
       PPA_State__c
       PPA_City__c
       PPA_Country__c
@@ -73,6 +73,7 @@ class ScholarProcessor < SyncProcessor
       PostGraduate_Studies_Institution__c
       Secondary_Graduate_Institution__c
       Undergraduate_Studies_Major__c
+      Graduate_Major_Category__c
       toLabel(Scholar_Major_Category__c)
       PostGraduate_Studies_Major__c
       toLabel(Secondary_Graduate_Major_Category__c)

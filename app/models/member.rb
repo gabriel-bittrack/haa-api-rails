@@ -3,7 +3,7 @@ require 'csv'
 class Member < ApplicationRecord
   self.per_page = 24
   scope :year, ->(class_year) { where("class_year = ?", class_year) if class_year.present? }
-  scope :search_name, ->(name) { where("full_name LIKE ?", "%#{name}%") if name.present? }
+  scope :search_name, ->(name) { where("LOWER(full_name) LIKE LOWER(?)", "%#{name}%") if name.present? }
   scope :search_name_begins_with, -> (name) { where("last_name LIKE ?","#{name}%") if name.present? }
   scope :search_country, -> (country) { where("country = ?", country) if country.present? }
   scope :search_state, -> (state) { where("state = ?", state) if state.present? }

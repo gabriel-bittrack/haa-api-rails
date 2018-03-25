@@ -44,6 +44,7 @@
 
 .dropdown.dd_style2, .dropdown.dd_style3 {
   font-family: Montserrat;
+  font-weight: 300;
   font-size: 13px;
   letter-spacing: 1px;
   text-align: center;
@@ -212,7 +213,7 @@
   }
   .content {
     padding: 14px 12px;
-
+    background: #0d1720;
     .col1 {
       width: 202px;
       height: 621px;
@@ -346,6 +347,10 @@
           top: 0px;
           left: 0px;
         }
+        .leaflet-container {
+          background: #0d1f2d;
+        }
+
         .leaflet-div-icon {
           width: 58px !important;
           height: 58px !important;
@@ -452,6 +457,7 @@
         }
         .alumni {
           background: #dd9f32;
+          margin-bottom: 0px;
           .outer {
             border-color: #be7000;
           }
@@ -568,9 +574,10 @@
     }
     .state_name {
       text-transform: uppercase;
-      font-size: 15px;
+      font-size: 13px;
       color: #fff;
       margin: 20px 0px 0px;
+      font-weight: 300;
     }
     .state_name, .count_info, .panel_body {
       padding-left: 20px;
