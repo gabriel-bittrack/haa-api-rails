@@ -8,6 +8,7 @@ class Scholar < ApplicationRecord
   scope :search_city, -> (city) { where("city = ?", city) if city.present? }
   scope :search_alumni, -> (alumni) { where("alumni = ?", alumni) if alumni.present? }
   scope :limit_by_standing, -> () { where(scholar_standing: ["Good Standing", "Probation", "Special Case"]) }
+  scope :order_by_lastname, -> () { reorder(last_name: :asc)}
 
   has_attached_file :profile_image, style: {
     original: ["100%", :png],
@@ -72,6 +73,7 @@ class Scholar < ApplicationRecord
            .search_state(search[:state])
            .search_alumni(search[:alumni])
            .limit_by_standing
+           .order_by_lastname
            .page(page)
   end
 

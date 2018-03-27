@@ -41,11 +41,11 @@ function getDivIcon(count, type) {
 
 function refresh_map2(data) {
   var memberIcon = L.icon({
-  	iconUrl: '/assets/member_marker.png',
+  	iconUrl: 'http://horatio-api-staging.herokuapp.com/member_marker.png',
   	iconSize: [9, 9]
   });
   var scholarIcon = L.icon({
-  	iconUrl: '/assets/scholar_marker.png',
+  	iconUrl: 'http://horatio-api-staging.herokuapp.com/scholar_marker.png',
   	iconSize: [9, 9]
   });
 
