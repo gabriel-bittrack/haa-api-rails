@@ -22,6 +22,9 @@ $white-font: #ffffff;
 .welcome {
   border: 7px solid #fff;
   background: #fff;
+  width: 1280px;
+  height: 800px;
+  box-sizing: content-box;
   .col1 {
     max-width: 525px;
     width: 41.015625%;
@@ -103,7 +106,7 @@ $white-font: #ffffff;
     background: url(asset_path('scholar_stories.jpg')) no-repeat;
     background-size: cover;
     padding: 45px 40px;
-    margin-bottom: 8px;
+    margin-bottom: 7px;
     height: 314px;
   }
   .ss_title {

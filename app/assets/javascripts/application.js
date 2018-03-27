@@ -157,13 +157,13 @@ function clearMap() {
 
 jQuery(document).on('turbolinks:load', function() {
 
-  var modal_options = {duration: 100, overlay: {fillColor: '#000', opacity: 0.68},
+  var modal_options = {duration: 100, overlay: {fillColor: '#000', opacity: 0},
     offset: function() {
       // Fit the position to a button.
       var win = $(window);
       return {
-        left:   (win.width() - parseInt(this.css('width'))) / 2,
-        top: 54
+        left:   (win.width() - parseInt(this.css('width'))) / 2 + 7,
+        top: 7
       };
     }
   };

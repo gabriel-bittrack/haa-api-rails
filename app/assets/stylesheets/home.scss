@@ -14,28 +14,43 @@
     }
   }
   form .name {
-    width: 184px;
+    width: 180px;
   }
 
   form .dropdown {
     display: inline-block;
     float: left;
-    margin-right: 14px;
+    margin-right: 12px;
   }
   .search2_dropdown {
     width: 270px;
+    & + .chosen-container {
+      width: 270px !important;
+    }
   }
   .name_dropdown {
     width: 180px;
+    & + .chosen-container {
+      width: 180px !important;
+    }
   }
   .industry_dropdown {
     width: 193px;
+    & + .chosen-container {
+      width: 193px !important;
+    }
   }
-  .state_dropdown {
-    width: 193px;
+  .states_dropdown {
+    width: 187px;
+    & + .chosen-container {
+      width: 187px !important;
+    }
   }
   .year_dropdown {
     width: 144px;
+    & + .chosen-container {
+      width: 144px !important;
+    }
   }
   .btn {
     font-family: Montserrat;

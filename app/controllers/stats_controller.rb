@@ -1,9 +1,5 @@
 class StatsController < ApplicationController
 
-  def index
-
-  end
-
   def update_map
     puts ">>>> params : #{params}"
   end
@@ -15,7 +11,9 @@ class StatsController < ApplicationController
     else
       @country = "us"
     end
+    @years = Member.distinct_class_years.reverse
     @states = States.instance.states[@country]
+    @industries = Member.distinct_industries
   end
 
   def history

@@ -14,7 +14,7 @@ class Search::MembersController < ApplicationController
     @industries = industries
   end
 
-  private
+  public
 
   def years
     Member.distinct_class_years.reverse

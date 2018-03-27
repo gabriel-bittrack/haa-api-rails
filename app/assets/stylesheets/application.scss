@@ -184,9 +184,6 @@ a.link_btn:hover {
 .col {
   float: left;
 }
-.modal {
-  display: none;
-}
 .table {
   display: table;
   width: 100%;
@@ -219,12 +216,14 @@ a.link_btn:hover {
 }
 .modal {
   background: #f5f2e7;
-  max-width: 1202px;
-  max-height: 692px;
+  max-width: 1280px;
+  max-height: 800px;
   width: 100%;
   height: 100%;
   padding: 30px 54px;
-  border-radius: 6px;
+  border-radius: 0px;
+  overflow: hidden;
+  display: none;
   .modal_header {
     text-align: center;
     margin-bottom: 40px;
@@ -467,7 +466,7 @@ a.link_btn:hover {
 }
 
 #sponsor_modal {
-  padding: 100px 40px 40px;
+  padding: 0px;
 }
 .slider_content {
   outline: none;

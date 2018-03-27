@@ -1,44 +1,50 @@
-.modal#sponsor_modal
-  .bio_modal
-    a{class='close'}
-    .modal_content
+.modal.members#sponsor_modal
+  .bio
+    a{class='close close_white'}
+    .header
+      .content
+        = render partial: "/search/members/member_search_form", locals: {type: 'members'}
 
-      .modal_body
-        .col.col1
-          .sponsor_photo
-            = image_tag("sponsor1.jpg", :class => "sponsor_photo1")
-          .sponsor_photo
-            = image_tag("sponsor2.jpg", :class => "sponsor_photo2")
-        .col.col2
-          .info_wrap
-            .sponsor_info
-              h1.sponsor_name Paul Anthony Novelly
-              h3.info_title MEMBER
-              p.sponsor_wording “It takes as much energy to think big as it does to think small.”
-            .sponsor_info
-              h3.info_title MEMBER SINCE
-              h3.info_text 2000
-            .sponsor_info
-              h3.info_title LOCATION
-              h3.info_text Chicago, IL
-            .sponsor_info
-              h3.info_title EDUCATION
-              h3.info_text Northwestern University
-            .sponsor_info
-              h3.info_title OCCUPATION
-              h3.info_text Owner, St. Albans Global Management
-              h3.info_text Owner, Apex Oil Company and AIC, Limited
-            .sponsor_info
-              h3.info_title INDUSTRY
-              h3.info_text Economics
-        .col.col3
-          .bio_wrap
-            h3.info_title BIOGRAPHY
-            .scrollbar-2
-              p.bio_text Paul Anthony “Tony” Novelly was born in St. Louis, Missouri, in 1943, the oldest of three children in his family. Novelly’s sister, who had Down syndrome, had a heart defect and died during surgery when she was 11. The family lived in a low-income section of St. Louis called “Dogtown,” and they all shared the apartment’s only bedroom.
+    .main_bio
+      .main_content
+        .all_members
+          =link_to "VIEW ALL MEMBERS", search_members_path, class: "btn_default"
+        .bio_body.clearfix
+          .col.col1
+            .sponsor_photo
+              = image_tag("sponsor1.jpg", :class => "sponsor_photo1")
+            .sponsor_photo
+              = image_tag("sponsor2.jpg", :class => "sponsor_photo2")
+          .col.col2
+            .info_wrap
+              .sponsor_info
+                h1.sponsor_name Paul Anthony Novelly
+                h3.info_title MEMBER
+                p.sponsor_wording “It takes as much energy to think big as it does to think small.”
+              .sponsor_info
+                h3.info_title MEMBER SINCE
+                h3.info_text 2000
+              .sponsor_info
+                h3.info_title LOCATION
+                h3.info_text Chicago, IL
+              .sponsor_info
+                h3.info_title EDUCATION
+                h3.info_text Northwestern University
+              .sponsor_info
+                h3.info_title OCCUPATION
+                h3.info_text Owner, St. Albans Global Management
+                h3.info_text Owner, Apex Oil Company and AIC, Limited
+              .sponsor_info
+                h3.info_title INDUSTRY
+                h3.info_text Economics
+          .col.col3
+            .bio_wrap
+              h3.info_title BIOGRAPHY
+              .scrollbar-2
+                p.bio_text Paul Anthony “Tony” Novelly was born in St. Louis, Missouri, in 1943, the oldest of three children in his family. Novelly’s sister, who had Down syndrome, had a heart defect and died during surgery when she was 11. The family lived in a low-income section of St. Louis called “Dogtown,” and they all shared the apartment’s only bedroom.
 
-              p.bio_text Novelly’s father made his living as a printer and became manager of a printing company. “I thought my dad was the greatest guy in the world,” says Novelly. “He worked hard, but never made much money.” Novelly’s mother was raised in the hills of Arkansas, where she picked cotton as a child. Neither of his parents graduated from high school.
+                p.bio_text Novelly’s father made his living as a printer and became manager of a printing company. “I thought my dad was the greatest guy in the world,” says Novelly. “He worked hard, but never made much money.” Novelly’s mother was raised in the hills of Arkansas, where she picked cotton as a child. Neither of his parents graduated from high school.
 
-              p.bio_text When asked about his childhood years, Novelly says, “Even though there was much love, we also had some turmoil. After my sister’s birth, we all pulled together to meet her special needs. She was a blessing to us because she was so innocent, sweet, and loving. We would forever miss her.”
+                p.bio_text When asked about his childhood years, Novelly says, “Even though there was much love, we also had some turmoil. After my sister’s birth, we all pulled together to meet her special needs. She was a blessing to us because she was so innocent, sweet, and loving. We would forever miss her.”
 
-              p.bio_text Novelly began working when he was only seven. His first job was at a confectionery, stacking bottles and sweeping floors. When he was 12, he still worked after school and summers at the confectionery, but he also mowed lawns. When he was 14, the family moved to a small three-bedroom house in a suburb of St. Louis. He caddied at a golf course until he was 16, and then he went to work in a grocery store for the next six years. His first job at the store was bagging groceries, but by the time he left, during the second semester of his senior year in college, he was the store’s manager of customer service.
+                p.bio_text Novelly began working when he was only seven. His first job was at a confectionery, stacking bottles and sweeping floors. When he was 12, he still worked after school and summers at the confectionery, but he also mowed lawns. When he was 14, the family moved to a small three-bedroom house in a suburb of St. Louis. He caddied at a golf course until he was 16, and then he went to work in a grocery store for the next six years. His first job at the store was bagging groceries, but by the time he left, during the second semester of his senior year in college, he was the store’s manager of customer service.
