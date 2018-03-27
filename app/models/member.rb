@@ -9,6 +9,7 @@ class Member < ApplicationRecord
   scope :search_state, -> (state) { where("state = ?", state) if state.present? }
   scope :search_industry, -> (industry) { where("industry LIKE ?", "%#{industry}%") if industry.present? }
   scope :search_city, -> (city) { where("city = ?", city) if city.present? }
+  scope :order_by_lastname, -> () { reorder(last_name: :asc)}
 
   has_attached_file :profile_image, style: {
     original: ["100%", :png],
@@ -60,6 +61,7 @@ class Member < ApplicationRecord
           .search_name(search[:name])
           .search_state(search[:state])
           .search_industry(search[:industry])
+          .order_by_lastname
           .page(page)
   end
 
