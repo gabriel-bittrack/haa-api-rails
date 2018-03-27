@@ -113,7 +113,7 @@ function refresh_map2(data) {
         for (i = 0; i < mapdata[type].length; i++) {
           member_rows += ' \
             <div class="member_row"> \
-              <div class="name">' + mapdata[type][i].full_name + '</div> \
+              <div class="name"><a href="/search/members/' + mapdata[type][i].id + '" class="member_link">' + mapdata[type][i].full_name + '</a></div> \
               <div class="location">' + mapdata[type][i].city + ", " + mapdata[type][i].state + '</div> \
             </div> \
           ';

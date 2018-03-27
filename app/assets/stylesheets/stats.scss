@@ -624,6 +624,9 @@
         color: #fff;
         width: 135px;
         display: inline-block;
+        & > a {
+          color: #fff;
+        }
       }
       .location {
         color: #abc4d6;

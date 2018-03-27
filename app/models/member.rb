@@ -19,7 +19,7 @@ class Member < ApplicationRecord
   }
 
   def as_json(options={})
-    super(only: [:full_name, :state, :city, :lat, :lng ], options: options)
+    super(only: [:id, :full_name, :state, :city, :lat, :lng ], options: options)
   end
 
   validates_attachment :profile_image,

@@ -115,4 +115,11 @@ class StatsController < ApplicationController
     }
   end
 
+  def get_member
+    members = Member.find_by(id: params[:id]) #Member.where("id = ?", params[:id]) #Member.where(id: params[:id])
+    render json: {
+      members: members
+    }
+  end
+
 end

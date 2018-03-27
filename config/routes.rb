@@ -35,6 +35,7 @@ end
   get 'search/scholars/:id', to: 'search/scholars#show', as: :show_search_scholars
   post 'search/members' => 'search/members#index'
   get 'search/scholars' => 'search/scholars#index'
+  get 'get_member/:id' => 'stats#get_member'
   get 'get_cities' => 'stats#get_cities'
   get 'get_search_results' => 'stats#get_search_results'
   get 'growth' => 'stats#growth'
