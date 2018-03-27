@@ -235,7 +235,7 @@ jQuery(document).on('turbolinks:load', function() {
     $(".breadcrumb.city").addClass("active");
   });
 
-  $('.scrollbar-outer').scrollbar();
+  $('.scrollbar-2').scrollbar();
   $(".dd_style3 .chosen-select").on("chosen:ready", function(evt, params) {
     $(".dd_style3 .chosen-results").scrollbar();
   });

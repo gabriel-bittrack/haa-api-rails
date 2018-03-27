@@ -4,45 +4,47 @@
     .header
       .content
         = render partial: "scholar_search_form", locals: {type: 'scholars'}
-  .main_bio
-    .main_content
-      .all_members
-        =link_to "VIEW ALL SCHOLARS", search_scholars_path, class: "all_members_button"
-      .bio_body.clearfix
-        .col.col1
-          .sponsor_photo
-            =image_tag "scholars.png", class: "sponsor_photo1"
-          .sponsor_photo
-            //- if @member.web_url
-            //  =@scholar.web_url.html_safe
-        .col.col2
-          .info_wrap
-            .sponsor_info
-              h1.sponsor_name #{@scholar.full_name}
-              h3.info_title SCHOLAR
+    .main_bio
+      .main_content
+        .all_members
+          =link_to "VIEW ALL SCHOLARS", search_scholars_path, class: "btn_default"
+        .bio_body.clearfix
+          .col.col1
+            .sponsor_photo
+              =image_tag "scholars.png", class: "sponsor_photo1"
+          .col.col2
+            .info_wrap
+              .sponsor_info
+                h1.sponsor_name #{@scholar.full_name}
+                h3.info_title SCHOLAR
+                .three_stars
 
-            .sponsor_info
-              h3.info_title SCHOLAR SINCE
-              h3.info_text #{@scholar.class_year}
-            .sponsor_info
-              h3.info_title LOCATION
-              - if @scholar.city && @scholar.city
-                h3.info_text #{@scholar.city}, #{@scholar.state}
-              - elsif @scholar.city
-                h3.info_text #{@scholar.city}
-              - elsif @scholar.state
-                h3.info_text #{@scholar.state}
-            .sponsor_info
-              h3.info_title EDUCATION
-              - if @scholar.secondary_graduate_studies
-                h3.info_text #{@scholar.secondary_graduate_studies}
-              - elsif @scholar.post_graduate_studies
-                h3.info_text #{@scholar.post_graduate_studies}
-              - elsif @scholar.under_graduate_studies
-                h3.info_text #{@scholar.under_graduate_studies}
+              .sponsor_info
+                h3.info_title SCHOLAR SINCE
+                h3.info_text #{@scholar.class_year}
+                .three_stars
 
-        .col.col3
-          .bio_wrap
-            h3.info_title BIOGRAPHY
-            .scrollbar-outer
-              p.bio_text #{@scholar_bio.html_safe}
+              .sponsor_info
+                h3.info_title LOCATION
+                - if @scholar.city && @scholar.city
+                  h3.info_text #{@scholar.city}, #{@scholar.state}
+                - elsif @scholar.city
+                  h3.info_text #{@scholar.city}
+                - elsif @scholar.state
+                  h3.info_text #{@scholar.state}
+                .three_stars
+
+              .sponsor_info
+                h3.info_title EDUCATION
+                - if @scholar.secondary_graduate_studies
+                  h3.info_text #{@scholar.secondary_graduate_studies}
+                - elsif @scholar.post_graduate_studies
+                  h3.info_text #{@scholar.post_graduate_studies}
+                - elsif @scholar.under_graduate_studies
+                  h3.info_text #{@scholar.under_graduate_studies}
+
+          .col.col3
+            .bio_wrap
+              h3.info_title BIOGRAPHY
+              .scrollbar-outer
+                p.bio_text #{@scholar_bio.html_safe}

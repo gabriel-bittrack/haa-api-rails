@@ -245,7 +245,7 @@
           display: inline-block;
           width: 48px;
           height: 15px;
-          background: url(http://horatio-api-staging.herokuapp.com/star.png), url(http://horatio-api-staging.herokuapp.com/star.png), url(http://horatio-api-staging.herokuapp.com/star.png);
+          background: url(asset_path('star.png')), url(asset_path('star.png')), url(asset_path('star.png'));
           background-repeat: no-repeat, no-repeat, no-repeat;
           background-position: 0px top, 16px top, 32px top;
         }

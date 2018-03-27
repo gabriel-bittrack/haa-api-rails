@@ -86,6 +86,26 @@ div {
     clear: both;
     display: table;
 }
+.btn_default {
+  padding: 3px 0px;
+  border: 1px solid rgb(203, 210, 217);
+  border-radius: 5px;
+  background-image: -moz-linear-gradient( 90deg, rgb(210,221,229) 0%, rgb(255,255,255) 100%);
+  background-image: -webkit-linear-gradient( 90deg, rgb(210,221,229) 0%, rgb(255,255,255) 100%);
+  background-image: -ms-linear-gradient( 90deg, rgb(210,221,229) 0%, rgb(255,255,255) 100%);
+  position: relative;
+  min-width: 216px;
+  text-align: center;
+  font-size: 13px;
+  font-family: "Montserrat";
+  color: rgb(0, 48, 87);
+  text-transform: uppercase;
+  line-height: 2.48;
+  -moz-transform: matrix( 1.00770729735238,0,0,1.00770729735238,0,0);
+  -webkit-transform: matrix( 1.00770729735238,0,0,1.00770729735238,0,0);
+  -ms-transform: matrix( 1.00770729735238,0,0,1.00770729735238,0,0);
+  margin-bottom: 10px;
+}
 input[type="text"].form-control {
   outline: none;
   height: 41px;
@@ -179,8 +199,8 @@ a.link_btn:hover {
   width: 30px;
   height: 30px;
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 12px;
+  top: 12px;
 }
 .close_white {
   background: url(asset_path('close_white.png')) center no-repeat;
@@ -226,6 +246,9 @@ a.link_btn:hover {
     color: #1a1a1a;
     line-height: 1.6;
     margin-bottom: 20px;
+  }
+  .modal_text:last-child {
+    margin-bottom: 0px;
   }
 }
 /* end of modal styles */
@@ -324,18 +347,19 @@ a.link_btn:hover {
   background: #f5f2e7;
 }
 .bio .main_bio {
-  padding: 22px 40px 40px;
+  padding: 22px 64px 40px;
   background: #f5f2e7;
-}
-.bio .bio_body .col1 {
-  width: 350px;
+  min-height: 686px;
 }
 .bio .sponsor_photo {
-  height: 350px;
+  height: 270px;
   overflow: hidden;
 }
 .bio, .bio_modal {
   background: #f5f2e7;
+  .bio_body {
+    display: flex;
+  }
   .quote {
     display: inline-block;
     font-size: 9.491px;
@@ -348,37 +372,10 @@ a.link_btn:hover {
     -ms-transform: matrix( 2.31795370758523,0,0,2.31795370758523,0,0);
   }
   .all_members {
-    margin-bottom: 10px;
-
-    .all_members_button {
-      border-style: solid;
-      border-width: 1px;
-      border-color: rgb(203, 210, 217);
-      border-radius: 5px;
-      background-image: -moz-linear-gradient( 90deg, rgb(210,221,229) 0%, rgb(255,255,255) 100%);
-      background-image: -webkit-linear-gradient( 90deg, rgb(210,221,229) 0%, rgb(255,255,255) 100%);
-      background-image: -ms-linear-gradient( 90deg, rgb(210,221,229) 0%, rgb(255,255,255) 100%);
-      // position: absolute;
-      position: relative;
-      // left: 60px;
-      // top: 132px;
-      width: 220px;
-      text-align: center;
-      // height: 45px;
-      // z-index: 281;
-      font-size: 13px;
-      font-family: "Montserrat";
-      color: rgb(0, 48, 87);
-      text-transform: uppercase;
-      line-height: 2.48;
-      -moz-transform: matrix( 1.00770729735238,0,0,1.00770729735238,0,0);
-      -webkit-transform: matrix( 1.00770729735238,0,0,1.00770729735238,0,0);
-      -ms-transform: matrix( 1.00770729735238,0,0,1.00770729735238,0,0);
-      margin-bottom: 12px;
-    }
+    margin-bottom: 20px;
   }
 
-  .scrollbar-outer {
+  .scrollbar-2 {
     max-height: 483px;
   }
   .sponsor_name {
@@ -391,11 +388,23 @@ a.link_btn:hover {
     margin-bottom: 10px;
     white-space: initial;
   }
+  .scholars .sponsor_name, .scholars .info_text, .scholars .btn_default {
+    color: #9b2743;
+  }
+  .three_stars {
+    display: inline-block;
+    width: 48px;
+    height: 15px;
+    background: url(asset_path('star_yellow.png')), url(asset_path('star_yellow.png')), url(asset_path('star_yellow.png'));
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: 0px top, 16px top, 32px top;
+    margin: 10px 0px 20px;
+  }
   .info_title {
     font-size: 13px;
     color: #1a1a1a;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     text-transform: uppercase;
   }
   .sponsor_wording {
@@ -409,13 +418,12 @@ a.link_btn:hover {
     font-family: Lora;
     color: #094c83;
     font-size: 17px;
-    margin-bottom: 14px;
+    margin-bottom: 20px;
     letter-spacing: 0px;
     word-wrap: break-word;
   }
   .bio_wrap {
-    max-width: 430px;
-    .scrollbar-outer {
+    .scrollbar-2 {
       max-height: 483px;
     }
   }
@@ -449,6 +457,12 @@ a.link_btn:hover {
   }
   .info_wrap {
     padding: 0px 40px;
+  }
+  .sponsor_video {
+    height: 153px;
+  }
+  .sponsor_video > iframe {
+    height: 100%;
   }
 }
 

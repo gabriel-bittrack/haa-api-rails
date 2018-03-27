@@ -785,7 +785,8 @@
 .scrollbar-chrome > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_track { left: -19px; }
 .scrollbar-chrome > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_track { top: -19px; }
 
-.dd_style3 .chosen-results, .stats_panel .panel_body {
+
+.dd_style3 .chosen-results, .stats_panel .panel_body, .scrollbar-2 {
   > .scroll-element,
   > .scroll-element div
   {
@@ -820,7 +821,6 @@
       top: 0px;
       bottom: 0px;
       width: 28px;
-      border-left: 1px solid #5e7689;
   }
 
   > .scroll-element.scroll-x .scroll-element_outer { height: 8px; top: 2px; }
@@ -868,4 +868,18 @@
 
   > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size { left: -14px; }
   > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size { top: -14px; }
+}
+
+.dd_style3 > .scroll-element.scroll-y {
+    border-left: 1px solid #5e7689;
+}
+.scrollbar-2 .scroll-element .scroll-bar {
+    background-image: url(/assets/scroll2.png);
+}
+.scrollbar-2 > .scroll-element .scroll-element_size {
+    background-color: #aab3b5;
+}
+.scrollbar-2 > .scroll-element.scroll-y .scroll-element_outer {
+    top: 0px;
+    bottom: 0px;
 }
