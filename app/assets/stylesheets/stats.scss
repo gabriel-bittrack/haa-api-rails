@@ -212,7 +212,7 @@
     }
   }
   .content {
-    padding: 14px 12px;
+    padding: 13px 12px;
     background: #0d1720;
     .col1 {
       width: 202px;
@@ -270,10 +270,10 @@
       position: relative;
       .map_view {
         position: absolute;
-        top: -14px;
+        top: -13px;
         left: 0px;
         width: calc(100% + 12px);
-        height: calc(100% + 28px);
+        height: calc(100% + 26px);
         z-index: 0;
         .member_cluster_icon {
           position: relative;
@@ -631,6 +631,12 @@
       .location {
         color: #abc4d6;
         display: inline-block;
+      }
+      .members_link:hover {
+        color: #01c0f6;
+      }
+      .scholars_link:hover {
+        color: #ff4040;
       }
       &.scroll-scrolly_visible {
         padding-right: 2px;

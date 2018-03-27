@@ -869,8 +869,11 @@
   > .scroll-element.scroll-x.scroll-scrolly_visible .scroll-element_size { left: -14px; }
   > .scroll-element.scroll-y.scroll-scrollx_visible .scroll-element_size { top: -14px; }
 }
-
-.dd_style3 > .scroll-element.scroll-y {
+.dd_style3 .chosen-results > .scroll-content.scroll-scrolly_visible {
+  left: -28px;
+  margin-left: 28px;
+}
+.dd_style3 .chosen-results > .scroll-element.scroll-y {
     border-left: 1px solid #5e7689;
 }
 .scrollbar-2 .scroll-element .scroll-bar {

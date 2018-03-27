@@ -1,0 +1,39 @@
+.modal.scholars#scholar_modal
+  .bio
+    a{class='close close_white'}
+    .header2
+      .content2
+        = render partial: "/search/scholars/scholar_search_form", locals: {type: 'scholars'}
+    .main_bio
+      .main_content
+        .all_members
+          =link_to "VIEW ALL SCHOLARS", search_scholars_path, class: "btn_default"
+        .bio_body.clearfix
+          .col.col1
+            .sponsor_photo
+          .col.col2
+            .info_wrap
+              .sponsor_info
+                h1.sponsor_name
+                h3.info_title SCHOLAR
+                .three_stars
+
+              .sponsor_info
+                h3.info_title SCHOLAR SINCE
+                h3.info_text
+                .three_stars
+
+              .sponsor_info
+                h3.info_title LOCATION
+                  h3.info_text
+                .three_stars
+
+              .sponsor_info
+                h3.info_title EDUCATION
+                  h3.info_text
+
+          .col.col3
+            .bio_wrap
+              h3.info_title BIOGRAPHY
+              .scrollbar-outer
+                p.bio_text

@@ -1,0 +1,43 @@
+.modal.members#member_modal
+  .bio
+    a{class='close close_white'}
+    .header2
+      .content2
+        = render partial: "/search/members/member_search_form", locals: {type: 'members'}
+    .main_bio
+      .main_content
+        .all_members
+          =link_to "VIEW ALL MEMBERS", search_members_path, class: "btn_default"
+        .bio_body.clearfix
+          .col.col1
+            .sponsor_photo
+            .sponsor_video
+
+          .col.col2
+            .info_wrap
+              .sponsor_info
+                h1.sponsor_name
+                h3.info_title MEMBER
+                  p.sponsor_wording
+
+              .sponsor_info
+                h3.info_title MEMBER SINCE
+                h3.info_text
+              .sponsor_info
+                h3.info_title LOCATION
+                h3.info_text
+              .sponsor_info
+                h3.info_title EDUCATION
+                h3.info_text
+              .sponsor_info
+                h3.info_title OCCUPATION
+                h3.info_text
+              .sponsor_info
+                h3.info_title INDUSTRY
+                h3.info_text
+
+          .col.col3
+            .bio_wrap
+              h3.info_title BIOGRAPHY
+              .scrollbar-2
+                p.bio_text

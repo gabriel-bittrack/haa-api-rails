@@ -107,14 +107,19 @@ function refresh_map2(data) {
       }
       $(".stats_panel").html("");
       k = 0;
-      for (var type in mapdata) {
 
+      for (var type in mapdata) {
         member_rows = "";
         for (i = 0; i < mapdata[type].length; i++) {
+          if (typeof mapdata[type][i].city != 'undefined' && mapdata[type][i].city != null) {
+            city = mapdata[type][i].city + ", " + mapdata[type][i].state;
+          } else {
+            city = mapdata[type][i].state;
+          }
           member_rows += ' \
             <div class="member_row"> \
-              <div class="name"><a href="/search/members/' + mapdata[type][i].id + '" class="member_link">' + mapdata[type][i].full_name + '</a></div> \
-              <div class="location">' + mapdata[type][i].city + ", " + mapdata[type][i].state + '</div> \
+              <div class="name"><a data-id="' + mapdata[type][i].id + '" class="' + type + '_link">' + mapdata[type][i].full_name + '</a></div> \
+              <div class="location">' + city + '</div> \
             </div> \
           ';
         }
@@ -181,6 +186,14 @@ jQuery(document).on('turbolinks:load', function() {
 
   $(".sponsor_link").click(function(e) {
     $('#sponsor_modal').plainModal('open');
+  });
+
+  $(document).on("click", ".members_link", function(e) {
+    $('#member_modal').plainModal('open');
+  });
+
+  $(document).on("click", ".scholars_link", function(e) {
+    $('#scholar_modal').plainModal('open');
   });
 
   $(".member_name").click(function(e) {

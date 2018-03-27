@@ -2,9 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .members, .scholars {
   position: relative;
-  .header {
+  .header2 {
     background: #003057;
     padding: 30px 40px;
     min-height: 114px;
@@ -40,7 +41,7 @@
       width: 193px !important;
     }
   }
-  .states_dropdown {
+  .states_dropdown_wrap .states_dropdown {
     width: 187px;
     & + .chosen-container {
       width: 187px !important;
@@ -285,7 +286,7 @@
   }
 }
 .scholars {
-  .header {
+  .header2 {
     background: #9b2743;
   }
   .main-content {
