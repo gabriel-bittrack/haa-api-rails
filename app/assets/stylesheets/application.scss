@@ -120,6 +120,9 @@ div {
   -ms-transform: matrix( 1.00770729735238,0,0,1.00770729735238,0,0);
   margin-bottom: 10px;
 }
+.btn_default:focus {
+  outline: none;
+}
 input[type="text"].form-control {
   outline: none;
   height: 41px;
@@ -252,6 +255,7 @@ a.link_btn:hover {
     max-height: 550px;
     float: left;
     overflow: hidden;
+    display: flex;
   }
   .modal_text {
     font-family: Lora;
@@ -454,7 +458,7 @@ a.link_btn:hover {
     width: 100%;
   }
   .col2 {
-    width: 420px;
+    width: 445px;
     vertical-align: top;
   }
   .col3 {

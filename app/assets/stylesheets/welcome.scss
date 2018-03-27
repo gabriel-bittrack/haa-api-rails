@@ -213,8 +213,11 @@ $white-font: #ffffff;
 }
 
 #aboutus_modal {
+  padding-left: 74px;
+  padding-right: 74px;
   .modal_header {
-    margin-top: 20px;
+    margin-top: 40px;
+    margin-bottom: 65px;
   }
   .logo, .medallion {
     display: inline-block;
@@ -223,27 +226,26 @@ $white-font: #ffffff;
     margin-right: 40px;
   }
   .scrollbar-2 {
-    max-height: 436px;
+    max-height: 443px;
     overflow: hidden;
   }
   .col1 {
     width: 34%;
     float: left;
+    margin-right: 30px;
   }
   .col2 {
-    width: 34%;
+    width: 324px;
     float: left;
-  }
-  .col3 {
-    width: 32%;
-    float: left;
-  }
-  .stats {
     border-radius: 5px;
     background: #efebdc;
-    padding: 20px 0px;
-    margin: 0px 25px;
-    margin-top: 50px;
+  }
+  .col3 {
+    width: 31%;
+    float: left;
+    margin-left: 40px;
+  }
+  .stats {
     .s_row {
       padding: 34px 20px;
     }
@@ -274,17 +276,31 @@ $white-font: #ffffff;
       margin: 0 auto;
       background: #00325b;
     }
+    .members_row {
+      padding-top: 32px;
+      padding-bottom: 31px;
+    }
     .members_row .number {
       color: #02a1ce;
     }
     .scholars_row {
-      // background: #e9e7db;
+      padding-top: 28px;
+      padding-bottom: 27px;
+    }
+    .scholars_row {
+      padding-top: 31px;
+      padding-bottom: 31px;
     }
     .scholars_row .number {
       color: #cf0435;
     }
     .scholarships_row .number {
       color: #23b03a;
+    }
+    .button_row {
+      padding-top: 38px;
+      padding-bottom: 30px;
+      text-align: center;
     }
   }
 }

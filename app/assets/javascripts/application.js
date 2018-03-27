@@ -161,10 +161,16 @@ jQuery(document).on('turbolinks:load', function() {
     offset: function() {
       // Fit the position to a button.
       var win = $(window);
-      return {
-        left:   (win.width() - parseInt(this.css('width'))) / 2 + 7,
-        top: 7
-      };
+      if ($("#container > .welcome").length)
+        return {
+          left:   (win.width() - parseInt(this.css('width'))) / 2 + 7,
+          top: 7
+        };
+      else
+        return {
+          left:   (win.width() - parseInt(this.css('width'))) / 2,
+          top: 0
+        };
     }
   };
 
